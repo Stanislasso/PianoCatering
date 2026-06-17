@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Piano C Catering | Authentic Apulian pizza & pasta catering in Leuven</title>
+<meta name="description" content="Piano C brings authentic Apulian pizza and pasta catering to your event in Leuven and the surrounding area. Fresh pizza from our mobile wood-fired oven, homemade pasta and a true Italian celebration. Request your quote.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.example.be/en/">
+<link rel="alternate" hreflang="nl" href="https://www.example.be/">
+<link rel="alternate" hreflang="en" href="https://www.example.be/en/">
+<link rel="alternate" hreflang="x-default" href="https://www.example.be/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Piano C Catering | Apulian pizza & pasta catering in Leuven">
+<meta property="og:description" content="Fresh pizza from our mobile wood-fired oven and homemade pasta, served at your venue. A true Apulian feast for your event.">
+<meta property="og:locale" content="en_BE">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --espresso:#4A342A;
+  --espresso-deep:#2A1D16;
+  --cream:#F4F1EC;
+  --cream-soft:#EBE5DA;
+  --terracotta:#C0562E;
+  --olive:#74764E;
+  --line:rgba(74,52,42,.16);
+
+  --font-display:"Fraunces",Georgia,serif;
+  --font-mono:"Courier Prime","Courier New",monospace;
+  --font-body:"Hanken Grotesk",-apple-system,sans-serif;
+
+  --maxw:1180px;
+
+  --wrap-pad:20px;
+  --section-pad:64px;
+  --nav-h:64px;
+}
+@media(min-width:760px){
+  :root{--wrap-pad:24px;--section-pad:80px;--nav-h:70px}
+}
+@media(min-width:980px){
+  :root{--wrap-pad:28px;--section-pad:96px;--nav-h:74px}
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background:var(--cream);
+  color:var(--espresso);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--wrap-pad);position:relative;z-index:2}
+
+.kicker{
+  font-family:var(--font-mono);
+  text-transform:uppercase;
+  letter-spacing:.20em;
+  font-size:.84rem;
+  color:var(--terracotta);
+}
+
+h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.05;letter-spacing:-.01em}
+
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(244,241,236,.92);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:12px}
+.brand{display:flex;flex-direction:column;line-height:1;text-decoration:none;color:var(--espresso);flex-shrink:0}
+.brand .name{font-family:var(--font-display);font-size:1.35rem;font-weight:600;letter-spacing:.02em}
+.brand .sub{font-family:var(--font-mono);font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;margin-top:3px;color:var(--espresso)}
+@media(min-width:760px){.brand .name{font-size:1.5rem}.brand .sub{font-size:.58rem;letter-spacing:.34em}}
+
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-cta{padding:10px 16px;font-size:.72rem}
+@media(min-width:760px){.nav-cta{padding:12px 22px;font-size:.78rem}}
+
+.nav-toggle{
+  display:flex;flex-direction:column;justify-content:center;gap:5px;
+  width:44px;height:44px;padding:0;border:1px solid var(--line);border-radius:8px;
+  background:var(--cream);cursor:pointer;flex-shrink:0;
+}
+.nav-toggle span{display:block;width:18px;height:2px;background:var(--espresso);margin:0 auto;transition:transform .25s,opacity .25s}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(min-width:980px){.nav-toggle{display:none}}
+
+.navlinks{
+  position:fixed;inset:var(--nav-h) 0 0 0;z-index:49;
+  background:rgba(244,241,236,.98);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  padding:28px var(--wrap-pad) 40px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  transform:translateX(100%);transition:transform .3s ease;
+  overflow-y:auto;border-top:1px solid var(--line);
+}
+.navlinks.open{transform:translateX(0)}
+.navlinks a:not(.btn){
+  font-family:var(--font-mono);font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--espresso);text-decoration:none;transition:color .2s;
+  padding:16px 0;width:100%;border-bottom:1px solid var(--line);
+}
+@media(hover:hover){.navlinks a:not(.btn):hover,.navlinks a:not(.btn):focus-visible{color:var(--terracotta)}}
+.navlinks .lang{
+  margin-top:20px;border:none;padding:0;font-size:.85rem;
+}
+.navlinks .lang a{padding:8px 0;width:auto;border:none;display:inline}
+
+@media(min-width:980px){
+  .nav-actions{display:none}
+  .navlinks{
+    position:static;inset:auto;transform:none;transition:none;
+    flex-direction:row;align-items:center;gap:30px;
+    padding:0;background:transparent;backdrop-filter:none;
+    overflow:visible;border-top:none;
+  }
+  .navlinks a:not(.btn){
+    font-size:.78rem;letter-spacing:.05em;padding:0;width:auto;border-bottom:none;
+  }
+  .navlinks .lang{margin-top:0;font-size:.72rem;padding:5px 12px;border:1px solid var(--line)}
+  .navlinks .nav-cta{display:inline-block;padding:12px 22px;font-size:.78rem}
+}
+
+.lang{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;border:1px solid var(--line);border-radius:30px;padding:5px 12px}
+.lang a{text-decoration:none;color:var(--espresso);opacity:.4}
+.lang a.active{opacity:1;color:var(--terracotta)}
+.btn{
+  font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.08em;
+  font-size:.78rem;background:var(--espresso);color:var(--cream);
+  padding:14px 22px;border-radius:40px;text-decoration:none;transition:transform .2s,background .2s;
+  min-height:44px;line-height:1.2;display:inline-flex;align-items:center;justify-content:center;
+  -webkit-tap-highlight-color:transparent;border:none;cursor:pointer;
+}
+@media(hover:hover){.btn:hover{background:var(--terracotta);transform:translateY(-2px)}}
+.btn-ghost{background:transparent;color:var(--espresso);border:1px solid var(--espresso)}
+@media(hover:hover){.btn-ghost:hover{background:var(--espresso);color:var(--cream)}}
+.btn-light{background:var(--cream);color:var(--espresso)}
+@media(hover:hover){.btn-light:hover{background:var(--terracotta);color:var(--cream)}}
+
+.hero{padding:48px 0 56px;position:relative}
+@media(min-width:760px){.hero{padding:64px 0 72px}}
+@media(min-width:900px){.hero{padding:78px 0 90px}}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:center}
+@media(min-width:900px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:64px}}
+.hero .kicker{margin-bottom:16px;font-size:.76rem;letter-spacing:.17em}
+@media(min-width:760px){.hero .kicker{margin-bottom:22px;font-size:.84rem;letter-spacing:.20em}}
+.hero h1{font-size:clamp(2.2rem,8vw,4.6rem);margin-bottom:18px}
+@media(min-width:760px){.hero h1{margin-bottom:24px}}
+.hero h1 em{font-style:italic;color:var(--terracotta)}
+.hero p.lead{font-size:1.05rem;max-width:none;margin-bottom:28px;color:rgba(74,52,42,.85)}
+@media(min-width:760px){.hero p.lead{font-size:1.18rem;max-width:30ch;margin-bottom:34px}}
+.hero-cta{display:flex;flex-direction:column;gap:12px}
+.hero-cta .btn{width:100%}
+@media(min-width:480px){.hero-cta{flex-direction:row;flex-wrap:wrap}.hero-cta .btn{width:auto}}
+
+.frame{
+  position:relative;border-radius:6px;overflow:hidden;
+  background:linear-gradient(135deg,var(--cream-soft),#ddd3c4);
+  border:1px solid var(--line);aspect-ratio:4/5;
+  display:flex;align-items:center;justify-content:center;
+}
+.frame.tall{aspect-ratio:4/5}
+.frame.wide{aspect-ratio:3/2}
+.frame .ph{
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(74,52,42,.4);text-align:center;padding:0 20px;
+}
+.frame::after{content:"";position:absolute;inset:10px;border:1px solid rgba(74,52,42,.18)}
+@media(min-width:760px){.frame::after{inset:14px}}
+.hero .frame{box-shadow:0 20px 40px -24px rgba(42,29,22,.45);transform:none}
+@media(min-width:760px){.hero .frame{box-shadow:0 30px 60px -30px rgba(42,29,22,.5);transform:rotate(1.4deg)}}
+
+.hero-visual{position:relative}
+.tag-float{
+  position:absolute;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--espresso);color:var(--cream);padding:7px 12px;border-radius:30px;
+  box-shadow:0 8px 20px -8px rgba(0,0,0,.35);z-index:3;max-width:calc(100% - 24px);
+}
+.tag-float--top{top:12px;left:12px;right:auto}
+.tag-float--bot{bottom:12px;right:12px;left:auto;background:var(--terracotta)}
+@media(min-width:760px){
+  .tag-float{font-size:.7rem;letter-spacing:.1em;padding:9px 16px;max-width:none}
+  .tag-float--top{top:-14px;left:-10px}
+  .tag-float--bot{bottom:18px;right:-12px}
+}
+
+.ticker{background:var(--espresso);color:var(--cream);overflow:hidden;padding:14px 0;border-top:1px solid var(--espresso-deep)}
+.ticker-track{display:flex;gap:32px;white-space:nowrap;animation:scroll 28s linear infinite;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.14em;font-size:.72rem}
+@media(min-width:760px){.ticker-track{gap:48px;letter-spacing:.18em;font-size:.8rem}}
+.ticker-track span{opacity:.85}
+.ticker-track b{color:var(--terracotta);font-weight:400}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+section{padding:var(--section-pad) 0;position:relative}
+.section-head{max-width:640px;margin-bottom:36px}
+@media(min-width:760px){.section-head{margin-bottom:54px}}
+.section-head .kicker{margin-bottom:12px;display:block}
+@media(min-width:760px){.section-head .kicker{margin-bottom:16px}}
+.section-head h2{font-size:clamp(1.75rem,6vw,3.1rem)}
+.section-head p{margin-top:14px;font-size:1rem;color:rgba(74,52,42,.8)}
+@media(min-width:760px){.section-head p{margin-top:18px;font-size:1.08rem}}
+
+.formules{background:var(--cream-soft)}
+.cards{display:grid;grid-template-columns:1fr;gap:26px}
+@media(min-width:820px){.cards{grid-template-columns:1fr 1fr}}
+.card{
+  background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:28px 22px;
+  display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s;
+}
+@media(min-width:760px){.card{padding:38px 34px}}
+@media(hover:hover){.card:hover{transform:translateY(-5px);box-shadow:0 24px 50px -28px rgba(42,29,22,.45)}}
+.card .num{font-family:var(--font-mono);font-size:.84rem;letter-spacing:.14em;color:var(--terracotta);margin-bottom:14px}
+@media(min-width:760px){.card .num{margin-bottom:18px}}
+.card h3{font-size:1.6rem;margin-bottom:6px}
+@media(min-width:760px){.card h3{font-size:1.9rem}}
+.card .price{font-family:var(--font-mono);font-size:1rem;margin:10px 0 18px;color:var(--espresso)}
+@media(min-width:760px){.card .price{font-size:1.05rem;margin:10px 0 20px}}
+.card .price small{display:block;font-size:.68rem;opacity:.65;letter-spacing:.03em;margin-top:6px;line-height:1.45}
+@media(min-width:760px){.card .price small{font-size:.72rem;letter-spacing:.05em;margin-top:4px}}
+.card ul{list-style:none;margin:0 0 24px;display:flex;flex-direction:column;gap:10px}
+@media(min-width:760px){.card ul{margin:0 0 28px;gap:11px}}
+.card li{padding-left:22px;position:relative;font-size:.94rem}
+@media(min-width:760px){.card li{font-size:.97rem}}
+.card li::before{content:"–";position:absolute;left:0;color:var(--terracotta);font-family:var(--font-mono)}
+.card .btn{align-self:stretch;margin-top:auto;text-align:center}
+@media(min-width:480px){.card .btn{align-self:flex-start;text-align:left}}
+.combi-note{
+  margin-top:24px;text-align:center;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.03em;line-height:1.55;
+  background:var(--espresso);color:var(--cream);padding:16px 18px;border-radius:8px;
+  display:flex;flex-direction:column;gap:6px;align-items:center;
+}
+@media(min-width:760px){
+  .combi-note{margin-top:28px;font-size:.85rem;letter-spacing:.04em;padding:18px 24px;
+  flex-direction:row;flex-wrap:wrap;justify-content:center;gap:0}
+  .combi-note .combi-extra::before{content:" · "}
+}
+.combi-note b{color:var(--terracotta);font-weight:400}
+
+.proef-box{
+  background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:28px 22px;
+  max-width:820px;margin:36px auto 0;text-align:center;
+}
+@media(min-width:760px){.proef-box{padding:44px 38px;margin-top:48px}}
+.proef-box .kicker{margin-bottom:12px;display:block;font-size:.76rem}
+@media(min-width:760px){.proef-box .kicker{margin-bottom:16px;font-size:.84rem}}
+.proef-box h2{font-size:clamp(1.4rem,5.5vw,2.2rem);margin-bottom:14px;line-height:1.15}
+@media(min-width:760px){.proef-box h2{margin-bottom:18px}}
+.proef-box p{font-size:.98rem;color:rgba(74,52,42,.82);max-width:none;margin:0 auto 12px;text-align:left}
+@media(min-width:760px){.proef-box p{font-size:1.05rem;max-width:58ch;margin:0 auto 14px;text-align:center}}
+.proef-box p:last-of-type{margin-bottom:22px}
+@media(min-width:760px){.proef-box p:last-of-type{margin-bottom:28px}}
+.proef-links{display:flex;flex-direction:column;gap:10px}
+.proef-links .btn{width:100%}
+@media(min-width:480px){.proef-links{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:14px}.proef-links .btn{width:auto}}
+.proef-links .btn-ghost{border-color:var(--terracotta);color:var(--terracotta)}
+@media(hover:hover){.proef-links .btn-ghost:hover{background:var(--terracotta);color:var(--cream);border-color:var(--terracotta)}}
+
+.steps-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:4px}
+@media(min-width:760px){.steps-grid{grid-template-columns:repeat(5,1fr);gap:12px;margin-top:8px}}
+@media(min-width:980px){.steps-grid{gap:16px}}
+.step{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  background:var(--cream-soft);border:1px solid var(--line);border-radius:8px;
+  padding:28px 20px;min-height:100%;
+}
+@media(min-width:760px){.step{padding:32px 14px}}
+@media(min-width:980px){.step{padding:36px 16px}}
+.step .n{
+  font-family:var(--font-mono);font-size:1.85rem;line-height:1;color:var(--terracotta);
+  display:flex;align-items:center;justify-content:center;
+  width:46px;height:46px;margin:0 auto 16px;
+  border:1px solid rgba(192,86,46,.22);border-radius:50%;background:rgba(192,86,46,.07);
+}
+@media(min-width:760px){.step .n{width:50px;height:50px;font-size:2rem;margin-bottom:18px}}
+.step h4{font-family:var(--font-display);font-size:1.15rem;font-weight:500;margin-bottom:8px}
+@media(min-width:760px){.step h4{font-size:1.05rem}}
+@media(min-width:980px){.step h4{font-size:1.1rem}}
+.step p{font-size:.92rem;color:rgba(74,52,42,.78);max-width:30ch;margin:0 auto}
+@media(min-width:760px){.step p{font-size:.86rem;max-width:none}}
+@media(min-width:980px){.step p{font-size:.9rem}}
+@media(hover:hover){
+  .step{transition:transform .2s,box-shadow .2s,border-color .2s}
+  .step:hover{transform:translateY(-3px);box-shadow:0 16px 40px -24px rgba(42,29,22,.32);border-color:rgba(192,86,46,.26)}
+}
+
+.over{background:var(--espresso);color:var(--cream)}
+.over .wrap{display:grid;grid-template-columns:1fr;gap:36px;align-items:center}
+@media(min-width:900px){.over .wrap{grid-template-columns:.9fr 1.1fr;gap:64px}}
+.over .kicker{color:var(--terracotta)}
+.over h2{color:var(--cream);font-size:clamp(1.75rem,6vw,3rem);margin:12px 0 18px}
+@media(min-width:760px){.over h2{margin:16px 0 22px}}
+.over p{color:rgba(244,241,236,.82);margin-bottom:16px;font-size:.98rem}
+@media(min-width:760px){.over p{margin-bottom:18px;font-size:1rem}}
+.over .frame{background:linear-gradient(135deg,#3a281f,#5a4234);border-color:rgba(244,241,236,.15)}
+.over .frame::after{border-color:rgba(244,241,236,.2)}
+.over .frame .ph{color:rgba(244,241,236,.4)}
+.over-links{display:flex;flex-direction:column;gap:10px;margin-top:22px}
+.over-links .btn{width:100%}
+@media(min-width:480px){.over-links{flex-direction:row;flex-wrap:wrap;gap:16px;margin-top:28px}.over-links .btn{width:auto}}
+
+.quote .section-head{text-align:center;margin-left:auto;margin-right:auto;margin-bottom:36px}
+@media(min-width:760px){.quote .section-head{margin-bottom:48px}}
+.reviews-grid{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:760px){.reviews-grid{grid-template-columns:1fr 1fr;gap:26px}}
+.review-card{
+  background:var(--cream-soft);border:1px solid var(--line);border-radius:8px;
+  padding:26px 22px;text-align:left;display:flex;flex-direction:column;
+}
+@media(min-width:760px){.review-card{padding:32px 28px}}
+.review-card blockquote{
+  font-family:var(--font-display);font-style:italic;font-weight:400;
+  font-size:clamp(1.05rem,2.6vw,1.28rem);line-height:1.45;margin:0;flex:1;
+}
+.review-card .cite{
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  margin-top:20px;color:var(--terracotta);line-height:1.5;
+}
+@media(min-width:760px){.review-card .cite{font-size:.72rem;margin-top:22px}}
+
+.cta-band{background:var(--terracotta);color:var(--cream);text-align:center}
+.cta-band h2{color:var(--cream);font-size:clamp(2rem,5vw,3.2rem);margin-bottom:18px}
+.cta-band p{max-width:none;margin:0 auto 28px;font-size:1rem;color:rgba(255,255,255,.9);padding:0 4px}
+@media(min-width:760px){.cta-band p{max-width:46ch;margin:0 auto 32px;font-size:1.1rem;padding:0}}
+.cta-band .btn{width:100%;max-width:320px}
+@media(min-width:480px){.cta-band .btn{width:auto;max-width:none}}
+
+footer{background:var(--espresso-deep);color:rgba(244,241,236,.7);padding:48px 0 28px}
+@media(min-width:760px){footer{padding:64px 0 34px}}
+.foot-grid{display:grid;grid-template-columns:1fr;gap:28px}
+@media(min-width:760px){.foot-grid{grid-template-columns:2fr 1fr 1fr;gap:34px}}
+footer .brand .name,footer .brand .sub{color:var(--cream)}
+footer h5{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:var(--terracotta);margin-bottom:12px}
+@media(min-width:760px){footer h5{margin-bottom:16px}}
+footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bottom:9px;font-size:.92rem;padding:2px 0}
+footer a:hover{color:var(--cream)}
+.foot-bottom{margin-top:36px;padding-top:20px;border-top:1px solid rgba(244,241,236,.12);font-family:var(--font-mono);font-size:.68rem;letter-spacing:.04em;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+@media(min-width:760px){.foot-bottom{margin-top:48px;padding-top:24px;font-size:.72rem;letter-spacing:.05em;flex-direction:row;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px}}
+.foot-legal{margin:0;line-height:1.55;color:rgba(244,241,236,.55)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+[data-d="1"]{transition-delay:.08s}[data-d="2"]{transition-delay:.16s}[data-d="3"]{transition-delay:.24s}[data-d="4"]{transition-delay:.32s}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="brand">
+      <span class="name">Piano C</span>
+      <span class="sub">Apulian Catering</span>
+    </a>
+    <nav class="navlinks" id="nav-menu">
+      <a href="../pizza-buffet.html">Pizza</a>
+      <a href="../pasta-buffet.html">Pasta</a>
+      <a href="../menu.html">Menu</a>
+      <a href="../over-ons.html">About us</a>
+      <span class="lang"><a href="../index.html">NL</a> / <a href="index.html" class="active">EN</a></span>
+      <a href="offerte-aanvraag.html" class="btn nav-cta">Quote</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="offerte-aanvraag.html" class="btn nav-cta">Quote</a>
+      <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker reveal in">Pizza & Pasta Catering · Leuven</span>
+      <h1 class="reveal in" data-d="1">A taste of <em>Puglia</em> at your celebration.</h1>
+      <p class="lead reveal in" data-d="2">We bring the authentic flavours of southern Italy to your venue. Fresh pizza from our mobile wood-fired oven and homemade pasta, served warm and with care to your guests.</p>
+      <div class="hero-cta reveal in" data-d="3">
+        <a href="offerte-aanvraag.html" class="btn">Request a quote</a>
+        <a href="#formules" class="btn btn-ghost">View our packages</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <span class="tag-float tag-float--top">from Puglia with Love</span>
+      <div class="frame tall reveal in" data-d="2">
+        <span class="ph">[ Photo: pizza from the mobile oven<br>4 : 5 portrait ]</span>
+      </div>
+      <span class="tag-float tag-float--bot">Fresh · on site · artisan</span>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Pizza Napoletana</span><b>✦</b><span>Orecchiette</span><b>✦</b><span>Burrata</span><b>✦</b><span>Mobile wood-fired oven</span><b>✦</b><span>Aperitivo Italiano</span><b>✦</b><span>Dolce</span><b>✦</b><span>Apulian Concept</span><b>✦</b>
+    <span>Pizza Napoletana</span><b>✦</b><span>Orecchiette</span><b>✦</b><span>Burrata</span><b>✦</b><span>Mobile wood-fired oven</span><b>✦</b><span>Aperitivo Italiano</span><b>✦</b><span>Dolce</span><b>✦</b><span>Apulian Concept</span><b>✦</b>
+  </div>
+</div>
+
+<section class="formules" id="formules">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Our packages</span>
+      <h2>Choose your feast: pizza, pasta or both</h2>
+      <p>Two full buffets from the Apulian kitchen, with the same recipes, ingredients and dishes as in our Piano A and Piano B restaurants. All prices per person, excl. 12% VAT.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card reveal" data-d="1">
+        <span class="num">Package 01</span>
+        <h3>Pizza Buffet</h3>
+        <div class="price">€20 p.p.
+          <small>Min. 20 guests · setup €200 · no transport costs within 20 km of Leuven</small>
+        </div>
+        <ul>
+          <li>Choice of 5 pizzas from our menu</li>
+          <li>Fresh pizza baked in our mobile wood-fired oven</li>
+          <li>Two hours of pizza buffet, all you can eat</li>
+          <li>Vegetarian options available</li>
+        </ul>
+        <a href="../pizza-buffet.html" class="btn">Discover the pizza buffet</a>
+      </div>
+
+      <div class="card reveal" data-d="2">
+        <span class="num">Package 02</span>
+        <h3>Pasta Buffet</h3>
+        <div class="price">€20 p.p.
+          <small>Min. 20 guests · setup €200 · no transport costs within 20 km of Leuven</small>
+        </div>
+        <ul>
+          <li>Choice of 4 homemade pastas</li>
+          <li>Authentic Apulian recipes (orecchiette ...)</li>
+          <li>Prepared in advance and served warm at your venue</li>
+          <li>Vegetarian options available</li>
+        </ul>
+        <a href="../pasta-buffet.html" class="btn">Discover the pasta buffet</a>
+      </div>
+    </div>
+
+    <div class="combi-note reveal">
+      <span><b>COMBI ▸</b> Pizza + pasta together? €20 p.p. from 50 guests.</span>
+      <span class="combi-extra">Aperitivo €15 p.p. · Dolce €10 p.p.</span>
+    </div>
+
+    <div class="proef-box reveal">
+      <span class="kicker">Taste first in our restaurants</span>
+      <h2>Not a catering version, the real kitchen of Piano A &amp; Piano B</h2>
+      <p>With Piano C you get exactly the same recipes, ingredients and dishes as in our restaurants. What you serve at your celebration is what you eat every day on your plate in Leuven.</p>
+      <p>Not sure what to choose? Visit Piano A or Piano B to taste everything in advance and plan your menu together.</p>
+      <div class="proef-links">
+        <a href="https://pianoa.piano-ab.be" class="btn btn-ghost" target="_blank" rel="noopener">Taste at Piano A</a>
+        <a href="https://pianob.piano-ab.be" class="btn btn-ghost" target="_blank" rel="noopener">Taste at Piano B</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">How it works</span>
+      <h2>From choice to feast in five steps</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step reveal" data-d="1"><span class="n">1</span><h4>Choose your package</h4><p>Pizza, pasta or the combination, together with your aperitivo and dolce.</p></div>
+      <div class="step reveal" data-d="2"><span class="n">2</span><h4>We align details</h4><p>Guest count, venue and timing. You receive a clear quote.</p></div>
+      <div class="step reveal" data-d="3"><span class="n">3</span><h4>We set up</h4><p>Our mobile kitchen and oven are installed at your venue.</p></div>
+      <div class="step reveal" data-d="4"><span class="n">4</span><h4>Served fresh</h4><p>Pizza straight from the wood-fired oven, pasta served warm to your guests.</p></div>
+      <div class="step reveal" data-d="5"><span class="n">5</span><h4>Everyone happy</h4><p>You enjoy the party, we clean up. A carefree Italian celebration.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="over">
+  <div class="wrap">
+    <div class="frame tall reveal">
+      <span class="ph">[ Photo: the Piano team /<br>the mobile kitchen in action ]</span>
+    </div>
+    <div class="reveal" data-d="1">
+      <span class="kicker">The Apulian Concept</span>
+      <h2>The catering arm of Piano A &amp; Piano B</h2>
+      <p>Piano C is the catering branch of Piano in Leuven. At Piano A and Piano B you taste the authentic cuisine of Puglia, southern Italy, every day. With Piano C, Alessandro, Andrea and Mattia bring those same recipes, ingredients and dishes to your event, no shortcuts, no substitutes.</p>
+      <p>Fresh dough, real ingredients and the hospitality of Salento, at your venue. Taste in our restaurants beforehand and plan your catering menu with confidence.</p>
+      <div class="over-links">
+        <a href="https://pianoa.piano-ab.be" class="btn btn-light" target="_blank" rel="noopener">Piano A</a>
+        <a href="https://pianob.piano-ab.be" class="btn btn-light" target="_blank" rel="noopener">Piano B</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">What guests say</span>
+    </div>
+    <div class="reviews-grid">
+      <article class="review-card reveal" data-d="1">
+        <blockquote>"It felt like Puglia came to visit us for an evening. The pizzas came straight from the oven, everyone gathered around to watch."</blockquote>
+        <div class="cite">Sophie Van den Berg · Birthday party</div>
+      </article>
+      <article class="review-card reveal" data-d="2">
+        <blockquote>"We had the combo buffet at our company event. Fresh pasta, crispy pizza, and a team that takes care of every detail."</blockquote>
+        <div class="cite">Tom De Clercq · Company event</div>
+      </article>
+      <article class="review-card reveal" data-d="3">
+        <blockquote>"Our guests talked about it for weeks. The burrata, the orecchiette, it truly felt like an evening in the south."</blockquote>
+        <div class="cite">Elise Maes · Garden party</div>
+      </article>
+      <article class="review-card reveal" data-d="4">
+        <blockquote>"Not standard catering, but real flavours like at Piano A. Our family was completely won over, young and old."</blockquote>
+        <div class="cite">Marco &amp; Lisa · Communion celebration</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2 class="reveal">Ready for an Italian feast?</h2>
+    <p class="reveal" data-d="1">Tell us about your event and receive a tailored quote. Pizza, pasta or the combination, we will make it happen.</p>
+    <a href="offerte-aanvraag.html" class="btn btn-light reveal" data-d="2">Request your quote</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" class="brand"><span class="name">Piano C</span><span class="sub">Apulian Catering</span></a>
+        <p style="margin-top:18px;max-width:36ch;font-size:.92rem">Authentic Apulian pizza and pasta catering for events in Leuven and the surrounding area.</p>
+      </div>
+      <div>
+        <h5>Navigation</h5>
+        <a href="../pizza-buffet.html">Pizza Buffet</a>
+        <a href="../pasta-buffet.html">Pasta Buffet</a>
+        <a href="../menu.html">Menu</a>
+        <a href="../over-ons.html">About us</a>
+        <a href="offerte-aanvraag.html">Quote</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <a href="#">Ravenstraat 38, 3000 Leuven</a>
+        <a href="mailto:info@example.be">info@example.be [in te vullen]</a>
+        <a href="tel:+3216435836">+32 16 43 58 36</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Piano C Catering · Kumbaya BV</span>
+      <p class="foot-legal">Kumbaya BV<br>BE0793492662<br>Koekheideweg 4<br>3210 Linden</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+
+const toggle=document.querySelector('.nav-toggle');
+const menu=document.getElementById('nav-menu');
+if(toggle&&menu){
+  const close=()=>{toggle.setAttribute('aria-expanded','false');menu.classList.remove('open');document.body.style.overflow=''};
+  toggle.addEventListener('click',()=>{
+    const open=toggle.getAttribute('aria-expanded')!=='true';
+    toggle.setAttribute('aria-expanded',open);
+    menu.classList.toggle('open',open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));
+  window.addEventListener('resize',()=>{if(window.innerWidth>=980)close()});
+}
+</script>
+</body>
+</html>

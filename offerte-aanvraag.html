@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offerte aanvragen | Apulische pizza- & pastacatering Leuven | Piano C</title>
+<meta name="description" content="Vraag je offerte aan voor Piano C Catering. Vertel ons over je feest, kies pizza of pasta, en wij nemen contact met je op met een voorstel op maat.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.example.be/offerte-aanvraag.html">
+<link rel="alternate" hreflang="nl" href="https://www.example.be/offerte-aanvraag.html">
+<link rel="alternate" hreflang="en" href="https://www.example.be/en/offerte-aanvraag.html">
+<link rel="alternate" hreflang="x-default" href="https://www.example.be/offerte-aanvraag.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Offerte aanvragen | Piano C Catering Leuven">
+<meta property="og:description" content="Vraag je offerte aan voor Apulische pizza- of pastacatering. Wij nemen contact met je op.">
+<meta property="og:locale" content="nl_BE">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --espresso:#4A342A;
+  --espresso-deep:#2A1D16;
+  --cream:#F4F1EC;
+  --cream-soft:#EBE5DA;
+  --terracotta:#C0562E;
+  --olive:#74764E;
+  --line:rgba(74,52,42,.16);
+
+  --font-display:"Fraunces",Georgia,serif;
+  --font-mono:"Courier Prime","Courier New",monospace;
+  --font-body:"Hanken Grotesk",-apple-system,sans-serif;
+
+  --maxw:1180px;
+
+  --wrap-pad:20px;
+  --section-pad:64px;
+  --nav-h:64px;
+}
+@media(min-width:760px){
+  :root{--wrap-pad:24px;--section-pad:80px;--nav-h:70px}
+}
+@media(min-width:980px){
+  :root{--wrap-pad:28px;--section-pad:96px;--nav-h:74px}
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background:var(--cream);
+  color:var(--espresso);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--wrap-pad);position:relative;z-index:2}
+
+.kicker{
+  font-family:var(--font-mono);
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  font-size:.72rem;
+  color:var(--terracotta);
+}
+
+h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.05;letter-spacing:-.01em}
+
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(244,241,236,.92);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:12px}
+.brand{display:flex;flex-direction:column;line-height:1;text-decoration:none;color:var(--espresso);flex-shrink:0}
+.brand .name{font-family:var(--font-display);font-size:1.35rem;font-weight:600;letter-spacing:.02em}
+.brand .sub{font-family:var(--font-mono);font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;margin-top:3px;color:var(--espresso)}
+@media(min-width:760px){.brand .name{font-size:1.5rem}.brand .sub{font-size:.58rem;letter-spacing:.34em}}
+
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-cta{padding:10px 16px;font-size:.72rem}
+@media(min-width:760px){.nav-cta{padding:12px 22px;font-size:.78rem}}
+
+.nav-toggle{
+  display:flex;flex-direction:column;justify-content:center;gap:5px;
+  width:44px;height:44px;padding:0;border:1px solid var(--line);border-radius:8px;
+  background:var(--cream);cursor:pointer;flex-shrink:0;
+}
+.nav-toggle span{display:block;width:18px;height:2px;background:var(--espresso);margin:0 auto;transition:transform .25s,opacity .25s}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(min-width:980px){.nav-toggle{display:none}}
+
+.navlinks{
+  position:fixed;inset:var(--nav-h) 0 0 0;z-index:49;
+  background:rgba(244,241,236,.98);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  padding:28px var(--wrap-pad) 40px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  transform:translateX(100%);transition:transform .3s ease;
+  overflow-y:auto;border-top:1px solid var(--line);
+}
+.navlinks.open{transform:translateX(0)}
+.navlinks a:not(.btn){
+  font-family:var(--font-mono);font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--espresso);text-decoration:none;transition:color .2s;
+  padding:16px 0;width:100%;border-bottom:1px solid var(--line);
+}
+@media(hover:hover){.navlinks a:not(.btn):hover,.navlinks a:not(.btn):focus-visible{color:var(--terracotta)}}
+.navlinks .lang{
+  margin-top:20px;border:none;padding:0;font-size:.85rem;
+}
+.navlinks .lang a{padding:8px 0;width:auto;border:none;display:inline}
+
+@media(min-width:980px){
+  .nav-actions{display:none}
+  .navlinks{
+    position:static;inset:auto;transform:none;transition:none;
+    flex-direction:row;align-items:center;gap:30px;
+    padding:0;background:transparent;backdrop-filter:none;
+    overflow:visible;border-top:none;
+  }
+  .navlinks a:not(.btn){
+    font-size:.78rem;letter-spacing:.05em;padding:0;width:auto;border-bottom:none;
+  }
+  .navlinks .lang{margin-top:0;font-size:.72rem;padding:5px 12px;border:1px solid var(--line)}
+  .navlinks .nav-cta{display:inline-block;padding:12px 22px;font-size:.78rem}
+}
+
+.lang{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;border:1px solid var(--line);border-radius:30px;padding:5px 12px}
+.lang a{text-decoration:none;color:var(--espresso);opacity:.4}
+.lang a.active{opacity:1;color:var(--terracotta)}
+.btn{
+  font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.08em;
+  font-size:.78rem;background:var(--espresso);color:var(--cream);
+  padding:14px 22px;border-radius:40px;text-decoration:none;transition:transform .2s,background .2s;
+  min-height:44px;line-height:1.2;display:inline-flex;align-items:center;justify-content:center;
+  -webkit-tap-highlight-color:transparent;border:none;cursor:pointer;
+}
+@media(hover:hover){.btn:hover{background:var(--terracotta);transform:translateY(-2px)}}
+.btn-ghost{background:transparent;color:var(--espresso);border:1px solid var(--espresso)}
+@media(hover:hover){.btn-ghost:hover{background:var(--espresso);color:var(--cream)}}
+.btn-light{background:var(--cream);color:var(--espresso)}
+@media(hover:hover){.btn-light:hover{background:var(--terracotta);color:var(--cream)}}
+
+/* page intro */
+.page-intro{padding:48px 0 32px}
+@media(min-width:760px){.page-intro{padding:64px 0 40px}}
+.page-intro .kicker{margin-bottom:16px;display:block;font-size:.65rem;letter-spacing:.18em}
+@media(min-width:760px){.page-intro .kicker{font-size:.72rem;letter-spacing:.22em;margin-bottom:22px}}
+.page-intro h1{font-size:clamp(2rem,7vw,3.4rem);margin-bottom:18px}
+@media(min-width:760px){.page-intro h1{margin-bottom:22px}}
+.page-intro h1 em{font-style:italic;color:var(--terracotta)}
+.page-intro .lead{font-size:1.05rem;color:rgba(74,52,42,.85);max-width:none;margin-bottom:16px}
+@media(min-width:760px){.page-intro .lead{font-size:1.12rem;max-width:52ch}}
+.page-intro .note{
+  font-family:var(--font-mono);font-size:.78rem;letter-spacing:.04em;line-height:1.55;
+  background:var(--espresso);color:var(--cream);padding:16px 18px;border-radius:8px;
+  margin-top:24px;
+}
+@media(min-width:760px){.page-intro .note{font-size:.82rem;padding:18px 22px;margin-top:28px;max-width:58ch}}
+.page-intro .note b{color:var(--terracotta);font-weight:400}
+
+/* form */
+.form-section{padding:0 0 var(--section-pad);background:var(--cream-soft)}
+.form-section .wrap{padding-top:36px;padding-bottom:var(--section-pad)}
+@media(min-width:760px){.form-section .wrap{padding-top:48px}}
+
+.offerte-form{
+  max-width:640px;margin:0 auto;
+  background:var(--cream);border:1px solid var(--line);border-radius:8px;
+  padding:28px 22px;
+}
+@media(min-width:760px){.offerte-form{padding:40px 38px}}
+
+.form-field{margin-bottom:22px}
+@media(min-width:760px){.form-field{margin-bottom:26px}}
+.form-field:last-of-type{margin-bottom:28px}
+@media(min-width:760px){.form-field:last-of-type{margin-bottom:32px}}
+
+.form-label{
+  display:block;
+  font-family:var(--font-mono);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:.68rem;
+  color:var(--terracotta);
+  margin-bottom:8px;
+}
+@media(min-width:760px){.form-label{font-size:.72rem;letter-spacing:.14em;margin-bottom:10px}}
+.form-label .req{color:var(--espresso);opacity:.55;font-weight:400}
+
+.form-input,
+.form-textarea{
+  width:100%;
+  font-family:var(--font-body);
+  font-size:1rem;
+  color:var(--espresso);
+  background:var(--cream-soft);
+  border:1px solid var(--line);
+  border-radius:6px;
+  padding:12px 14px;
+  min-height:44px;
+  line-height:1.4;
+  transition:border-color .2s,box-shadow .2s;
+  -webkit-appearance:none;appearance:none;
+}
+.form-input:focus,
+.form-textarea:focus{
+  outline:none;
+  border-color:var(--terracotta);
+  box-shadow:0 0 0 3px rgba(192,86,46,.12);
+}
+.form-textarea{min-height:120px;resize:vertical;padding-top:12px}
+@media(min-width:760px){.form-textarea{min-height:140px}}
+
+.form-radios{display:flex;flex-direction:column;gap:10px}
+@media(min-width:480px){.form-radios{flex-direction:row;flex-wrap:wrap;gap:12px}}
+.radio-option{
+  display:flex;align-items:center;gap:10px;
+  min-height:44px;padding:10px 14px;
+  background:var(--cream-soft);border:1px solid var(--line);border-radius:6px;
+  cursor:pointer;flex:1;min-width:0;
+}
+@media(min-width:480px){.radio-option{flex:1 1 auto;min-width:120px}}
+.radio-option input{
+  width:20px;height:20px;min-width:20px;margin:0;accent-color:var(--terracotta);cursor:pointer;
+}
+.radio-option span{font-size:.95rem}
+@media(hover:hover){.radio-option:hover{border-color:rgba(192,86,46,.35)}}
+
+.form-submit{width:100%}
+@media(min-width:480px){.form-submit{width:auto;min-width:220px}}
+
+.form-hint{
+  font-size:.88rem;color:rgba(74,52,42,.7);margin-top:8px;line-height:1.45;
+}
+
+footer{background:var(--espresso-deep);color:rgba(244,241,236,.7);padding:48px 0 28px}
+@media(min-width:760px){footer{padding:64px 0 34px}}
+.foot-grid{display:grid;grid-template-columns:1fr;gap:28px}
+@media(min-width:760px){.foot-grid{grid-template-columns:2fr 1fr 1fr;gap:34px}}
+footer .brand .name,footer .brand .sub{color:var(--cream)}
+footer h5{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:var(--terracotta);margin-bottom:12px}
+@media(min-width:760px){footer h5{margin-bottom:16px}}
+footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bottom:9px;font-size:.92rem;padding:2px 0}
+@media(hover:hover){footer a:hover{color:var(--cream)}}
+.foot-bottom{margin-top:36px;padding-top:20px;border-top:1px solid rgba(244,241,236,.12);font-family:var(--font-mono);font-size:.68rem;letter-spacing:.04em;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+@media(min-width:760px){.foot-bottom{margin-top:48px;padding-top:24px;font-size:.72rem;letter-spacing:.05em;flex-direction:row;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px}}
+.foot-legal{margin:0;line-height:1.55;color:rgba(244,241,236,.55)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+[data-d="1"]{transition-delay:.08s}[data-d="2"]{transition-delay:.16s}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="brand">
+      <span class="name">Piano C</span>
+      <span class="sub">Apulian Catering</span>
+    </a>
+    <nav class="navlinks" id="nav-menu">
+      <a href="pizza-buffet.html">Pizza</a>
+      <a href="pasta-buffet.html">Pasta</a>
+      <a href="menu.html">Menu</a>
+      <a href="over-ons.html">Over ons</a>
+      <span class="lang"><a href="offerte-aanvraag.html" class="active">NL</a> / <a href="en/offerte-aanvraag.html">EN</a></span>
+      <a href="offerte-aanvraag.html" class="btn nav-cta">Offerte</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="offerte-aanvraag.html" class="btn nav-cta">Offerte</a>
+      <button type="button" class="nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="page-intro">
+  <div class="wrap">
+    <span class="kicker reveal in">Offerte aanvragen</span>
+    <h1 class="reveal in" data-d="1">Vertel ons over je <em>feest</em></h1>
+    <p class="lead reveal in" data-d="2">Vul het formulier in met je gegevens en wensen. Of je nu kiest voor pizza, pasta of beide, wij bekijken alles graag samen met je.</p>
+    <p class="note reveal in" data-d="2"><b>Na je aanvraag nemen wij contact met je op.</b> Geen automatische prijs in je mailbox, wel een persoonlijk voorstel op maat, afgestemd op je event, locatie en aantal gasten.</p>
+  </div>
+</section>
+
+<section class="form-section">
+  <div class="wrap">
+    <!-- TODO: koppel aan Make.com webhook -->
+    <form class="offerte-form reveal" action="bedankt.html" method="get" novalidate>
+      <div class="form-field">
+        <label class="form-label" for="naam">Naam <span class="req">(verplicht)</span></label>
+        <input class="form-input" type="text" id="naam" name="naam" required autocomplete="name" placeholder="Je volledige naam">
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="email">E-mail <span class="req">(verplicht)</span></label>
+        <input class="form-input" type="email" id="email" name="email" required autocomplete="email" placeholder="je@email.be" inputmode="email">
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="telefoon">Telefoon</label>
+        <input class="form-input" type="tel" id="telefoon" name="telefoon" autocomplete="tel" placeholder="+32 ..." inputmode="tel">
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="datum">Datum van je event</label>
+        <input class="form-input" type="date" id="datum" name="datum">
+        <p class="form-hint">Nog geen vaste datum? Laat het veld leeg en vermeld het in je opmerkingen.</p>
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="personen">Aantal personen</label>
+        <input class="form-input" type="number" id="personen" name="personen" min="1" step="1" placeholder="bijv. 40" inputmode="numeric">
+      </div>
+
+      <fieldset class="form-field">
+        <legend class="form-label" id="formule-legend">Keuze formule</legend>
+        <div class="form-radios">
+          <label class="radio-option">
+            <input type="radio" name="formule" value="pizza" id="formule-pizza">
+            <span>Pizza</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="formule" value="pasta" id="formule-pasta">
+            <span>Pasta</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="formule" value="beide" id="formule-beide">
+            <span>Beide</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="form-field">
+        <label class="form-label" for="opmerkingen">Opmerkingen</label>
+        <textarea class="form-textarea" id="opmerkingen" name="opmerkingen" rows="5" placeholder="Type event, locatie, allergieën, aperitivo of dolce, vragen..."></textarea>
+      </div>
+
+      <button type="submit" class="btn form-submit">Verstuur aanvraag</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" class="brand"><span class="name">Piano C</span><span class="sub">Apulian Catering</span></a>
+        <p style="margin-top:18px;max-width:36ch;font-size:.92rem">Authentieke Apulische pizza- en pastacatering voor events in Leuven en omstreken.</p>
+      </div>
+      <div>
+        <h5>Navigatie</h5>
+        <a href="pizza-buffet.html">Pizza Buffet</a>
+        <a href="pasta-buffet.html">Pasta Buffet</a>
+        <a href="menu.html">Menu</a>
+        <a href="over-ons.html">Over ons</a>
+        <a href="offerte-aanvraag.html">Offerte</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <a href="#">Ravenstraat 38, 3000 Leuven</a>
+        <a href="mailto:info@example.be">info@example.be [in te vullen]</a>
+        <a href="tel:+3216435836">+32 16 43 58 36</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Piano C Catering · Kumbaya BV</span>
+      <p class="foot-legal">Kumbaya BV<br>BE0793492662<br>Koekheideweg 4<br>3210 Linden</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+
+const toggle=document.querySelector('.nav-toggle');
+const menu=document.getElementById('nav-menu');
+if(toggle&&menu){
+  const close=()=>{toggle.setAttribute('aria-expanded','false');menu.classList.remove('open');document.body.style.overflow=''};
+  toggle.addEventListener('click',()=>{
+    const open=toggle.getAttribute('aria-expanded')!=='true';
+    toggle.setAttribute('aria-expanded',open);
+    menu.classList.toggle('open',open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));
+  window.addEventListener('resize',()=>{if(window.innerWidth>=980)close()});
+}
+</script>
+</body>
+</html>
