@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pizza Buffet | Piano C Catering</title>
+<meta name="description" content="Pizza buffet van Piano C: verse pizza's uit de mobiele houtoven, à volonté voor jouw event in Leuven en omstreken.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.pianocatering.be/pizza-buffet.html">
+<link rel="alternate" hreflang="nl" href="https://www.pianocatering.be/pizza-buffet.html">
+<link rel="alternate" hreflang="en" href="https://www.pianocatering.be/en/pizza-buffet.html">
+<link rel="alternate" hreflang="x-default" href="https://www.pianocatering.be/pizza-buffet.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--espresso:#4A342A;--espresso-deep:#2A1D16;--cream:#F4F1EC;--cream-soft:#EBE5DA;--terracotta:#C0562E;--olive:#74764E;--line:rgba(74,52,42,.16);--font-display:"Fraunces",Georgia,serif;--font-mono:"Courier Prime","Courier New",monospace;--font-body:"Hanken Grotesk",-apple-system,sans-serif;--maxw:1180px;--wrap-pad:20px;--section-pad:64px;--nav-h:64px}
+@media(min-width:760px){:root{--wrap-pad:24px;--section-pad:80px;--nav-h:70px}}
+@media(min-width:980px){:root{--wrap-pad:28px;--section-pad:96px;--nav-h:74px}}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--cream);color:var(--espresso);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--wrap-pad);position:relative;z-index:2}
+.kicker{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;color:var(--terracotta)}
+h1,h2{font-family:var(--font-display);font-weight:500;line-height:1.05;letter-spacing:-.01em}
+header{position:sticky;top:0;z-index:50;background:rgba(244,241,236,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:12px}
+.brand{display:flex;flex-direction:column;line-height:1;text-decoration:none;color:var(--espresso);flex-shrink:0}
+.brand .name{font-family:var(--font-display);font-size:1.35rem;font-weight:600;letter-spacing:.02em}
+.brand .sub{font-family:var(--font-mono);font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;margin-top:3px;color:var(--espresso)}
+@media(min-width:760px){.brand .name{font-size:1.5rem}.brand .sub{font-size:.58rem;letter-spacing:.34em}}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-cta{padding:10px 16px;font-size:.72rem}
+@media(min-width:760px){.nav-cta{padding:12px 22px;font-size:.78rem}}
+.nav-toggle{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;padding:0;border:1px solid var(--line);border-radius:8px;background:var(--cream);cursor:pointer;flex-shrink:0}
+.nav-toggle span{display:block;width:18px;height:2px;background:var(--espresso);margin:0 auto;transition:transform .25s,opacity .25s}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(min-width:980px){.nav-toggle{display:none}}
+.navlinks{position:fixed;inset:var(--nav-h) 0 0 0;z-index:49;background:rgba(244,241,236,.98);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:28px var(--wrap-pad) 40px;display:flex;flex-direction:column;align-items:flex-start;gap:0;transform:translateX(100%);transition:transform .3s ease;overflow-y:auto;border-top:1px solid var(--line)}
+.navlinks.open{transform:translateX(0)}
+.navlinks a:not(.btn){font-family:var(--font-mono);font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;color:var(--espresso);text-decoration:none;transition:color .2s;padding:16px 0;width:100%;border-bottom:1px solid var(--line)}
+.navlinks a:not(.btn)[aria-current="page"]{color:var(--terracotta)}
+@media(hover:hover){.navlinks a:not(.btn):hover,.navlinks a:not(.btn):focus-visible{color:var(--terracotta)}}
+.navlinks .lang{margin-top:20px;border:none;padding:0;font-size:.85rem}
+.navlinks .lang a{padding:8px 0;width:auto;border:none;display:inline}
+@media(min-width:980px){.nav-actions{display:none}.navlinks{position:static;inset:auto;transform:none;transition:none;flex-direction:row;align-items:center;gap:30px;padding:0;background:transparent;backdrop-filter:none;overflow:visible;border-top:none}.navlinks a:not(.btn){font-size:.78rem;letter-spacing:.05em;padding:0;width:auto;border-bottom:none}.navlinks .lang{margin-top:0;font-size:.72rem;padding:5px 12px;border:1px solid var(--line)}.navlinks .nav-cta{display:inline-block;padding:12px 22px;font-size:.78rem}}
+.lang{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;border:1px solid var(--line);border-radius:30px;padding:5px 12px}
+.lang a{text-decoration:none;color:var(--espresso);opacity:.4}
+.lang a.active{opacity:1;color:var(--terracotta)}
+.btn{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.08em;font-size:.78rem;background:var(--espresso);color:var(--cream);padding:14px 22px;border-radius:40px;text-decoration:none;transition:transform .2s,background .2s;min-height:44px;line-height:1.2;display:inline-flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;border:none;cursor:pointer}
+@media(hover:hover){.btn:hover{background:var(--terracotta);transform:translateY(-2px)}}
+.btn-ghost{background:transparent;color:var(--espresso);border:1px solid var(--espresso)}
+@media(hover:hover){.btn-ghost:hover{background:var(--espresso);color:var(--cream)}}
+.page{padding:var(--section-pad) 0}
+.page-head{text-align:center;max-width:54ch;margin:0 auto}
+.page-head .kicker{margin-bottom:16px;display:block}
+.page-head h1{font-size:clamp(2rem,7vw,3.2rem);margin-bottom:18px}
+.page-head h1 em{font-style:italic;color:var(--terracotta)}
+.page-head p{font-size:1.05rem;color:rgba(74,52,42,.85)}
+.price-tag{font-family:var(--font-mono);font-size:1.1rem;margin-top:20px;color:var(--terracotta)}
+.price-tag small{display:block;font-size:.72rem;color:rgba(74,52,42,.6);margin-top:6px;letter-spacing:.04em}
+.teaser{margin:40px auto 0;max-width:44ch;border-top:1px solid var(--line);padding-top:28px;text-align:left}
+.teaser h2{font-size:1.35rem;margin-bottom:14px}
+.teaser ul{list-style:none}
+.teaser li{font-size:.95rem;padding:11px 0 11px 18px;border-bottom:1px solid var(--line);position:relative}
+.teaser li::before{content:"✦";position:absolute;left:0;color:var(--terracotta);font-size:.7rem;top:13px}
+.wip-box{margin:36px auto 0;max-width:52ch;border:1px dashed var(--terracotta);border-radius:8px;padding:24px 22px;background:rgba(192,86,46,.06);text-align:center}
+.wip-box .kicker{font-size:.62rem;margin-bottom:10px}
+.wip-box p{margin:0;font-size:.98rem;color:rgba(74,52,42,.88)}
+.page-cta{margin-top:32px;display:flex;flex-direction:column;gap:12px;align-items:center}
+.page-cta .btn{width:100%;max-width:280px}
+@media(min-width:480px){.page-cta{flex-direction:row;justify-content:center}.page-cta .btn{width:auto;max-width:none}}
+footer{background:var(--espresso-deep);color:rgba(244,241,236,.7);padding:48px 0 28px}
+@media(min-width:760px){footer{padding:64px 0 34px}}
+.foot-grid{display:grid;grid-template-columns:1fr;gap:28px}
+@media(min-width:760px){.foot-grid{grid-template-columns:2fr 1fr 1fr;gap:34px}}
+footer .brand .name,footer .brand .sub{color:var(--cream)}
+footer h5{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:var(--terracotta);margin-bottom:12px}
+footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bottom:9px;font-size:.92rem;padding:2px 0}
+@media(hover:hover){footer a:hover{color:var(--cream)}}
+.foot-bottom{margin-top:36px;padding-top:20px;border-top:1px solid rgba(244,241,236,.12);font-family:var(--font-mono);font-size:.68rem;letter-spacing:.04em;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+@media(min-width:760px){.foot-bottom{margin-top:48px;padding-top:24px;font-size:.72rem;letter-spacing:.05em;flex-direction:row;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px}}
+.foot-legal{margin:0;line-height:1.55;color:rgba(244,241,236,.55)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="brand"><span class="name">Piano C</span><span class="sub">Apulian Catering</span></a>
+    <nav class="navlinks" id="nav-menu">
+      <a href="pizza-buffet.html" aria-current="page">Pizza</a>
+      <a href="pasta-buffet.html">Pasta</a>
+      <a href="menu.html">Menu</a>
+      <a href="over-ons.html">Over ons</a>
+      <span class="lang"><a href="pizza-buffet.html" class="active">NL</a> / <a href="en/pizza-buffet.html">EN</a></span>
+      <a href="offerte-aanvraag.html" class="btn nav-cta">Offerte</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="offerte-aanvraag.html" class="btn nav-cta">Offerte</a>
+      <button type="button" class="nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<section class="page">
+  <div class="wrap">
+    <div class="page-head reveal in">
+      <span class="kicker">Formule 01 · Pizza Buffet</span>
+      <h1>Vers uit de <em>houtoven</em></h1>
+      <p>Verse pizza's gebakken in onze mobiele houtoven, à volonté geserveerd aan je gasten. Dezelfde recepten en ingrediënten als in Piano A en Piano B.</p>
+      <p class="price-tag">€20 p.p.<small>Min. 20 personen · setup €200 · geen transportkosten binnen 20 km rond Leuven</small></p>
+    </div>
+    <div class="teaser reveal in">
+      <h2>Wat je mag verwachten</h2>
+      <ul>
+        <li>Keuze uit 5 pizza's van onze kaart</li>
+        <li>Verse pizza's gebakken in onze mobiele houtoven</li>
+        <li>Twee uur lang pizza buffet, à volonté genieten</li>
+        <li>Vegetarische opties beschikbaar</li>
+      </ul>
+    </div>
+    <div class="wip-box reveal in">
+      <span class="kicker">Nog even geduld</span>
+      <p>Hé, hier wordt nagewerkt. Binnenkort vind je hier het volledige pizzabuffet met alle keuzes en foto's. Vraag alvast je offerte aan, wij helpen je graag verder.</p>
+    </div>
+    <div class="page-cta reveal in">
+      <a href="offerte-aanvraag.html" class="btn">Vraag je offerte</a>
+      <a href="menu.html" class="btn btn-ghost">Bekijk het menu</a>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" class="brand"><span class="name">Piano C</span><span class="sub">Apulian Catering</span></a>
+        <p style="margin-top:18px;max-width:36ch;font-size:.92rem">Authentieke Apulische pizza- en pastacatering voor events in Leuven en omstreken.</p>
+      </div>
+      <div>
+        <h5>Navigatie</h5>
+        <a href="pizza-buffet.html">Pizza Buffet</a>
+        <a href="pasta-buffet.html">Pasta Buffet</a>
+        <a href="menu.html">Menu</a>
+        <a href="over-ons.html">Over ons</a>
+        <a href="offerte-aanvraag.html">Offerte</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <a href="#">Ravenstraat 38, 3000 Leuven</a>
+        <a href="mailto:info@pianocatering.be">info@pianocatering.be</a>
+        <a href="tel:+3216435836">+32 16 43 58 36</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Piano C Catering · Kumbaya BV</span>
+      <p class="foot-legal">Kumbaya BV<br>BE0793492662<br>Koekheideweg 4<br>3210 Linden</p>
+    </div>
+  </div>
+</footer>
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+const toggle=document.querySelector('.nav-toggle');const menu=document.getElementById('nav-menu');
+if(toggle&&menu){const close=()=>{toggle.setAttribute('aria-expanded','false');menu.classList.remove('open');document.body.style.overflow=''};toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',open);menu.classList.toggle('open',open);document.body.style.overflow=open?'hidden':''});menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));window.addEventListener('resize',()=>{if(window.innerWidth>=980)close()})}
+</script>
+</body>
+</html>
