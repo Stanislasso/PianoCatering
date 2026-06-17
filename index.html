@@ -266,6 +266,21 @@ section{padding:var(--section-pad) 0;position:relative}
 }
 .combi-note b{color:var(--terracotta);font-weight:400}
 
+/* anchor scroll onder sticky nav */
+#pizza-buffet,#pasta-buffet,#menu,#over-ons{scroll-margin-top:calc(var(--nav-h) + 16px)}
+
+/* ---------- MENU OP HOMEPAGE ---------- */
+.menu-block{padding:var(--section-pad) 0}
+.menu-block .section-head{margin-bottom:32px}
+.menu-columns{display:grid;grid-template-columns:1fr;gap:28px}
+@media(min-width:760px){.menu-columns{grid-template-columns:1fr 1fr;gap:36px}}
+.menu-col h3{font-size:1.25rem;margin-bottom:14px}
+.menu-col ul{list-style:none}
+.menu-col li{padding:10px 0;border-bottom:1px solid var(--line);font-size:.94rem}
+.menu-col li strong{display:block;font-weight:600;margin-bottom:3px}
+.menu-col li span{font-size:.88rem;color:rgba(74,52,42,.75)}
+.menu-wip{margin-top:28px;text-align:center;border:1px dashed var(--terracotta);border-radius:8px;padding:20px 18px;background:rgba(192,86,46,.06);font-size:.92rem;color:rgba(74,52,42,.85)}
+
 /* ---------- PROEF VOORAF ---------- */
 .proef-box{
   background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:28px 22px;
@@ -389,10 +404,10 @@ footer a:hover{color:var(--cream)}
       <span class="sub">Apulian Catering</span>
     </a>
     <nav class="navlinks" id="nav-menu">
-      <a href="pizza-buffet.html">Pizza</a>
-      <a href="pasta-buffet.html">Pasta</a>
-      <a href="menu.html">Menu</a>
-      <a href="over-ons.html">Over ons</a>
+      <a href="#pizza-buffet">Pizza</a>
+      <a href="#pasta-buffet">Pasta</a>
+      <a href="#menu">Menu</a>
+      <a href="#over-ons">Over ons</a>
       <span class="lang"><a href="index.html" class="active">NL</a> / <a href="en/index.html">EN</a></span>
       <a href="offerte-aanvraag.html" class="btn nav-cta">Offerte</a>
     </nav>
@@ -446,7 +461,7 @@ footer a:hover{color:var(--cream)}
 
     <div class="cards">
       <!-- PIZZA -->
-      <div class="card reveal" data-d="1">
+      <div class="card reveal" data-d="1" id="pizza-buffet">
         <span class="num">Formule 01</span>
         <h3>Pizza Buffet</h3>
         <div class="price">€20 p.p.
@@ -458,11 +473,11 @@ footer a:hover{color:var(--cream)}
           <li>Twee uur lang pizza buffet, à volonté genieten</li>
           <li>Vegetarische opties beschikbaar</li>
         </ul>
-        <a href="pizza-buffet.html" class="btn">Ontdek het pizzabuffet</a>
+        <a href="#pizza-buffet" class="btn">Ontdek het pizzabuffet</a>
       </div>
 
       <!-- PASTA -->
-      <div class="card reveal" data-d="2">
+      <div class="card reveal" data-d="2" id="pasta-buffet">
         <span class="num">Formule 02</span>
         <h3>Pasta Buffet</h3>
         <div class="price">€20 p.p.
@@ -474,7 +489,7 @@ footer a:hover{color:var(--cream)}
           <li>Van tevoren bereid en warm ter plaatse geserveerd</li>
           <li>Vegetarische opties beschikbaar</li>
         </ul>
-        <a href="pasta-buffet.html" class="btn">Ontdek het pastabuffet</a>
+        <a href="#pasta-buffet" class="btn">Ontdek het pastabuffet</a>
       </div>
     </div>
 
@@ -496,6 +511,39 @@ footer a:hover{color:var(--cream)}
   </div>
 </section>
 
+<!-- ============ MENU ============ -->
+<section class="menu-block" id="menu">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Ons menu</span>
+      <h2>De smaken van Puglia</h2>
+      <p>Dezelfde gerechten als in Piano A en Piano B. Kies 5 pizza's en 4 pasta's voor je buffet.</p>
+    </div>
+    <div class="menu-columns">
+      <div class="menu-col reveal">
+        <h3>5 pizza's</h3>
+        <ul>
+          <li><strong>Margherita</strong><span>Passata, fior di latte, basilicum</span></li>
+          <li><strong>Diavola</strong><span>Passata, fior di latte, spianata calabrese</span></li>
+          <li><strong>4 Formaggi</strong><span>Vier Italiaanse kazen</span></li>
+          <li><strong>Napoli</strong><span>Mozzarella, ansjovis en kappertjes</span></li>
+          <li><strong>Honey</strong><span>Signature pizza met honing</span></li>
+        </ul>
+      </div>
+      <div class="menu-col reveal" data-d="1">
+        <h3>4 pasta's</h3>
+        <ul>
+          <li><strong>Orecchiette al pomodoro</strong><span>Verse tomatensaus en basilicum</span></li>
+          <li><strong>Orecchiette con cime di rapa</strong><span>Rapenstelen en peperoncino</span></li>
+          <li><strong>Paccheri burrata e pomodorini</strong><span>Burrata en kerstomaatjes</span></li>
+          <li><strong>Tortelloni cacio e pepe</strong><span>Pecorino en zwarte peper</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="menu-wip reveal">Hé, hier wordt nagewerkt. Binnenkort voegen we foto's toe. Aperitivo €15 p.p. · Dolce €10 p.p.</p>
+  </div>
+</section>
+
 <!-- ============ HOE WERKT HET ============ -->
 <section>
   <div class="wrap">
@@ -514,7 +562,7 @@ footer a:hover{color:var(--cream)}
 </section>
 
 <!-- ============ OVER ONS ============ -->
-<section class="over">
+<section class="over" id="over-ons">
   <div class="wrap">
     <div class="frame tall reveal">
       <span class="ph">[ Foto: het Piano-team /<br>de mobiele keuken in actie ]</span>
@@ -578,10 +626,10 @@ footer a:hover{color:var(--cream)}
       </div>
       <div>
         <h5>Navigatie</h5>
-        <a href="pizza-buffet.html">Pizza Buffet</a>
-        <a href="pasta-buffet.html">Pasta Buffet</a>
-        <a href="menu.html">Menu</a>
-        <a href="over-ons.html">Over ons</a>
+        <a href="#pizza-buffet">Pizza Buffet</a>
+        <a href="#pasta-buffet">Pasta Buffet</a>
+        <a href="#menu">Menu</a>
+        <a href="#over-ons">Over ons</a>
         <a href="offerte-aanvraag.html">Offerte</a>
       </div>
       <div>
