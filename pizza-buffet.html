@@ -67,6 +67,13 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,241,236,.92);backdro
 .teaser ul{list-style:none}
 .teaser li{font-size:.95rem;padding:11px 0 11px 18px;border-bottom:1px solid var(--line);position:relative}
 .teaser li::before{content:"✦";position:absolute;left:0;color:var(--terracotta);font-size:.7rem;top:13px}
+.menu-list{margin:40px auto 0;max-width:640px;border-top:1px solid var(--line);padding-top:28px}
+.menu-list h2{font-size:1.35rem;margin-bottom:18px;text-align:center}
+.menu-item{padding:18px 0;border-bottom:1px solid var(--line)}
+.menu-item h3{font-size:1.08rem;margin-bottom:6px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.menu-item p{font-size:.92rem;color:rgba(74,52,42,.8);margin:0}
+.menu-item .tag-veg,.menu-item .tag-meat{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:20px;border:1px solid var(--line);color:var(--olive)}
+.menu-note{margin-top:18px;font-size:.88rem;color:rgba(74,52,42,.65);text-align:center}
 .wip-box{margin:36px auto 0;max-width:52ch;border:1px dashed var(--terracotta);border-radius:8px;padding:24px 22px;background:rgba(192,86,46,.06);text-align:center}
 .wip-box .kicker{font-size:.62rem;margin-bottom:10px}
 .wip-box p{margin:0;font-size:.98rem;color:rgba(74,52,42,.88)}
@@ -123,9 +130,33 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
         <li>Vegetarische opties beschikbaar</li>
       </ul>
     </div>
+    <div class="menu-list reveal in">
+      <h2>Onze 5 pizza's</h2>
+      <article class="menu-item">
+        <h3>Margherita <span class="tag-veg">Vegetarisch</span></h3>
+        <p>Passata, fior di latte, basilicum en extra vierge olijfolie.</p>
+      </article>
+      <article class="menu-item">
+        <h3>Diavola <span class="tag-meat">Pittig</span></h3>
+        <p>Passata, fior di latte en spianata calabrese.</p>
+      </article>
+      <article class="menu-item">
+        <h3>4 Formaggi <span class="tag-veg">Vegetarisch</span></h3>
+        <p>Vier Italiaanse kazen op een knapperige bodem.</p>
+      </article>
+      <article class="menu-item">
+        <h3>Napoli</h3>
+        <p>Tomatensaus, mozzarella, ansjovis en kappertjes.</p>
+      </article>
+      <article class="menu-item">
+        <h3>Honey</h3>
+        <p>Onze signature pizza met een vleugje honing, zoals in Piano A en Piano B.</p>
+      </article>
+      <p class="menu-note">Kies 5 pizza's voor je buffet. Dezelfde recepten als in onze restaurants.</p>
+    </div>
     <div class="wip-box reveal in">
       <span class="kicker">Nog even geduld</span>
-      <p>Hé, hier wordt nagewerkt. Binnenkort vind je hier het volledige pizzabuffet met alle keuzes en foto's. Vraag alvast je offerte aan, wij helpen je graag verder.</p>
+      <p>Hé, hier wordt nagewerkt. Binnenkort voegen we foto's toe. Vraag alvast je offerte aan, wij helpen je graag verder.</p>
     </div>
     <div class="page-cta reveal in">
       <a href="offerte-aanvraag.html" class="btn">Vraag je offerte</a>

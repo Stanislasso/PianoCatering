@@ -27,6 +27,13 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,241,236,.92);backdro
 .page{padding:var(--section-pad) 0}.page-head{text-align:center;max-width:54ch;margin:0 auto 40px}.page-head h1{font-size:clamp(2rem,7vw,3.2rem);margin:16px 0 18px}.page-head h1 em{font-style:italic;color:var(--terracotta)}.page-head p{font-size:1.05rem;color:rgba(74,52,42,.85)}
 .menu-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-top:8px}@media(min-width:760px){.menu-grid{grid-template-columns:1fr 1fr;gap:24px}}
 .menu-card{border:1px solid var(--line);border-radius:8px;padding:24px 22px;background:rgba(255,255,255,.35)}.menu-card h3{font-size:1.25rem;margin-bottom:8px}.menu-card p{font-size:.92rem;color:rgba(74,52,42,.8);margin-bottom:12px}.menu-card .tag{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--terracotta)}
+.menu-section{margin-top:40px}
+.menu-section h2{font-size:1.45rem;margin-bottom:18px;text-align:center}
+.menu-items{max-width:640px;margin:0 auto}
+.menu-item{padding:16px 0;border-bottom:1px solid var(--line)}
+.menu-item h3{font-size:1.05rem;margin-bottom:5px}
+.menu-item p{font-size:.9rem;color:rgba(74,52,42,.8);margin:0}
+.menu-links{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
 .wip-box{margin:36px auto 0;max-width:56ch;border:1px dashed var(--terracotta);border-radius:8px;padding:24px 22px;background:rgba(192,86,46,.06);text-align:center}.wip-box p{margin:0;font-size:.98rem;color:rgba(74,52,42,.88)}.page-cta{margin-top:32px;display:flex;flex-direction:column;gap:12px;align-items:center}.page-cta .btn{width:100%;max-width:280px}@media(min-width:480px){.page-cta{flex-direction:row;justify-content:center}.page-cta .btn{width:auto}}
 footer{background:var(--espresso-deep);color:rgba(244,241,236,.7);padding:48px 0 28px}.foot-grid{display:grid;grid-template-columns:1fr;gap:28px}@media(min-width:760px){.foot-grid{grid-template-columns:2fr 1fr 1fr;gap:34px}}footer .brand .name,footer .brand .sub{color:var(--cream)}footer h5{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:var(--terracotta);margin-bottom:12px}footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bottom:9px;font-size:.92rem}@media(hover:hover){footer a:hover{color:var(--cream)}}.foot-bottom{margin-top:36px;padding-top:20px;border-top:1px solid rgba(244,241,236,.12);font-family:var(--font-mono);font-size:.68rem;display:flex;flex-direction:column;gap:10px}@media(min-width:760px){.foot-bottom{flex-direction:row;justify-content:space-between;align-items:flex-end}}.foot-legal{margin:0;line-height:1.55;color:rgba(244,241,236,.55)}.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}.reveal.in{opacity:1;transform:none}
 </style>
@@ -57,27 +64,50 @@ footer{background:var(--espresso-deep);color:rgba(244,241,236,.7);padding:48px 0
       <article class="menu-card reveal in">
         <span class="tag">Pizza</span>
         <h3>5 pizza's</h3>
-        <p>Keuze uit vijf pizza's van onze kaart, vers gebakken in de mobiele houtoven.</p>
+        <p>Margherita, Diavola, 4 Formaggi, Napoli en Honey. Vers uit de mobiele houtoven.</p>
+        <a href="pizza-buffet.html" class="btn btn-ghost" style="margin-top:12px">Bekijk pizzabuffet</a>
       </article>
       <article class="menu-card reveal in" data-d="1">
         <span class="tag">Pasta</span>
         <h3>4 pasta's</h3>
-        <p>Huisgemaakte pasta met Apulische recepten: orecchiette, burrata en meer.</p>
+        <p>Orecchiette, paccheri burrata en tortelloni cacio e pepe. Warm geserveerd.</p>
+        <a href="pasta-buffet.html" class="btn btn-ghost" style="margin-top:12px">Bekijk pastabuffet</a>
       </article>
       <article class="menu-card reveal in" data-d="2">
         <span class="tag">Extra</span>
-        <h3>Aperitivo</h3>
-        <p>Italiaans aperitief om je feest mee te openen. €15 p.p.</p>
+        <h3>Aperitivo · €15 p.p.</h3>
+        <p>Bruschetta al pomodoro, burrata con pomodorini en een selectie Italiaanse hapjes.</p>
       </article>
       <article class="menu-card reveal in" data-d="3">
         <span class="tag">Extra</span>
-        <h3>Dolce</h3>
-        <p>Zoet afsluiter naar Italiaanse traditie. €10 p.p.</p>
+        <h3>Dolce · €10 p.p.</h3>
+        <p>Tiramisu, panna cotta of cannoli. Een zoet afsluiter naar Italiaanse traditie.</p>
       </article>
+    </div>
+    <div class="menu-section reveal in">
+      <h2>Pizza's</h2>
+      <div class="menu-items">
+        <article class="menu-item"><h3>Margherita</h3><p>Passata, fior di latte, basilicum en olijfolie.</p></article>
+        <article class="menu-item"><h3>Diavola</h3><p>Passata, fior di latte en spianata calabrese.</p></article>
+        <article class="menu-item"><h3>4 Formaggi</h3><p>Vier Italiaanse kazen.</p></article>
+        <article class="menu-item"><h3>Napoli</h3><p>Tomatensaus, mozzarella, ansjovis en kappertjes.</p></article>
+        <article class="menu-item"><h3>Honey</h3><p>Signature pizza met honing, zoals in Piano A en Piano B.</p></article>
+      </div>
+      <div class="menu-links"><a href="pizza-buffet.html" class="btn btn-ghost">Meer over het pizzabuffet</a></div>
+    </div>
+    <div class="menu-section reveal in">
+      <h2>Pasta's</h2>
+      <div class="menu-items">
+        <article class="menu-item"><h3>Orecchiette al pomodoro</h3><p>Met verse tomatensaus en basilicum.</p></article>
+        <article class="menu-item"><h3>Orecchiette con cime di rapa</h3><p>Met rapenstelen, knoflook en peperoncino.</p></article>
+        <article class="menu-item"><h3>Paccheri burrata e pomodorini</h3><p>Met burrata en kerstomaatjes.</p></article>
+        <article class="menu-item"><h3>Tortelloni cacio e pepe</h3><p>Met pecorino en zwarte peper.</p></article>
+      </div>
+      <div class="menu-links"><a href="pasta-buffet.html" class="btn btn-ghost">Meer over het pastabuffet</a></div>
     </div>
     <div class="wip-box reveal in">
       <span class="kicker">Nog even geduld</span>
-      <p>Hé, hier wordt nagewerkt. Binnenkort vind je hier het volledige menu met alle gerechten en foto's. Wil je al proeven? Kom gerust langs in Piano A of Piano B.</p>
+      <p>Hé, hier wordt nagewerkt. Binnenkort voegen we foto's toe aan dit menu. Wil je al proeven? Kom gerust langs in Piano A of Piano B.</p>
     </div>
     <div class="page-cta reveal in">
       <a href="https://pianoa.piano-ab.be" class="btn btn-ghost" target="_blank" rel="noopener">Proef in Piano A</a>

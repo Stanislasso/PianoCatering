@@ -67,6 +67,13 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,241,236,.92);backdro
 .teaser ul{list-style:none}
 .teaser li{font-size:.95rem;padding:11px 0 11px 18px;border-bottom:1px solid var(--line);position:relative}
 .teaser li::before{content:"✦";position:absolute;left:0;color:var(--terracotta);font-size:.7rem;top:13px}
+.menu-list{margin:40px auto 0;max-width:640px;border-top:1px solid var(--line);padding-top:28px}
+.menu-list h2{font-size:1.35rem;margin-bottom:18px;text-align:center}
+.menu-item{padding:18px 0;border-bottom:1px solid var(--line)}
+.menu-item h3{font-size:1.08rem;margin-bottom:6px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.menu-item p{font-size:.92rem;color:rgba(74,52,42,.8);margin:0}
+.menu-item .tag-veg,.menu-item .tag-meat{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:20px;border:1px solid var(--line);color:var(--olive)}
+.menu-note{margin-top:18px;font-size:.88rem;color:rgba(74,52,42,.65);text-align:center}
 .wip-box{margin:36px auto 0;max-width:52ch;border:1px dashed var(--terracotta);border-radius:8px;padding:24px 22px;background:rgba(192,86,46,.06);text-align:center}
 .wip-box .kicker{font-size:.62rem;margin-bottom:10px}
 .wip-box p{margin:0;font-size:.98rem;color:rgba(74,52,42,.88)}
@@ -123,9 +130,33 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
         <li>Vegetarian options available</li>
       </ul>
     </div>
+    <div class="menu-list reveal in">
+      <h2>Our 5 pizzas</h2>
+      <article class="menu-item">
+        <h3>Margherita <span class="tag-veg">Vegetarian</span></h3>
+        <p>Passata, fior di latte, basil and extra virgin olive oil.</p>
+      </article>
+      <article class="menu-item">
+        <h3>Diavola <span class="tag-meat">Spicy</span></h3>
+        <p>Passata, fior di latte and spianata calabrese.</p>
+      </article>
+      <article class="menu-item">
+        <h3>4 Formaggi <span class="tag-veg">Vegetarian</span></h3>
+        <p>Four Italian cheeses on a crisp base.</p>
+      </article>
+      <article class="menu-item">
+        <h3>Napoli</h3>
+        <p>Tomato sauce, mozzarella, anchovies and capers.</p>
+      </article>
+      <article class="menu-item">
+        <h3>Honey</h3>
+        <p>Our signature pizza with a touch of honey, as at Piano A and Piano B.</p>
+      </article>
+      <p class="menu-note">Pick 5 pizzas for your buffet. The same recipes as in our restaurants.</p>
+    </div>
     <div class="wip-box reveal in">
       <span class="kicker">Still in the oven</span>
-      <p>Hey, we're still working on this. Soon you'll find the full pizza buffet here with all options and photos. Request your quote in the meantime, we're happy to help.</p>
+      <p>Hey, we're still working on this. We'll add photos soon. Request your quote in the meantime, we're happy to help.</p>
     </div>
     <div class="page-cta reveal in">
       <a href="offerte-aanvraag.html" class="btn">Request your quote</a>

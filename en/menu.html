@@ -27,6 +27,13 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,241,236,.92);backdro
 .page{padding:var(--section-pad) 0}.page-head{text-align:center;max-width:54ch;margin:0 auto 40px}.page-head h1{font-size:clamp(2rem,7vw,3.2rem);margin:16px 0 18px}.page-head h1 em{font-style:italic;color:var(--terracotta)}.page-head p{font-size:1.05rem;color:rgba(74,52,42,.85)}
 .menu-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-top:8px}@media(min-width:760px){.menu-grid{grid-template-columns:1fr 1fr;gap:24px}}
 .menu-card{border:1px solid var(--line);border-radius:8px;padding:24px 22px;background:rgba(255,255,255,.35)}.menu-card h3{font-size:1.25rem;margin-bottom:8px}.menu-card p{font-size:.92rem;color:rgba(74,52,42,.8);margin-bottom:12px}.menu-card .tag{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--terracotta)}
+.menu-section{margin-top:40px}
+.menu-section h2{font-size:1.45rem;margin-bottom:18px;text-align:center}
+.menu-items{max-width:640px;margin:0 auto}
+.menu-item{padding:16px 0;border-bottom:1px solid var(--line)}
+.menu-item h3{font-size:1.05rem;margin-bottom:5px}
+.menu-item p{font-size:.9rem;color:rgba(74,52,42,.8);margin:0}
+.menu-links{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
 .wip-box{margin:36px auto 0;max-width:56ch;border:1px dashed var(--terracotta);border-radius:8px;padding:24px 22px;background:rgba(192,86,46,.06);text-align:center}.wip-box p{margin:0;font-size:.98rem;color:rgba(74,52,42,.88)}.page-cta{margin-top:32px;display:flex;flex-direction:column;gap:12px;align-items:center}.page-cta .btn{width:100%;max-width:280px}@media(min-width:480px){.page-cta{flex-direction:row;justify-content:center}.page-cta .btn{width:auto}}
 footer{background:var(--espresso-deep);color:rgba(244,241,236,.7);padding:48px 0 28px}.foot-grid{display:grid;grid-template-columns:1fr;gap:28px}@media(min-width:760px){.foot-grid{grid-template-columns:2fr 1fr 1fr;gap:34px}}footer .brand .name,footer .brand .sub{color:var(--cream)}footer h5{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:var(--terracotta);margin-bottom:12px}footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bottom:9px;font-size:.92rem}@media(hover:hover){footer a:hover{color:var(--cream)}}.foot-bottom{margin-top:36px;padding-top:20px;border-top:1px solid rgba(244,241,236,.12);font-family:var(--font-mono);font-size:.68rem;display:flex;flex-direction:column;gap:10px}@media(min-width:760px){.foot-bottom{flex-direction:row;justify-content:space-between;align-items:flex-end}}.foot-legal{margin:0;line-height:1.55;color:rgba(244,241,236,.55)}.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}.reveal.in{opacity:1;transform:none}
 </style>
@@ -57,27 +64,50 @@ footer{background:var(--espresso-deep);color:rgba(244,241,236,.7);padding:48px 0
       <article class="menu-card reveal in">
         <span class="tag">Pizza</span>
         <h3>5 pizzas</h3>
-        <p>Choose from five pizzas from our menu, freshly baked in the mobile wood-fired oven.</p>
+        <p>Margherita, Diavola, 4 Formaggi, Napoli and Honey. Fresh from the mobile wood-fired oven.</p>
+        <a href="pizza-buffet.html" class="btn btn-ghost" style="margin-top:12px">View pizza buffet</a>
       </article>
       <article class="menu-card reveal in" data-d="1">
         <span class="tag">Pasta</span>
         <h3>4 pastas</h3>
-        <p>Homemade pasta with Apulian recipes: orecchiette, burrata and more.</p>
+        <p>Orecchiette, paccheri burrata and tortelloni cacio e pepe. Served warm.</p>
+        <a href="pasta-buffet.html" class="btn btn-ghost" style="margin-top:12px">View pasta buffet</a>
       </article>
       <article class="menu-card reveal in" data-d="2">
         <span class="tag">Extra</span>
-        <h3>Aperitivo</h3>
-        <p>Italian aperitif to open your celebration. €15 p.p.</p>
+        <h3>Aperitivo · €15 p.p.</h3>
+        <p>Bruschetta al pomodoro, burrata con pomodorini and a selection of Italian bites.</p>
       </article>
       <article class="menu-card reveal in" data-d="3">
         <span class="tag">Extra</span>
-        <h3>Dolce</h3>
-        <p>Sweet finale in Italian tradition. €10 p.p.</p>
+        <h3>Dolce · €10 p.p.</h3>
+        <p>Tiramisu, panna cotta or cannoli. A sweet finale in Italian tradition.</p>
       </article>
+    </div>
+    <div class="menu-section reveal in">
+      <h2>Pizzas</h2>
+      <div class="menu-items">
+        <article class="menu-item"><h3>Margherita</h3><p>Passata, fior di latte, basil and olive oil.</p></article>
+        <article class="menu-item"><h3>Diavola</h3><p>Passata, fior di latte and spianata calabrese.</p></article>
+        <article class="menu-item"><h3>4 Formaggi</h3><p>Four Italian cheeses.</p></article>
+        <article class="menu-item"><h3>Napoli</h3><p>Tomato sauce, mozzarella, anchovies and capers.</p></article>
+        <article class="menu-item"><h3>Honey</h3><p>Signature pizza with honey, as at Piano A and Piano B.</p></article>
+      </div>
+      <div class="menu-links"><a href="pizza-buffet.html" class="btn btn-ghost">More about the pizza buffet</a></div>
+    </div>
+    <div class="menu-section reveal in">
+      <h2>Pastas</h2>
+      <div class="menu-items">
+        <article class="menu-item"><h3>Orecchiette al pomodoro</h3><p>With fresh tomato sauce and basil.</p></article>
+        <article class="menu-item"><h3>Orecchiette con cime di rapa</h3><p>With turnip tops, garlic and peperoncino.</p></article>
+        <article class="menu-item"><h3>Paccheri burrata e pomodorini</h3><p>With burrata and cherry tomatoes.</p></article>
+        <article class="menu-item"><h3>Tortelloni cacio e pepe</h3><p>With pecorino and black pepper.</p></article>
+      </div>
+      <div class="menu-links"><a href="pasta-buffet.html" class="btn btn-ghost">More about the pasta buffet</a></div>
     </div>
     <div class="wip-box reveal in">
       <span class="kicker">Almost ready</span>
-      <p>Hey, we're still working on this. Soon you'll find the full menu here with all dishes and photos. Want a taste already? Feel free to visit Piano A or Piano B.</p>
+      <p>Hey, we're still working on this. We'll add photos to this menu soon. Want a taste already? Feel free to visit Piano A or Piano B.</p>
     </div>
     <div class="page-cta reveal in">
       <a href="https://pianoa.piano-ab.be" class="btn btn-ghost" target="_blank" rel="noopener">Taste at Piano A</a>
