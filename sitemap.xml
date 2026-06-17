@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.pianocatering.be/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.pianocatering.be/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pianocatering.be/en/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.pianocatering.be/it/"/>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.pianocatering.be/en/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.pianocatering.be/it/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.pianocatering.be/offerte-aanvraag.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.pianocatering.be/offerte-aanvraag.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pianocatering.be/en/offerte-aanvraag.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.pianocatering.be/it/offerte-aanvraag.html"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.pianocatering.be/en/offerte-aanvraag.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pianocatering.be/it/offerte-aanvraag.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pianocatering.be/pizza-buffet.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pianocatering.be/pasta-buffet.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pianocatering.be/menu.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pianocatering.be/over-ons.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.pianocatering.be/en/pizza-buffet.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.pianocatering.be/en/pasta-buffet.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.pianocatering.be/en/menu.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.pianocatering.be/en/over-ons.html</loc>
+    <priority>0.7</priority>
+  </url>
+</urlset>
