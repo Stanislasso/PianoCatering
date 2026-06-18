@@ -162,7 +162,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,241,236,.92);backdro
 .price-breakdown li{list-style:none;display:flex;justify-content:space-between;gap:12px;padding:3px 0}
 .price-breakdown .disc{color:#8fd4a0}
 .price-warn{font-family:var(--font-mono);font-size:.68rem;color:#f5c49a;margin-bottom:10px;line-height:1.45}
-.price-panel .btn{width:100%}
+.price-panel .btn{width:100%;background:var(--terracotta);color:var(--cream)}
+@media(hover:hover){.price-panel .btn:hover{background:var(--cream);color:var(--espresso);transform:translateY(-2px)}}
 
 .contact-section{background:var(--cream-soft);padding:var(--section-pad) 0}
 .contact-form{max-width:640px;margin:0 auto;background:var(--cream);border:1px solid var(--line);border-radius:10px;padding:28px 22px}
@@ -277,7 +278,6 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
 
     <div class="config-block" data-category="hoofd">
       <h2>Main courses</h2>
-      <p class="block-desc">Choose pizza, pasta, or both. Pizza is one buffet with 5 types from our menu. Each pasta is a separate dish you can combine freely.</p>
 
       <p class="sub-section">Pizza</p>
       <div class="opt-wrap">
@@ -318,7 +318,6 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
           <span class="opt-check">Selected</span>
         </button>
       </div>
-      <p class="combo-note">Tip: pizza price drops with more guests. Group discount applies to the total.</p>
     </div>
 
     <div class="config-block" data-category="dessert">
@@ -345,31 +344,26 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
           <span class="opt-price">€10 p.p.</span>
           <span class="opt-check">Selected</span>
         </button>
-        <button type="button" class="opt-btn" data-id="dolce-assorti" data-category="dessert" data-price="10" aria-pressed="false">
-          <span class="opt-name">Dessert assortment</span>
-          <span class="opt-price">€10 p.p.</span>
-          <span class="opt-check">Selected</span>
-        </button>
       </div>
     </div>
 
     <div class="config-block" data-category="drank">
       <h2>Drinks</h2>
-      <p class="block-desc">Optional. Pick one or more drink packages — each adds the full per-person price.</p>
+      <p class="block-desc">Optional.</p>
       <div class="option-grid" role="group" aria-label="Drinks">
         <button type="button" class="opt-btn" data-id="water" data-category="drank" data-price="10" aria-pressed="false">
-          <span class="opt-name">Premium still &amp; sparkling water</span>
+          <span class="opt-name">Still &amp; sparkling water</span>
           <span class="opt-price">€10 p.p.</span>
           <span class="opt-check">Selected</span>
         </button>
         <button type="button" class="opt-btn" data-id="frisdrank" data-category="drank" data-price="12" aria-pressed="false">
-          <span class="opt-name">Premium soft drinks</span>
+          <span class="opt-name">Soft drinks</span>
           <span class="opt-price">€12 p.p.</span>
           <span class="opt-check">Selected</span>
         </button>
-        <button type="button" class="opt-btn" data-id="bier-pils" data-category="drank" data-price="12" aria-pressed="false">
+        <button type="button" class="opt-btn" data-id="bier-pils" data-category="drank" data-price="6" aria-pressed="false">
           <span class="opt-name">Beer (lager)</span>
-          <span class="opt-price">€12 p.p.</span>
+          <span class="opt-price">€6 p.p.</span>
           <span class="opt-check">Selected</span>
         </button>
         <button type="button" class="opt-btn" data-id="bier-sterk" data-category="drank" data-price="16" aria-pressed="false">
@@ -403,10 +397,17 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
 
 <section class="contact-section" id="contact-form">
   <div class="wrap">
-    <form class="contact-form" action="bedankt.html" method="get" id="offerte-form">
+    <form class="contact-form" action="https://formsubmit.co/info@pianocatering.be" method="POST" id="offerte-form">
       <h2 style="font-size:clamp(1.4rem,4vw,1.8rem);margin-bottom:8px">Your details</h2>
       <p class="form-hint" style="margin-bottom:22px">We will send you a personal proposal based on your selection. The price below is indicative.</p>
 
+      <input type="hidden" name="_subject" value="New quote request Piano C">
+      <input type="hidden" name="_next" value="https://www.pianocatering.be/en/bedankt.html">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="guests" id="guests-hidden">
+      <input type="hidden" name="event_date" id="datum-hidden">
+      <input type="hidden" name="event_location" id="locatie-hidden">
       <input type="hidden" name="config" id="config-hidden">
       <input type="hidden" name="afstand_km" id="distance-hidden">
       <input type="hidden" name="transport_totaal" id="transport-hidden">
@@ -440,7 +441,7 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
     <div class="foot-grid">
       <div>
         <a href="index.html" class="brand"><span class="name">Piano C</span><span class="sub">Apulian Catering</span></a>
-        <p style="margin-top:18px;max-width:36ch;font-size:.92rem">Authentieke Apulische pizza- en pastacatering voor events in Leuven en omstreken.</p>
+        <p style="margin-top:18px;max-width:36ch;font-size:.92rem">Authentic Apulian catering for events in Leuven and the surrounding area.</p>
       </div>
       <div>
         <h5>Navigatie</h5>
@@ -471,13 +472,17 @@ const BASE_ADDRESS='Ravenstraat 38, 3000 Leuven, Belgium';
 const VOLUME=[{min:100,disc:.12},{min:75,disc:.09},{min:50,disc:.06},{min:35,disc:.03},{min:1,disc:0}];
 const PIZZA_PRICE=[{min:100,price:21},{min:75,price:22},{min:50,price:23},{min:35,price:23},{min:1,price:24}];
 const MAIN_CAT='hoofd',DRANK_CAT='drank';
+const DRINK_NONALC={water:10,frisdrank:12,bundle:12};
+const DRINK_EXTRA_CAT=.35,DRINK_VARIETY_MARKUP=.15;
 const L={
   setup:'Setup (split across ',setupEnd:' guests)',
   transportLine:'Transport ({excess} km × €1.35)',
   disc:'Group discount',warn:'Select at least one main course.',
   distLoading:'Calculating distance…',distError:'Location not found. Try a town or full address.',
   distOk:'{km} km from Leuven — no transport charge',
-  distFar:'{km} km from Leuven — transport {cost} total ({excess} km × €1.35)'
+  distFar:'{km} km from Leuven — transport {cost} total ({excess} km × €1.35)',
+  drinkBundle:'Water & soft drinks',
+  drinkExtraCat:' (extra category, 35%)'
 };
 
 let distanceKm=null,baseCoords=null,locatieTimer=null;
@@ -533,13 +538,41 @@ function priceCategoryItems(items){
   return {total:value,lines:[{label,value}]};
 }
 
+function drinkNonalcGroup(items){
+  const picked=items.filter(i=>i.id==='water'||i.id==='frisdrank');
+  if(!picked.length) return null;
+  if(picked.length===2) return {label:L.drinkBundle,value:DRINK_NONALC.bundle};
+  const one=picked[0];
+  return {label:one.name,value:one.id==='water'?DRINK_NONALC.water:DRINK_NONALC.frisdrank};
+}
+
+function drinkVarietyGroup(items,ids){
+  const picked=items.filter(i=>ids.includes(i.id));
+  if(!picked.length) return null;
+  if(picked.length===1) return {label:picked[0].name,value:picked[0].price};
+  const avg=picked.reduce((a,i)=>a+i.price,0)/picked.length;
+  const value=Math.round(avg*(1+DRINK_VARIETY_MARKUP)*100)/100;
+  return {label:picked.map(i=>i.name).join(' + '),value};
+}
+
 function priceDrinkItems(items){
   if(!items.length) return {total:0,lines:[]};
-  let total=0;
-  const lines=items.map(i=>{
-    total+=i.price;
-    return {label:i.name,value:i.price};
-  });
+  const groups=[
+    drinkNonalcGroup(items),
+    drinkVarietyGroup(items,['bier-pils','bier-sterk']),
+    drinkVarietyGroup(items,['prosecco','wijn'])
+  ].filter(Boolean);
+  if(groups.length===1){
+    return {total:groups[0].value,lines:[{label:groups[0].label,value:groups[0].value}]};
+  }
+  const sorted=[...groups].sort((a,b)=>b.value-a.value);
+  let total=sorted[0].value;
+  const lines=[{label:sorted[0].label,value:sorted[0].value}];
+  for(let i=1;i<sorted.length;i++){
+    const contrib=Math.round(sorted[i].value*DRINK_EXTRA_CAT*100)/100;
+    total+=contrib;
+    lines.push({label:sorted[i].label+L.drinkExtraCat,value:contrib});
+  }
   return {total:Math.round(total*100)/100,lines};
 }
 
@@ -741,6 +774,13 @@ if(toggle&&menu){
   const y=t.getFullYear(),m=String(t.getMonth()+1).padStart(2,'0'),d=String(t.getDate()).padStart(2,'0');
   el.value=y>=2026?`${y}-${m}-${d}`:'2026-01-01';
 })();
+
+document.getElementById('offerte-form').addEventListener('submit',()=>{
+  calculate();
+  document.getElementById('guests-hidden').value=document.getElementById('guests').value;
+  document.getElementById('datum-hidden').value=document.getElementById('datum').value;
+  document.getElementById('locatie-hidden').value=document.getElementById('locatie').value;
+});
 calculate();
 </script>
 </body>
