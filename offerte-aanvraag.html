@@ -266,7 +266,7 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
 
     <div class="config-block" data-category="aperitief">
       <h2>Voorgerecht</h2>
-      <p class="block-desc">Kies één of meer voor je buffet. Eén keuze = catalogusprijs. Meerdere keuzes? Gemiddelde van alle opties, plus 20% (2 keuzes), 25% (3) of 30% (4) — meer variatie, geen volle porties per gerecht.</p>
+      <p class="block-desc">Kies één of meer voor je buffet. Meerdere keuzes = meer variatie op het buffet, geen volle porties per gerecht.</p>
       <div class="option-grid" role="group" aria-label="Voorgerecht">
         <button type="button" class="opt-btn" data-id="charcuterie" data-category="aperitief" data-price="6" aria-pressed="false">
           <span class="opt-name">Charcuterieplank</span>
@@ -288,7 +288,7 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
 
     <div class="config-block" data-category="hoofd">
       <h2>Hoofdgerechten</h2>
-      <p class="block-desc">Kies één of combineer. Eén keuze = catalogusprijs. Meerdere keuzes? Gemiddelde + 20% (2), 25% (3) of 30% (4) — kleinere porties, meer variatie op het buffet.</p>
+      <p class="block-desc">Kies één of combineer. Meerdere keuzes = hogere prijs per persoon, meer variatie op het buffet.</p>
       <div class="option-grid mains" role="group" aria-label="Hoofdgerechten">
         <div class="opt-wrap">
           <button type="button" class="opt-btn" data-id="pizza" data-category="hoofd" data-price="20" aria-pressed="true">
@@ -329,12 +329,12 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
         </div>
       </div>
       <p class="block-hint">Pizza is altijd buffet (mobiele houtoven). Pasta kan als buffet of aan tafel — gekookte borden door ons team.</p>
-      <p class="combo-note">Tip: pizza + pasta? Gemiddelde van beide + 20%. De volgorde waarin je klikt maakt niet uit.</p>
+      <p class="combo-note">Tip: pizza + pasta combineren? De volgorde waarin je klikt maakt niet uit.</p>
     </div>
 
     <div class="config-block" data-category="dessert">
       <h2>Dessert</h2>
-      <p class="block-desc">Optioneel. Eén keuze = catalogusprijs. Meerdere desserts? Gemiddelde + 20%, 25% of 30%.</p>
+      <p class="block-desc">Optioneel. Combineer naar wens.</p>
       <div class="option-grid" role="group" aria-label="Dessert">
         <button type="button" class="opt-btn" data-id="tiramisu" data-category="dessert" data-price="8" aria-pressed="false">
           <span class="opt-name">Tiramisu</span>
@@ -356,7 +356,7 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
 
     <div class="config-block" data-category="drank">
       <h2>Drank</h2>
-      <p class="block-desc">Optioneel. Eén formule = catalogusprijs. Meerdere formules? Gemiddelde + 20%, 25% of 30%.</p>
+      <p class="block-desc">Optioneel. Combineer formules naar wens.</p>
       <div class="option-grid" role="group" aria-label="Drank">
         <button type="button" class="opt-btn" data-id="prosecco" data-category="drank" data-price="8" aria-pressed="false">
           <span class="opt-name">Prosecco &amp; spritz</span>
@@ -452,13 +452,12 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
 
 <script>
 const SETUP_TOTAL=200,MIN_GUESTS=20,TABLE_SERVICE=8,FREE_KM=20,RATE_PER_KM=1.35;
-const COMBO_MARKUP={2:.20,3:.25,4:.30};
+const COMBO_MARKUP={2:.25,3:.30,4:.35};
 const BASE_ADDRESS='Ravenstraat 38, 3000 Leuven, Belgium';
 const VOLUME=[{min:100,disc:.12},{min:75,disc:.09},{min:50,disc:.06},{min:35,disc:.03},{min:1,disc:0}];
 const MAIN_CAT='hoofd';
 const PASTA_IDS=['pasta','pasta-truffel'];
 const L={
-  comboLabel:'{items} ({n} keuzes, gemiddelde +{pct}%)',
   setup:'Opstart (verdeeld over ',setupEnd:' pers.)',
   transportLine:'Transport ({excess} km × €1,35)',table:'Pasta aan tafel geserveerd',
   disc:'Groepskorting',warn:'Kies minstens één hoofdgerecht.',
@@ -488,7 +487,7 @@ function getSelected(){
 
 function comboMarkup(n){
   if(n<2) return 0;
-  return COMBO_MARKUP[Math.min(n,4)]||0.30;
+  return COMBO_MARKUP[Math.min(n,4)]||0.35;
 }
 
 function priceCategoryItems(items){
@@ -501,10 +500,7 @@ function priceCategoryItems(items){
   const avg=sum/n;
   const markup=comboMarkup(n);
   const value=Math.round(avg*(1+markup)*100)/100;
-  const label=L.comboLabel
-    .replace('{items}',items.map(i=>i.name).join(' + '))
-    .replace('{n}',n)
-    .replace('{pct}',Math.round(markup*100));
+  const label=items.map(i=>i.name).join(' + ');
   return {total:value,lines:[{label,value}]};
 }
 
