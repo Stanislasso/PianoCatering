@@ -119,6 +119,15 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,241,236,.92);backdro
   -webkit-tap-highlight-color:transparent;font-family:inherit;color:var(--espresso);width:100%;
 }
 .opt-btn .opt-name{font-family:var(--font-display);font-size:1.05rem;font-weight:500;line-height:1.2}
+.opt-btn .opt-desc{font-size:.82rem;color:rgba(74,52,42,.72);line-height:1.4}
+.opt-wrap{display:flex;flex-direction:column;gap:8px}
+.opt-more{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.04em;color:var(--terracotta);text-decoration:none;padding:2px 4px 0;min-height:44px;display:inline-flex;align-items:center}
+@media(hover:hover){.opt-more:hover{text-decoration:underline}}
+.event-when-where{margin:0;padding:0;border:none;grid-column:1/-1}
+.event-when-where .form-label{margin-bottom:14px}
+.when-where-grid{display:grid;gap:16px}
+@media(min-width:480px){.when-where-grid{grid-template-columns:1fr 1.4fr}}
+.when-where-grid .sub-label{display:block;font-family:var(--font-mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--olive);margin-bottom:8px}
 .opt-btn .opt-price{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.04em;color:var(--olive)}
 .opt-btn .opt-check{
   align-self:flex-end;margin-top:auto;font-family:var(--font-mono);font-size:.65rem;
@@ -198,7 +207,7 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
   <div class="wrap nav">
     <a href="index.html" class="brand"><span class="name">Piano C</span><span class="sub">Apulian Catering</span></a>
     <nav class="navlinks" id="nav-menu">
-      <a href="index.html#pizza-buffet">Pizza</a>
+      <a href="pizza-buffet.html">Pizza</a>
       <a href="index.html#pasta-buffet">Pasta</a>
       <a href="index.html#menu">Menu</a>
       <a href="index.html#over-ons">Over ons</a>
@@ -237,12 +246,21 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
           </div>
           <p class="block-hint" id="guests-hint">Minimum 20 personen voor catering</p>
         </div>
-        <div style="grid-column:1/-1">
-          <label class="form-label" for="locatie">Locatie van je event</label>
-          <input class="form-input" type="text" id="locatie" name="locatie" placeholder="Adres of gemeente, bv. Tienen of Kortrijksesteenweg 1, Gent" autocomplete="street-address">
-          <p class="locatie-status" id="locatie-status" aria-live="polite"></p>
-          <p class="block-hint">Transport gratis binnen 20 km rond Leuven. Daarbuiten rekenen we automatisch €1,35 per extra kilometer (rijafstand).</p>
-        </div>
+        <fieldset class="event-when-where">
+          <legend class="form-label">Datum &amp; locatie</legend>
+          <div class="when-where-grid">
+            <div>
+              <label class="sub-label" for="datum">Datum van je event</label>
+              <input class="form-input" type="date" id="datum" name="datum">
+            </div>
+            <div>
+              <label class="sub-label" for="locatie">Waar vindt het plaats?</label>
+              <input class="form-input" type="text" id="locatie" name="locatie" placeholder="Adres of gemeente, bv. Tienen" autocomplete="street-address">
+              <p class="locatie-status" id="locatie-status" aria-live="polite"></p>
+            </div>
+          </div>
+          <p class="block-hint" style="margin-top:14px">Transport gratis binnen 20 km rond Leuven. Daarbuiten rekenen we automatisch €1,35 per extra kilometer (rijafstand).</p>
+        </fieldset>
       </div>
     </div>
 
@@ -272,11 +290,15 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
       <h2>Hoofdgerechten</h2>
       <p class="block-desc">Kies één of combineer. Eén keuze = catalogusprijs. Meerdere keuzes? Gemiddelde + 20% (2), 25% (3) of 30% (4) — kleinere porties, meer variatie op het buffet.</p>
       <div class="option-grid mains" role="group" aria-label="Hoofdgerechten">
-        <button type="button" class="opt-btn" data-id="pizza" data-category="hoofd" data-price="20" aria-pressed="true">
-          <span class="opt-name">Pizza buffet</span>
-          <span class="opt-price">€20 p.p. · buffet</span>
-          <span class="opt-check">Geselecteerd</span>
-        </button>
+        <div class="opt-wrap">
+          <button type="button" class="opt-btn" data-id="pizza" data-category="hoofd" data-price="20" aria-pressed="true">
+            <span class="opt-name">Pizza buffet</span>
+            <span class="opt-desc">Buffet met 5 soorten pizza uit onze kaart, vers uit de mobiele houtoven. Welke vijf? Dat kies je later samen met ons.</span>
+            <span class="opt-price">€20 p.p. · à volonté</span>
+            <span class="opt-check">Geselecteerd</span>
+          </button>
+          <a class="opt-more" href="pizza-buffet.html">Bekijk onze 5 pizza's →</a>
+        </div>
         <button type="button" class="opt-btn" data-id="parmigiana" data-category="hoofd" data-price="16" aria-pressed="false">
           <span class="opt-name">Parmigiana</span>
           <span class="opt-price">€16 p.p.</span>
@@ -388,10 +410,6 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
       <div class="form-field">
         <label class="form-label" for="telefoon">Telefoon</label>
         <input class="form-input" type="tel" id="telefoon" name="telefoon" autocomplete="tel" placeholder="+32 ..." inputmode="tel">
-      </div>
-      <div class="form-field">
-        <label class="form-label" for="datum">Datum van je event</label>
-        <input class="form-input" type="date" id="datum" name="datum">
       </div>
       <div class="form-field">
         <label class="form-label" for="opmerkingen">Opmerkingen</label>
