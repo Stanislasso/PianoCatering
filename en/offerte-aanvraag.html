@@ -246,9 +246,9 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
     </div>
 
     <div class="config-block" data-category="aperitief">
-      <h2>Aperitief</h2>
-      <p class="block-desc">Mix freely within this course. First choice at full price, each extra at 30%.</p>
-      <div class="option-grid" role="group" aria-label="Aperitief">
+      <h2>Starter</h2>
+      <p class="block-desc">Build your appetiser buffet. More choices means more variety on the buffet, not an extra course with full portions of each dish. First choice at full price, each extra buffet item at 30%.</p>
+      <div class="option-grid" role="group" aria-label="Starter">
         <button type="button" class="opt-btn" data-id="charcuterie" data-category="aperitief" data-price="6" aria-pressed="false">
           <span class="opt-name">Charcuterieplank</span>
           <span class="opt-price">€6 p.p.</span>
@@ -269,7 +269,7 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
 
     <div class="config-block" data-category="hoofd">
       <h2>Main courses</h2>
-      <p class="block-desc">Pick one or combine within this course. First choice full price, extras at 30% (smaller portions, more variety for us).</p>
+      <p class="block-desc">Pick one or combine. First choice full price, extras at 30% (smaller portions, more variety on the buffet).</p>
       <div class="option-grid mains" role="group" aria-label="Main courses">
         <button type="button" class="opt-btn" data-id="pizza" data-category="hoofd" data-price="20" aria-pressed="true" data-order="1">
           <span class="opt-name">Pizza buffet</span>
@@ -306,12 +306,12 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
         </div>
       </div>
       <p class="block-hint">Pizza is always buffet (mobile wood oven). Pasta as buffet or plated at table by our team.</p>
-      <p class="combo-note">Tip: pizza + pasta? The second choice in the same course counts at 30%, not full price.</p>
+      <p class="combo-note">Tip: pizza + pasta? The second choice counts at 30%, not full price — more variety, not double portions.</p>
     </div>
 
     <div class="config-block" data-category="dessert">
       <h2>Dessert</h2>
-      <p class="block-desc">Optional. First dessert full price, extras in this course at 30%.</p>
+      <p class="block-desc">Optional. First dessert full price, extra buffet desserts at 30%.</p>
       <div class="option-grid" role="group" aria-label="Dessert">
         <button type="button" class="opt-btn" data-id="tiramisu" data-category="dessert" data-price="8" aria-pressed="false">
           <span class="opt-name">Tiramisu</span>
@@ -333,7 +333,7 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
 
     <div class="config-block" data-category="drank">
       <h2>Drank</h2>
-      <p class="block-desc">Optional drink packages. Extra packages in this course at 30%.</p>
+      <p class="block-desc">Optional drink packages. Extra packages at 30%.</p>
       <div class="option-grid" role="group" aria-label="Drank">
         <button type="button" class="opt-btn" data-id="prosecco" data-category="drank" data-price="8" aria-pressed="false">
           <span class="opt-name">Prosecco &amp; spritz</span>
@@ -439,7 +439,8 @@ const VOLUME=[{min:100,disc:.12},{min:75,disc:.09},{min:50,disc:.06},{min:35,dis
 const MAIN_CAT='hoofd';
 const PASTA_IDS=['pasta','pasta-truffel'];
 const L={
-  extra:' (extra gang, 30%)',setup:'Opstart (verdeeld over ',setupEnd:' pers.)',
+  extraByCat:{aperitief:' (extra buffet item, 30%)',hoofd:' (combination, 30%)',dessert:' (extra dessert, 30%)',drank:' (extra package, 30%)'},
+  setup:'Setup (spread over ',setupEnd:' guests)',
   transportLine:'Transport ({excess} km × €1.35)',table:'Pasta aan tafel geserveerd',
   disc:'Groepskorting',warn:'Kies minstens één hoofdgerecht.',
   distLoading:'Calculating distance…',distError:'Location not found. Try town or full address.',
@@ -467,15 +468,16 @@ function getSelected(){
   }));
 }
 
-function priceCategoryItems(items){
+function priceCategoryItems(items,category){
   if(!items.length) return {total:0,lines:[]};
   const sorted=[...items].sort((a,b)=>a.order-b.order);
+  const extraLabel=L.extraByCat[category]||' (30%)';
   let total=0; const lines=[];
   sorted.forEach((item,i)=>{
     const rate=i===0?1:EXTRA_RATE;
     const value=Math.round(item.price*rate*100)/100;
     total+=value;
-    lines.push({label:item.name+(i===0?'':L.extra),value});
+    lines.push({label:item.name+(i===0?'':extraLabel),value});
   });
   return {total,lines};
 }
@@ -584,7 +586,7 @@ function calculate(){
   const cats=[...new Set(selected.map(s=>s.category))];
   cats.forEach(cat=>{
     const items=selected.filter(s=>s.category===cat);
-    const r=priceCategoryItems(items);
+    const r=priceCategoryItems(items,cat);
     food+=r.total;
     lines.push(...r.lines);
   });

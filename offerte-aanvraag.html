@@ -247,9 +247,9 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
     </div>
 
     <div class="config-block" data-category="aperitief">
-      <h2>Aperitief</h2>
-      <p class="block-desc">Combineer vrij binnen deze gang. Eerste keuze aan volle prijs, elke extra optie aan 30%.</p>
-      <div class="option-grid" role="group" aria-label="Aperitief">
+      <h2>Voorgerecht</h2>
+      <p class="block-desc">Stel je aperitiefbuffet samen. Meer keuzes betekent meer variatie op het buffet, niet een extra gang met volle porties per gerecht. Eerste keuze volle prijs, elke extra buffetkeuze aan 30%.</p>
+      <div class="option-grid" role="group" aria-label="Voorgerecht">
         <button type="button" class="opt-btn" data-id="charcuterie" data-category="aperitief" data-price="6" aria-pressed="false">
           <span class="opt-name">Charcuterieplank</span>
           <span class="opt-price">€6 p.p.</span>
@@ -270,7 +270,7 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
 
     <div class="config-block" data-category="hoofd">
       <h2>Hoofdgerechten</h2>
-      <p class="block-desc">Kies één of combineer binnen deze gang. Eerste keuze volle prijs, extra keuzes aan 30% (minder portie, meer variatie voor ons).</p>
+      <p class="block-desc">Kies één of combineer. Eerste keuze volle prijs, extra keuzes aan 30% (kleinere porties, meer variatie op het buffet).</p>
       <div class="option-grid mains" role="group" aria-label="Hoofdgerechten">
         <button type="button" class="opt-btn" data-id="pizza" data-category="hoofd" data-price="20" aria-pressed="true" data-order="1">
           <span class="opt-name">Pizza buffet</span>
@@ -307,12 +307,12 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
         </div>
       </div>
       <p class="block-hint">Pizza is altijd buffet (mobiele houtoven). Pasta kan als buffet of aan tafel — gekookte borden door ons team.</p>
-      <p class="combo-note">Tip: combineer pizza + pasta? De tweede keuze binnen dezelfde gang telt aan 30%, niet aan volle prijs.</p>
+      <p class="combo-note">Tip: pizza + pasta? De tweede keuze telt aan 30%, niet aan volle prijs — je krijgt meer variatie, geen dubbele portie.</p>
     </div>
 
     <div class="config-block" data-category="dessert">
       <h2>Dessert</h2>
-      <p class="block-desc">Optioneel. Eerste keuze volle prijs, extra desserts binnen deze gang aan 30%.</p>
+      <p class="block-desc">Optioneel. Eerste keuze volle prijs, extra desserts op het buffet aan 30%.</p>
       <div class="option-grid" role="group" aria-label="Dessert">
         <button type="button" class="opt-btn" data-id="tiramisu" data-category="dessert" data-price="8" aria-pressed="false">
           <span class="opt-name">Tiramisu</span>
@@ -334,7 +334,7 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
 
     <div class="config-block" data-category="drank">
       <h2>Drank</h2>
-      <p class="block-desc">Optionele drankformules. Extra formules binnen deze gang aan 30%.</p>
+      <p class="block-desc">Optionele drankformules. Extra formules aan 30%.</p>
       <div class="option-grid" role="group" aria-label="Drank">
         <button type="button" class="opt-btn" data-id="prosecco" data-category="drank" data-price="8" aria-pressed="false">
           <span class="opt-name">Prosecco &amp; spritz</span>
@@ -439,7 +439,8 @@ const VOLUME=[{min:100,disc:.12},{min:75,disc:.09},{min:50,disc:.06},{min:35,dis
 const MAIN_CAT='hoofd';
 const PASTA_IDS=['pasta','pasta-truffel'];
 const L={
-  extra:' (extra gang, 30%)',setup:'Opstart (verdeeld over ',setupEnd:' pers.)',
+  extraByCat:{aperitief:' (extra buffetkeuze, 30%)',hoofd:' (combinatie, 30%)',dessert:' (extra dessert, 30%)',drank:' (extra formule, 30%)'},
+  setup:'Opstart (verdeeld over ',setupEnd:' pers.)',
   transportLine:'Transport ({excess} km × €1,35)',table:'Pasta aan tafel geserveerd',
   disc:'Groepskorting',warn:'Kies minstens één hoofdgerecht.',
   distLoading:'Afstand berekenen…',distError:'Locatie niet gevonden. Probeer gemeente of volledig adres.',
@@ -467,15 +468,16 @@ function getSelected(){
   }));
 }
 
-function priceCategoryItems(items){
+function priceCategoryItems(items,category){
   if(!items.length) return {total:0,lines:[]};
   const sorted=[...items].sort((a,b)=>a.order-b.order);
+  const extraLabel=L.extraByCat[category]||' (30%)';
   let total=0; const lines=[];
   sorted.forEach((item,i)=>{
     const rate=i===0?1:EXTRA_RATE;
     const value=Math.round(item.price*rate*100)/100;
     total+=value;
-    lines.push({label:item.name+(i===0?'':L.extra),value});
+    lines.push({label:item.name+(i===0?'':extraLabel),value});
   });
   return {total,lines};
 }
@@ -584,7 +586,7 @@ function calculate(){
   const cats=[...new Set(selected.map(s=>s.category))];
   cats.forEach(cat=>{
     const items=selected.filter(s=>s.category===cat);
-    const r=priceCategoryItems(items);
+    const r=priceCategoryItems(items,cat);
     food+=r.total;
     lines.push(...r.lines);
   });

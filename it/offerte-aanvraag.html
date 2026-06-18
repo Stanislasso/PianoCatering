@@ -246,9 +246,9 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
     </div>
 
     <div class="config-block" data-category="aperitief">
-      <h2>Aperitivo</h2>
-      <p class="block-desc">Combinate liberamente in questo portata. Prima scelta a prezzo pieno, ogni extra al 30%.</p>
-      <div class="option-grid" role="group" aria-label="Aperitivo">
+      <h2>Antipasto</h2>
+      <p class="block-desc">Componete il buffet di antipasti. Più scelte significa più varietà al buffet, non un piatto in più con porzioni complete. Prima scelta a prezzo pieno, ogni extra al buffet al 30%.</p>
+      <div class="option-grid" role="group" aria-label="Antipasto">
         <button type="button" class="opt-btn" data-id="charcuterie" data-category="aperitief" data-price="6" aria-pressed="false">
           <span class="opt-name">Charcuterieplank</span>
           <span class="opt-price">€6 p.p.</span>
@@ -269,7 +269,7 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
 
     <div class="config-block" data-category="hoofd">
       <h2>Piatti principali</h2>
-      <p class="block-desc">Scegliete uno o combinate nella stessa portata. Prima scelta prezzo pieno, extra al 30% (porzioni ridotte, più varietà per noi).</p>
+      <p class="block-desc">Scegliete uno o combinate. Prima scelta prezzo pieno, extra al 30% (porzioni ridotte, più varietà al buffet).</p>
       <div class="option-grid mains" role="group" aria-label="Piatti principali">
         <button type="button" class="opt-btn" data-id="pizza" data-category="hoofd" data-price="20" aria-pressed="true" data-order="1">
           <span class="opt-name">Pizza buffet</span>
@@ -306,12 +306,12 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
         </div>
       </div>
       <p class="block-hint">La pizza è sempre buffet (forno a legna mobile). La pasta a buffet o servita a tavola dal nostro team.</p>
-      <p class="combo-note">Tip: pizza + pasta? La seconda scelta nella stessa portata conta al 30%, non a prezzo pieno.</p>
+      <p class="combo-note">Tip: pizza + pasta? La seconda scelta conta al 30%, non a prezzo pieno — più varietà, non porzioni doppie.</p>
     </div>
 
     <div class="config-block" data-category="dessert">
       <h2>Dessert</h2>
-      <p class="block-desc">Opzionale. Primo dessert prezzo pieno, extra nella stessa portata al 30%.</p>
+      <p class="block-desc">Opzionale. Primo dessert prezzo pieno, dessert extra al buffet al 30%.</p>
       <div class="option-grid" role="group" aria-label="Dessert">
         <button type="button" class="opt-btn" data-id="tiramisu" data-category="dessert" data-price="8" aria-pressed="false">
           <span class="opt-name">Tiramisu</span>
@@ -333,7 +333,7 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
 
     <div class="config-block" data-category="drank">
       <h2>Bevande</h2>
-      <p class="block-desc">Formule bevande opzionali. Extra nella stessa portata al 30%.</p>
+      <p class="block-desc">Formule bevande opzionali. Formule extra al 30%.</p>
       <div class="option-grid" role="group" aria-label="Bevande">
         <button type="button" class="opt-btn" data-id="prosecco" data-category="drank" data-price="8" aria-pressed="false">
           <span class="opt-name">Prosecco &amp; spritz</span>
@@ -439,7 +439,8 @@ const VOLUME=[{min:100,disc:.12},{min:75,disc:.09},{min:50,disc:.06},{min:35,dis
 const MAIN_CAT='hoofd';
 const PASTA_IDS=['pasta','pasta-truffel'];
 const L={
-  extra:' (extra gang, 30%)',setup:'Opstart (verdeeld over ',setupEnd:' pers.)',
+  extraByCat:{aperitief:' (extra al buffet, 30%)',hoofd:' (combinazione, 30%)',dessert:' (dessert extra, 30%)',drank:' (formule extra, 30%)'},
+  setup:'Avvio (ripartito su ',setupEnd:' ospiti)',
   transportLine:'Transport ({excess} km × €1,35)',table:'Pasta aan tafel geserveerd',
   disc:'Groepskorting',warn:'Kies minstens één hoofdgerecht.',
   distLoading:'Calcolo distanza…',distError:'Location non trovata. Provate comune o indirizzo completo.',
@@ -467,15 +468,16 @@ function getSelected(){
   }));
 }
 
-function priceCategoryItems(items){
+function priceCategoryItems(items,category){
   if(!items.length) return {total:0,lines:[]};
   const sorted=[...items].sort((a,b)=>a.order-b.order);
+  const extraLabel=L.extraByCat[category]||' (30%)';
   let total=0; const lines=[];
   sorted.forEach((item,i)=>{
     const rate=i===0?1:EXTRA_RATE;
     const value=Math.round(item.price*rate*100)/100;
     total+=value;
-    lines.push({label:item.name+(i===0?'':L.extra),value});
+    lines.push({label:item.name+(i===0?'':extraLabel),value});
   });
   return {total,lines};
 }
@@ -584,7 +586,7 @@ function calculate(){
   const cats=[...new Set(selected.map(s=>s.category))];
   cats.forEach(cat=>{
     const items=selected.filter(s=>s.category===cat);
-    const r=priceCategoryItems(items);
+    const r=priceCategoryItems(items,cat);
     food+=r.total;
     lines.push(...r.lines);
   });
