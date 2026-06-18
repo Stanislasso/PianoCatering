@@ -330,14 +330,14 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
           <span class="opt-price">€10 p.p.</span>
           <span class="opt-check">Selected</span>
         </button>
-        <button type="button" class="opt-btn" data-id="panna-cotta" data-category="dessert" data-price="8" aria-pressed="false">
+        <button type="button" class="opt-btn" data-id="panna-cotta" data-category="dessert" data-price="10" aria-pressed="false">
           <span class="opt-name">Panna cotta</span>
-          <span class="opt-price">€8 p.p.</span>
+          <span class="opt-price">€10 p.p.</span>
           <span class="opt-check">Selected</span>
         </button>
-        <button type="button" class="opt-btn" data-id="dolce-assorti" data-category="dessert" data-price="12" aria-pressed="false">
-          <span class="opt-name">Dessert assortment</span>
-          <span class="opt-price">€12 p.p.</span>
+        <button type="button" class="opt-btn" data-id="chocolademousse" data-category="dessert" data-price="10" aria-pressed="false">
+          <span class="opt-name">Chocolate mousse</span>
+          <span class="opt-price">€10 p.p.</span>
           <span class="opt-check">Selected</span>
         </button>
         <button type="button" class="opt-btn" data-id="cheesecake" data-category="dessert" data-price="10" aria-pressed="false">
@@ -345,31 +345,46 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
           <span class="opt-price">€10 p.p.</span>
           <span class="opt-check">Selected</span>
         </button>
+        <button type="button" class="opt-btn" data-id="dolce-assorti" data-category="dessert" data-price="10" aria-pressed="false">
+          <span class="opt-name">Dessert assortment</span>
+          <span class="opt-price">€10 p.p.</span>
+          <span class="opt-check">Selected</span>
+        </button>
       </div>
     </div>
 
     <div class="config-block" data-category="drank">
-      <h2>Drank</h2>
-      <p class="block-desc">Optional. Combine packages as you like.</p>
-      <div class="option-grid" role="group" aria-label="Drank">
-        <button type="button" class="opt-btn" data-id="prosecco" data-category="drank" data-price="10" aria-pressed="false">
-          <span class="opt-name">Prosecco &amp; spritz</span>
+      <h2>Drinks</h2>
+      <p class="block-desc">Optional. Pick one or more drink packages — each adds the full per-person price.</p>
+      <div class="option-grid" role="group" aria-label="Drinks">
+        <button type="button" class="opt-btn" data-id="water" data-category="drank" data-price="10" aria-pressed="false">
+          <span class="opt-name">Premium still &amp; sparkling water</span>
           <span class="opt-price">€10 p.p.</span>
           <span class="opt-check">Selected</span>
         </button>
-        <button type="button" class="opt-btn" data-id="wijn" data-category="drank" data-price="14" aria-pressed="false">
-          <span class="opt-name">Wine package</span>
+        <button type="button" class="opt-btn" data-id="frisdrank" data-category="drank" data-price="12" aria-pressed="false">
+          <span class="opt-name">Premium soft drinks</span>
+          <span class="opt-price">€12 p.p.</span>
+          <span class="opt-check">Selected</span>
+        </button>
+        <button type="button" class="opt-btn" data-id="bier-pils" data-category="drank" data-price="12" aria-pressed="false">
+          <span class="opt-name">Beer (lager)</span>
+          <span class="opt-price">€12 p.p.</span>
+          <span class="opt-check">Selected</span>
+        </button>
+        <button type="button" class="opt-btn" data-id="bier-sterk" data-category="drank" data-price="16" aria-pressed="false">
+          <span class="opt-name">Beer (special &amp; strong)</span>
+          <span class="opt-price">€16 p.p.</span>
+          <span class="opt-check">Selected</span>
+        </button>
+        <button type="button" class="opt-btn" data-id="prosecco" data-category="drank" data-price="14" aria-pressed="false">
+          <span class="opt-name">Prosecco &amp; spritz</span>
           <span class="opt-price">€14 p.p.</span>
           <span class="opt-check">Selected</span>
         </button>
-        <button type="button" class="opt-btn" data-id="frisdrank" data-category="drank" data-price="6" aria-pressed="false">
-          <span class="opt-name">Soft drinks</span>
-          <span class="opt-price">€6 p.p.</span>
-          <span class="opt-check">Selected</span>
-        </button>
-        <button type="button" class="opt-btn" data-id="water" data-category="drank" data-price="5" aria-pressed="false">
-          <span class="opt-name">Still &amp; sparkling water</span>
-          <span class="opt-price">€5 p.p.</span>
+        <button type="button" class="opt-btn" data-id="wijn" data-category="drank" data-price="18" aria-pressed="false">
+          <span class="opt-name">Wine package</span>
+          <span class="opt-price">€18 p.p.</span>
           <span class="opt-check">Selected</span>
         </button>
       </div>
@@ -455,7 +470,7 @@ const COMBO_MARKUP={2:.25,3:.30,4:.35,5:.38,6:.40};
 const BASE_ADDRESS='Ravenstraat 38, 3000 Leuven, Belgium';
 const VOLUME=[{min:100,disc:.12},{min:75,disc:.09},{min:50,disc:.06},{min:35,disc:.03},{min:1,disc:0}];
 const PIZZA_PRICE=[{min:100,price:21},{min:75,price:22},{min:50,price:23},{min:35,price:23},{min:1,price:24}];
-const MAIN_CAT='hoofd';
+const MAIN_CAT='hoofd',DRANK_CAT='drank';
 const L={
   setup:'Setup (split across ',setupEnd:' guests)',
   transportLine:'Transport ({excess} km × €1.35)',
@@ -516,6 +531,16 @@ function priceCategoryItems(items){
   const value=Math.round(avg*(1+markup)*100)/100;
   const label=items.map(i=>i.name).join(' + ');
   return {total:value,lines:[{label,value}]};
+}
+
+function priceDrinkItems(items){
+  if(!items.length) return {total:0,lines:[]};
+  let total=0;
+  const lines=items.map(i=>{
+    total+=i.price;
+    return {label:i.name,value:i.price};
+  });
+  return {total:Math.round(total*100)/100,lines};
 }
 
 function volumeDiscount(guests){
@@ -614,7 +639,7 @@ function calculate(){
   const cats=[...new Set(selected.map(s=>s.category))];
   cats.forEach(cat=>{
     const items=selected.filter(s=>s.category===cat);
-    const r=priceCategoryItems(items);
+    const r=cat===DRANK_CAT?priceDrinkItems(items):priceCategoryItems(items);
     food+=r.total;
     lines.push(...r.lines);
   });
