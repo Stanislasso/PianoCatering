@@ -251,7 +251,7 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
           <div class="when-where-grid">
             <div>
               <label class="sub-label" for="datum">Datum van je event</label>
-              <input class="form-input" type="date" id="datum" name="datum">
+              <input class="form-input" type="date" id="datum" name="datum" min="2026-01-01">
             </div>
             <div>
               <label class="sub-label" for="locatie">Waar vindt het plaats?</label>
@@ -722,6 +722,13 @@ if(toggle&&menu){
 }
 
 updatePastaPanel();
+(function initDatum(){
+  const el=document.getElementById('datum');
+  if(!el||el.value) return;
+  const t=new Date();
+  const y=t.getFullYear(),m=String(t.getMonth()+1).padStart(2,'0'),d=String(t.getDate()).padStart(2,'0');
+  el.value=y>=2026?`${y}-${m}-${d}`:'2026-01-01';
+})();
 calculate();
 </script>
 </body>
