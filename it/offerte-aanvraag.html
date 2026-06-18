@@ -141,20 +141,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,241,236,.92);backdro
 .opt-btn[aria-pressed="true"] .opt-price{color:var(--terracotta)}
 @media(hover:hover){.opt-btn:hover:not([aria-pressed="true"]){border-color:rgba(192,86,46,.4)}}
 
-.service-panel{margin-top:20px;padding-top:18px;border-top:1px dashed var(--line)}
-.service-panel[hidden]{display:none}
-.service-panel .form-label{margin-bottom:12px}
-.service-toggle{display:flex;flex-direction:column;gap:10px}
-@media(min-width:480px){.service-toggle{flex-direction:row}}
-.service-btn{
-  flex:1;font-family:var(--font-body);font-size:.92rem;text-align:left;padding:14px 16px;
-  border:2px solid var(--line);border-radius:8px;background:var(--cream-soft);cursor:pointer;
-  min-height:48px;color:var(--espresso);transition:border-color .2s,background .2s;
-  -webkit-tap-highlight-color:transparent;
-}
-.service-btn small{display:block;font-family:var(--font-mono);font-size:.68rem;color:var(--olive);margin-top:4px}
-.service-btn[aria-pressed="true"]{border-color:var(--terracotta);background:var(--cream)}
 .combo-note{font-family:var(--font-mono);font-size:.68rem;color:var(--olive);margin-top:12px;line-height:1.45}
+.sub-section{font-family:var(--font-display);font-size:1.12rem;margin:22px 0 10px;font-weight:500}
+.sub-section:first-of-type{margin-top:4px}
 
 .price-panel{
   background:var(--espresso);color:var(--cream);border-radius:12px;padding:22px 20px;
@@ -268,19 +257,19 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
       <h2>Antipasto</h2>
       <p class="block-desc">Scegliete una o più opzioni per il buffet. Più scelte = più varietà al buffet, non porzioni complete per piatto.</p>
       <div class="option-grid" role="group" aria-label="Antipasto">
-        <button type="button" class="opt-btn" data-id="charcuterie" data-category="aperitief" data-price="6" aria-pressed="false">
+        <button type="button" class="opt-btn" data-id="charcuterie" data-category="aperitief" data-price="8" aria-pressed="false">
           <span class="opt-name">Charcuterieplank</span>
-          <span class="opt-price">€6 p.p.</span>
+          <span class="opt-price">€8 p.p.</span>
           <span class="opt-check">Selezionato</span>
         </button>
-        <button type="button" class="opt-btn" data-id="vitello" data-category="aperitief" data-price="5" aria-pressed="false">
+        <button type="button" class="opt-btn" data-id="vitello" data-category="aperitief" data-price="7" aria-pressed="false">
           <span class="opt-name">Vitello tonnato</span>
-          <span class="opt-price">€5 p.p.</span>
+          <span class="opt-price">€7 p.p.</span>
           <span class="opt-check">Selezionato</span>
         </button>
-        <button type="button" class="opt-btn" data-id="carpaccio" data-category="aperitief" data-price="5" aria-pressed="false">
+        <button type="button" class="opt-btn" data-id="carpaccio" data-category="aperitief" data-price="7" aria-pressed="false">
           <span class="opt-name">Carpaccio</span>
-          <span class="opt-price">€5 p.p.</span>
+          <span class="opt-price">€7 p.p.</span>
           <span class="opt-check">Selezionato</span>
         </button>
       </div>
@@ -288,67 +277,68 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
 
     <div class="config-block" data-category="hoofd">
       <h2>Piatti principali</h2>
-      <p class="block-desc">Scegliete uno o combinate. Più scelte = prezzo a persona più alto, più varietà al buffet.</p>
-      <div class="option-grid mains" role="group" aria-label="Piatti principali">
-        <div class="opt-wrap">
-          <button type="button" class="opt-btn" data-id="pizza" data-category="hoofd" data-price="20" aria-pressed="true">
-            <span class="opt-name">Pizza buffet</span>
-            <span class="opt-desc">Buffet con 5 tipi di pizza dal nostro menu, fresco dal forno a legna mobile. Quali cinque? Li scegliete insieme a noi in seguito.</span>
-            <span class="opt-price">€20 p.p. · à volonté</span>
-            <span class="opt-check">Selezionato</span>
-          </button>
-          <a class="opt-more" href="../pizza-buffet.html">Scopri le nostre 5 pizze →</a>
-        </div>
-        <button type="button" class="opt-btn" data-id="parmigiana" data-category="hoofd" data-price="16" aria-pressed="false">
+      <p class="block-desc">Scegliete pizza, pasta o entrambi. La pizza è un buffet con 5 tipi dal nostro menu. Ogni pasta è un piatto separato da combinare liberamente.</p>
+
+      <p class="sub-section">Pizza</p>
+      <div class="opt-wrap">
+        <button type="button" class="opt-btn" data-id="pizza" data-category="hoofd" data-price="26" aria-pressed="true">
+          <span class="opt-name">Pizza dal forno a legna</span>
+          <span class="opt-desc">Buffet con 5 tipi di pizza, fresco dal forno a legna mobile. Quali cinque? Li scegliete insieme a noi in seguito.</span>
+          <span class="opt-price" id="pizza-price-label">da €26 p.p. · à volonté</span>
+          <span class="opt-check">Selezionato</span>
+        </button>
+        <a class="opt-more" href="../pizza-buffet.html">Scopri le nostre 5 pizze →</a>
+      </div>
+
+      <p class="sub-section">Aggiungi pasta</p>
+      <p class="block-desc" style="margin-bottom:12px">Opzionale. Scegliete una o più paste — con o senza pizza.</p>
+      <div class="option-grid" role="group" aria-label="Pasta">
+        <button type="button" class="opt-btn" data-id="parmigiana" data-category="hoofd" data-price="25" aria-pressed="false">
           <span class="opt-name">Parmigiana</span>
-          <span class="opt-price">€16 p.p.</span>
+          <span class="opt-price">€25 p.p.</span>
           <span class="opt-check">Selezionato</span>
         </button>
-        <button type="button" class="opt-btn" data-id="pasta" data-category="hoofd" data-price="30" aria-pressed="false">
-          <span class="opt-name">Pasta buffet</span>
-          <span class="opt-price">€30 p.p.</span>
+        <button type="button" class="opt-btn" data-id="orecchiette" data-category="hoofd" data-price="24" aria-pressed="false">
+          <span class="opt-name">Orecchiette</span>
+          <span class="opt-price">€24 p.p.</span>
           <span class="opt-check">Selezionato</span>
         </button>
-        <button type="button" class="opt-btn" data-id="pasta-truffel" data-category="hoofd" data-price="35" aria-pressed="false">
-          <span class="opt-name">Pasta al tartufo</span>
-          <span class="opt-price">€35 p.p.</span>
+        <button type="button" class="opt-btn" data-id="cime-di-rapa" data-category="hoofd" data-price="24" aria-pressed="false">
+          <span class="opt-name">Orecchiette cime di rapa</span>
+          <span class="opt-price">€24 p.p.</span>
+          <span class="opt-check">Selezionato</span>
+        </button>
+        <button type="button" class="opt-btn" data-id="pasta-kreeft" data-category="hoofd" data-price="37" aria-pressed="false">
+          <span class="opt-name">Pasta con astice</span>
+          <span class="opt-price">€37 p.p.</span>
+          <span class="opt-check">Selezionato</span>
+        </button>
+        <button type="button" class="opt-btn" data-id="cacio-e-pepe" data-category="hoofd" data-price="26" aria-pressed="false">
+          <span class="opt-name">Cacio e pepe</span>
+          <span class="opt-price">€26 p.p.</span>
           <span class="opt-check">Selezionato</span>
         </button>
       </div>
-      <div class="service-panel" id="pasta-service-panel" hidden>
-        <p class="form-label">Come serviamo la pasta?</p>
-        <div class="service-toggle" role="group" aria-label="Servizio pasta">
-          <button type="button" class="service-btn" data-service="buffet" aria-pressed="true">
-            Buffet
-            <small>À volonté, self-service</small>
-          </button>
-          <button type="button" class="service-btn" data-service="tafel" aria-pressed="false">
-            Servito a tavola
-            <small>Piatti impiattati · +€8 p.p.</small>
-          </button>
-        </div>
-      </div>
-      <p class="block-hint">La pizza è sempre buffet (forno a legna mobile). La pasta a buffet o servita a tavola dal nostro team.</p>
-      <p class="combo-note">Tip: pizza + pasta insieme? L'ordine di selezione non conta.</p>
+      <p class="combo-note">Tip: il prezzo della pizza scende con più ospiti. Lo sconto di gruppo si applica al totale.</p>
     </div>
 
     <div class="config-block" data-category="dessert">
       <h2>Dessert</h2>
       <p class="block-desc">Opzionale. Combinate come preferite.</p>
       <div class="option-grid" role="group" aria-label="Dessert">
-        <button type="button" class="opt-btn" data-id="tiramisu" data-category="dessert" data-price="8" aria-pressed="false">
+        <button type="button" class="opt-btn" data-id="tiramisu" data-category="dessert" data-price="10" aria-pressed="false">
           <span class="opt-name">Tiramisu</span>
+          <span class="opt-price">€10 p.p.</span>
+          <span class="opt-check">Selezionato</span>
+        </button>
+        <button type="button" class="opt-btn" data-id="panna-cotta" data-category="dessert" data-price="8" aria-pressed="false">
+          <span class="opt-name">Panna cotta</span>
           <span class="opt-price">€8 p.p.</span>
           <span class="opt-check">Selezionato</span>
         </button>
-        <button type="button" class="opt-btn" data-id="panna-cotta" data-category="dessert" data-price="6" aria-pressed="false">
-          <span class="opt-name">Panna cotta</span>
-          <span class="opt-price">€6 p.p.</span>
-          <span class="opt-check">Selezionato</span>
-        </button>
-        <button type="button" class="opt-btn" data-id="dolce-assorti" data-category="dessert" data-price="10" aria-pressed="false">
+        <button type="button" class="opt-btn" data-id="dolce-assorti" data-category="dessert" data-price="12" aria-pressed="false">
           <span class="opt-name">Assortimento dolci</span>
-          <span class="opt-price">€10 p.p.</span>
+          <span class="opt-price">€12 p.p.</span>
           <span class="opt-check">Selezionato</span>
         </button>
       </div>
@@ -358,19 +348,24 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
       <h2>Bevande</h2>
       <p class="block-desc">Opzionale. Combinate le formule come preferite.</p>
       <div class="option-grid" role="group" aria-label="Bevande">
-        <button type="button" class="opt-btn" data-id="prosecco" data-category="drank" data-price="8" aria-pressed="false">
+        <button type="button" class="opt-btn" data-id="prosecco" data-category="drank" data-price="10" aria-pressed="false">
           <span class="opt-name">Prosecco &amp; spritz</span>
-          <span class="opt-price">€8 p.p.</span>
+          <span class="opt-price">€10 p.p.</span>
           <span class="opt-check">Selezionato</span>
         </button>
-        <button type="button" class="opt-btn" data-id="wijn" data-category="drank" data-price="12" aria-pressed="false">
-          <span class="opt-name">Wijnpakket</span>
-          <span class="opt-price">€12 p.p.</span>
+        <button type="button" class="opt-btn" data-id="wijn" data-category="drank" data-price="14" aria-pressed="false">
+          <span class="opt-name">Pacchetto vini</span>
+          <span class="opt-price">€14 p.p.</span>
           <span class="opt-check">Selezionato</span>
         </button>
-        <button type="button" class="opt-btn" data-id="frisdrank" data-category="drank" data-price="4" aria-pressed="false">
-          <span class="opt-name">Frisdranken</span>
-          <span class="opt-price">€4 p.p.</span>
+        <button type="button" class="opt-btn" data-id="frisdrank" data-category="drank" data-price="6" aria-pressed="false">
+          <span class="opt-name">Bibite</span>
+          <span class="opt-price">€6 p.p.</span>
+          <span class="opt-check">Selezionato</span>
+        </button>
+        <button type="button" class="opt-btn" data-id="water" data-category="drank" data-price="5" aria-pressed="false">
+          <span class="opt-name">Acqua naturale &amp; frizzante</span>
+          <span class="opt-price">€5 p.p.</span>
           <span class="opt-check">Selezionato</span>
         </button>
       </div>
@@ -451,43 +446,58 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
 </footer>
 
 <script>
-const SETUP_TOTAL=200,MIN_GUESTS=20,TABLE_SERVICE=8,FREE_KM=20,RATE_PER_KM=1.35;
-const COMBO_MARKUP={2:.25,3:.30,4:.35};
+const SETUP_TOTAL=200,MIN_GUESTS=20,FREE_KM=20,RATE_PER_KM=1.35;
+const COMBO_MARKUP={2:.25,3:.30,4:.35,5:.38,6:.40};
 const BASE_ADDRESS='Ravenstraat 38, 3000 Leuven, Belgium';
 const VOLUME=[{min:100,disc:.12},{min:75,disc:.09},{min:50,disc:.06},{min:35,disc:.03},{min:1,disc:0}];
+const PIZZA_PRICE=[{min:100,price:23},{min:75,price:24},{min:50,price:25},{min:35,price:25},{min:1,price:26}];
 const MAIN_CAT='hoofd';
-const PASTA_IDS=['pasta','pasta-truffel'];
 const L={
-  setup:'Opstart (verdeeld over ',setupEnd:' pers.)',
-  transportLine:'Transport ({excess} km × €1,35)',table:'Pasta aan tafel geserveerd',
-  disc:'Groepskorting',warn:'Kies minstens één hoofdgerecht.',
-  distLoading:'Afstand berekenen…',distError:'Locatie niet gevonden. Probeer gemeente of volledig adres.',
-  distOk:'{km} km van Leuven — geen transportkosten',
-  distFar:'{km} km van Leuven — transport {cost} totaal ({excess} km × €1,35)'
+  setup:'Setup (ripartito su ',setupEnd:' persone)',
+  transportLine:'Trasporto ({excess} km × €1,35)',
+  disc:'Sconto di gruppo',warn:'Selezionate almeno un piatto principale.',
+  distLoading:'Calcolo distanza…',distError:'Posizione non trovata. Provate comune o indirizzo completo.',
+  distOk:'{km} km da Leuven — nessun costo di trasporto',
+  distFar:'{km} km da Leuven — trasporto {cost} totale ({excess} km × €1,35)'
 };
 
 let distanceKm=null,baseCoords=null,locatieTimer=null;
 
-const fmt=n=>'€'+n.toLocaleString('nl-BE',{minimumFractionDigits:0,maximumFractionDigits:2});
-const fmtDec=n=>'€'+n.toLocaleString('nl-BE',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmt=n=>'€'+n.toLocaleString('it-IT',{minimumFractionDigits:0,maximumFractionDigits:2});
+const fmtDec=n=>'€'+n.toLocaleString('it-IT',{minimumFractionDigits:2,maximumFractionDigits:2});
 
 function getGuests(){
   const v=parseInt(document.getElementById('guests').value,10);
   return isNaN(v)||v<1?MIN_GUESTS:v;
 }
 
+function pizzaPrice(guests){
+  for(const t of PIZZA_PRICE) if(guests>=t.min) return t.price;
+  return 26;
+}
+
+function updatePizzaDisplay(){
+  const guests=getGuests();
+  const pp=pizzaPrice(guests);
+  const btn=document.querySelector('.opt-btn[data-id="pizza"]');
+  if(btn) btn.dataset.price=String(pp);
+  const lbl=document.getElementById('pizza-price-label');
+  if(lbl) lbl.textContent=(pp<26?'€':'da €')+pp+' p.p. · à volonté';
+}
+
 function getSelected(){
+  const pizzaPP=pizzaPrice(getGuests());
   return [...document.querySelectorAll('.opt-btn[aria-pressed="true"]')].map(b=>({
     id:b.dataset.id,
     name:b.querySelector('.opt-name').textContent.trim(),
-    price:parseFloat(b.dataset.price),
+    price:b.dataset.id==='pizza'?pizzaPP:parseFloat(b.dataset.price),
     category:b.dataset.category
   }));
 }
 
 function comboMarkup(n){
   if(n<2) return 0;
-  return COMBO_MARKUP[Math.min(n,4)]||0.35;
+  return COMBO_MARKUP[Math.min(n,6)]||0.40;
 }
 
 function priceCategoryItems(items){
@@ -507,15 +517,6 @@ function priceCategoryItems(items){
 function volumeDiscount(guests){
   for(const t of VOLUME) if(guests>=t.min) return t.disc;
   return 0;
-}
-
-function updatePastaPanel(){
-  const hasPasta=getSelected().some(s=>PASTA_IDS.includes(s.id));
-  document.getElementById('pasta-service-panel').hidden=!hasPasta;
-}
-
-function getPastaService(){
-  return document.querySelector('.service-btn[data-service="tafel"][aria-pressed="true"]')?'tafel':'buffet';
 }
 
 async function geocode(query){
@@ -594,6 +595,7 @@ async function updateDistance(){
 }
 
 function calculate(){
+  updatePizzaDisplay();
   const guests=getGuests();
   const billable=Math.max(guests,MIN_GUESTS);
   const selected=getSelected();
@@ -612,11 +614,6 @@ function calculate(){
     food+=r.total;
     lines.push(...r.lines);
   });
-
-  if(selected.some(s=>PASTA_IDS.includes(s.id))&&getPastaService()==='tafel'){
-    food+=TABLE_SERVICE;
-    lines.push({label:L.table,value:TABLE_SERVICE});
-  }
 
   const setupPP=SETUP_TOTAL/billable;
   food+=setupPP;
@@ -661,7 +658,7 @@ function calculate(){
   document.getElementById('prijs-totaal-hidden').value=total.toFixed(2);
   document.getElementById('config-hidden').value=JSON.stringify({
     guests,locatie:document.getElementById('locatie').value,
-    distanceKm,transportTotal:tTotal,pastaService:getPastaService(),selected
+    distanceKm,transportTotal:tTotal,selected
   });
 }
 
@@ -669,15 +666,6 @@ document.querySelectorAll('.opt-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const on=btn.getAttribute('aria-pressed')==='true';
     btn.setAttribute('aria-pressed',on?'false':'true');
-    updatePastaPanel();
-    calculate();
-  });
-});
-
-document.querySelectorAll('.service-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.service-btn').forEach(b=>b.setAttribute('aria-pressed','false'));
-    btn.setAttribute('aria-pressed','true');
     calculate();
   });
 });
@@ -717,7 +705,6 @@ if(toggle&&menu){
   window.addEventListener('resize',()=>{if(window.innerWidth>=980)close()});
 }
 
-updatePastaPanel();
 (function initDatum(){
   const el=document.getElementById('datum');
   if(!el||el.value) return;
