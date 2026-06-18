@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Piano C Catering | Authentieke Apulische pizza- & pastacatering in Leuven</title>
-<meta name="description" content="Piano C brengt authentieke Apulische pizza- en pastacatering naar jouw event in Leuven en omstreken. Verse pizza's uit de mobiele houtoven, huisgemaakte pasta en een echt Italiaans feest. Vraag je offerte aan.">
+<meta name="description" content="Piano C: restaurantkwaliteit op je event. Dezelfde recepten en top-ingrediënten als Piano A en Piano B — verse pizza uit de houtoven en huisgemaakte pasta in Leuven en omstreken.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.pianocatering.be/">
 <link rel="alternate" hreflang="nl" href="https://www.pianocatering.be/">
@@ -15,7 +15,7 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Piano C Catering | Apulische pizza- & pastacatering in Leuven">
-<meta property="og:description" content="Verse pizza's uit de mobiele houtoven en huisgemaakte pasta, bij jou ter plaatse geserveerd. Een echt Apulisch feest voor jouw event.">
+<meta property="og:description" content="Dezelfde gerechten als Piano A en Piano B — top ingrediënten, vers gemaakt, bij jou ter plaatse. Ongesien in catering.">
 <meta property="og:locale" content="nl_BE">
 <meta property="og:url" content="https://www.pianocatering.be/">
 <meta property="og:site_name" content="Piano C Catering">
@@ -64,7 +64,7 @@
       },
       "servesCuisine": ["Italian", "Apulian", "Pizza", "Pasta"],
       "priceRange": "€€",
-      "description": "Authentieke Apulische pizza- en pastacatering voor events in Leuven en omstreken. Verse pizza uit mobiele houtoven, huisgemaakte pasta, à volonté buffet.",
+      "description": "Restaurantkwaliteit catering in Leuven: dezelfde recepten en top-ingrediënten als Piano A en Piano B. Verse pizza uit mobiele houtoven, huisgemaakte pasta.",
       "sameAs": ["https://pianoa.piano-ab.be", "https://pianob.piano-ab.be"],
       "parentOrganization": {
         "@type": "Organization",
@@ -82,9 +82,9 @@
         "@type": "OfferCatalog",
         "name": "Catering formules",
         "itemListElement": [
-          {"@type": "Offer", "name": "Pizza Buffet", "price": "20", "priceCurrency": "EUR", "description": "Min. 20 personen, 5 pizza's, mobiele houtoven, 2 uur à volonté"},
-          {"@type": "Offer", "name": "Pasta Buffet", "price": "20", "priceCurrency": "EUR", "description": "Min. 20 personen, 4 huisgemaakte pasta's, warm geserveerd"},
-          {"@type": "Offer", "name": "Combi Pizza + Pasta", "price": "20", "priceCurrency": "EUR", "description": "Vanaf 50 personen"}
+          {"@type": "Offer", "name": "Pizza Buffet", "price": "24", "priceCurrency": "EUR", "description": "Min. 20 personen, 5 pizza's uit Piano A & B, mobiele houtoven"},
+          {"@type": "Offer", "name": "Pasta", "price": "25", "priceCurrency": "EUR", "description": "Losse pastagerechten, zelfde recepten als de restaurants"},
+          {"@type": "Offer", "name": "Combi Pizza + Pasta", "price": "24", "priceCurrency": "EUR", "description": "Combineer via offertepagina"}
         ]
       }
     }
@@ -357,6 +357,22 @@ section{padding:var(--section-pad) 0;position:relative}
 .menu-col li span{font-size:.88rem;color:rgba(74,52,42,.75)}
 .menu-wip{margin-top:28px;text-align:center;border:1px dashed var(--terracotta);border-radius:8px;padding:20px 18px;background:rgba(192,86,46,.06);font-size:.92rem;color:rgba(74,52,42,.85)}
 
+/* ---------- KWALITEITSBELOFTE ---------- */
+.quality-pledge{background:var(--espresso);color:var(--cream);padding:var(--section-pad) 0}
+.quality-pledge .section-head{text-align:center;max-width:44rem;margin:0 auto}
+.quality-pledge .kicker{color:var(--terracotta)}
+.quality-pledge h2{color:var(--cream);font-size:clamp(1.75rem,6vw,2.75rem);margin:12px 0 16px;line-height:1.08}
+.quality-pledge .lead{color:rgba(244,241,236,.88);font-size:1rem;line-height:1.55;margin-bottom:28px}
+@media(min-width:760px){.quality-pledge .lead{font-size:1.06rem;margin-bottom:36px}}
+.quality-grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:600px){.quality-grid{grid-template-columns:1fr 1fr;gap:14px}}
+@media(min-width:980px){.quality-grid{grid-template-columns:repeat(4,1fr);gap:16px}}
+.quality-item{background:rgba(244,241,236,.06);border:1px solid rgba(244,241,236,.12);border-radius:8px;padding:20px 18px;text-align:left}
+.quality-item strong{font-family:var(--font-display);font-size:1.06rem;display:block;margin-bottom:8px;color:var(--cream);font-weight:500}
+.quality-item p{font-size:.86rem;color:rgba(244,241,236,.78);margin:0;line-height:1.45}
+.quality-tagline{font-family:var(--font-display);font-style:italic;font-size:clamp(1.12rem,4.2vw,1.5rem);text-align:center;margin-top:28px;color:var(--terracotta);line-height:1.35}
+@media(min-width:760px){.quality-tagline{margin-top:36px}}
+
 /* ---------- PROEF VOORAF ---------- */
 .proef-box{
   background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:28px 22px;
@@ -503,9 +519,9 @@ footer a:hover{color:var(--cream)}
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="kicker reveal in">Pizza & Pasta Catering · Leuven</span>
+      <span class="kicker reveal in">Piano A &amp; Piano B · Restaurantkwaliteit</span>
       <h1 class="reveal in" data-d="1">Een stukje <em>Puglia</em> op jouw feest.</h1>
-      <p class="lead reveal in" data-d="2">Wij brengen de authentieke smaken van het Italiaanse zuiden naar jou ter plaatse. Verse pizza's uit de mobiele houtoven en huisgemaakte pasta, warm en met zorg uitgeserveerd aan je gasten.</p>
+      <p class="lead reveal in" data-d="2">Niet zomaar catering: dezelfde gerechten en recepten als in onze restaurants Piano A en Piano B. Vers zelfgemaakt deeg, top ingrediënten en Italiaanse roots — bij jou ter plaatse, met trots geserveerd.</p>
       <div class="hero-cta reveal in" data-d="3">
         <a href="offerte-aanvraag.html" class="btn">Vraag je offerte</a>
         <a href="#formules" class="btn btn-ghost">Bekijk de formules</a>
@@ -516,7 +532,7 @@ footer a:hover{color:var(--cream)}
       <div class="frame tall reveal in" data-d="2">
         <span class="ph">[ Foto: pizza uit de mobiele oven<br>4 : 5 staand ]</span>
       </div>
-      <span class="tag-float tag-float--bot">Vers · ter plaatse · ambachtelijk</span>
+      <span class="tag-float tag-float--bot">Restaurantkwaliteit · vers · ambachtelijk</span>
     </div>
   </div>
 </section>
@@ -524,10 +540,40 @@ footer a:hover{color:var(--cream)}
 <!-- ============ TICKER ============ -->
 <div class="ticker">
   <div class="ticker-track">
-    <span>Pizza Napoletana</span><b>✦</b><span>Orecchiette</span><b>✦</b><span>Burrata</span><b>✦</b><span>Mobiele houtoven</span><b>✦</b><span>Aperitivo Italiano</span><b>✦</b><span>Dolce</span><b>✦</b><span>Apulian Concept</span><b>✦</b>
-    <span>Pizza Napoletana</span><b>✦</b><span>Orecchiette</span><b>✦</b><span>Burrata</span><b>✦</b><span>Mobiele houtoven</span><b>✦</b><span>Aperitivo Italiano</span><b>✦</b><span>Dolce</span><b>✦</b><span>Apulian Concept</span><b>✦</b>
+    <span>Piano A &amp; Piano B</span><b>✦</b><span>Top ingrediënten</span><b>✦</b><span>Zelfgemaakt deeg</span><b>✦</b><span>Restaurantkwaliteit</span><b>✦</b><span>Mobiele houtoven</span><b>✦</b><span>Huisgemaakte pasta</span><b>✦</b><span>Apulische roots</span><b>✦</b>
+    <span>Piano A &amp; Piano B</span><b>✦</b><span>Top ingrediënten</span><b>✦</b><span>Zelfgemaakt deeg</span><b>✦</b><span>Restaurantkwaliteit</span><b>✦</b><span>Mobiele houtoven</span><b>✦</b><span>Huisgemaakte pasta</span><b>✦</b><span>Apulische roots</span><b>✦</b>
   </div>
 </div>
+
+<!-- ============ KWALITEIT ============ -->
+<section class="quality-pledge" id="kwaliteit">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Waar we trots op zijn</span>
+      <h2>Geen cateringversie.<br>Wel restaurantkwaliteit.</h2>
+      <p class="lead">Elk gerecht dat wij op je event serveren, staat ook op de kaart in Piano A en Piano B. Dezelfde recepten, dezelfde Italiaanse roots — vers gemaakt, met zorg bereid. Dat is ongezien in catering.</p>
+    </div>
+    <div class="quality-grid reveal" data-d="1">
+      <div class="quality-item">
+        <strong>Top ingrediënten</strong>
+        <p>Wij werken met producten van absolute topkwaliteit. Onze foodkost ligt hoger dan bij andere caterers — bewust, en met trots.</p>
+      </div>
+      <div class="quality-item">
+        <strong>Top recepten</strong>
+        <p>Geen vereenvoudigde versies. Wat je proeft op je feest, is wat onze gasten elke dag in Leuven op hun bord krijgen.</p>
+      </div>
+      <div class="quality-item">
+        <strong>Vers &amp; zelfgemaakt</strong>
+        <p>Vers deeg, huisgemaakte pasta en sauzen bereid met dezelfde zorg als in onze restaurants.</p>
+      </div>
+      <div class="quality-item">
+        <strong>Italiaanse roots</strong>
+        <p>Authentieke Apulische keuken, door Alessandro, Andrea en Mattia — met de gastvrijheid van Salento.</p>
+      </div>
+    </div>
+    <p class="quality-tagline reveal" data-d="2">Dit is echt ongezien dat je dit in catering kunt krijgen.</p>
+  </div>
+</section>
 
 <!-- ============ FORMULES ============ -->
 <section class="formules" id="formules">
@@ -535,7 +581,7 @@ footer a:hover{color:var(--cream)}
     <div class="section-head reveal">
       <span class="kicker">Onze formules</span>
       <h2>Kies je feest: pizza, pasta of beide</h2>
-      <p>Twee volwaardige buffetten uit de Apulische keuken, met dezelfde recepten, ingrediënten en gerechten als in onze restaurants Piano A en Piano B. Alle prijzen per persoon, excl. 12% btw.</p>
+      <p>Restaurantgerechten op je event — geen alternatieven, geen shortcuts. Dezelfde recepten en topproducten als in Piano A en Piano B. Alle prijzen per persoon, excl. 12% btw.</p>
     </div>
 
     <div class="cards">
@@ -565,8 +611,8 @@ footer a:hover{color:var(--cream)}
         <ul>
           <li>Parmigiana, orecchiette cime di rapa</li>
           <li>Pasta met kreeft, cacio e pepe</li>
-          <li>Kies één of meerdere pasta's in de offertepagina</li>
-          <li>Vegetarische opties beschikbaar</li>
+          <li>Zelfde recepten als in Piano A en Piano B</li>
+          <li>Top ingrediënten, vers bereid ter plaatse</li>
         </ul>
         <a href="offerte-aanvraag.html#configurator" class="btn">Stel je formule samen</a>
       </div>
@@ -578,10 +624,10 @@ footer a:hover{color:var(--cream)}
     </div>
 
     <div class="proef-box reveal">
-      <span class="kicker">Proef vooraf in onze restaurants</span>
-      <h2>Geen cateringversie, wel de echte keuken van Piano A &amp; Piano B</h2>
-      <p>Bij Piano C krijg je exact dezelfde recepten, ingrediënten en gerechten als in onze restaurants. Wat je op je feest serveert, is wat je ook elke dag op je bord krijgt in Leuven.</p>
-      <p>Twijfel je over je keuze? Kom gerust langs in Piano A of Piano B om alles van tevoren te proeven en samen je menu op te stellen.</p>
+      <span class="kicker">Proef het zelf</span>
+      <h2>Hetzelfde bord als in Piano A &amp; Piano B</h2>
+      <p>Bij Piano C krijg je geen afgezwakte cateringversie, maar exact dezelfde gerechten, recepten en ingrediënten als in onze restaurants. Wij investeren in topkwaliteit — dat proef je in elke hap.</p>
+      <p>Twijfel je? Kom langs in Piano A of Piano B, proef alles van tevoren en stel met vertrouwen je menu samen. Wat je daar proeft, is wat je gasten op je feest krijgen.</p>
       <div class="proef-links">
         <a href="https://pianoa.piano-ab.be" class="btn btn-ghost" target="_blank" rel="noopener">Proef in Piano A</a>
         <a href="https://pianob.piano-ab.be" class="btn btn-ghost" target="_blank" rel="noopener">Proef in Piano B</a>
@@ -596,7 +642,7 @@ footer a:hover{color:var(--cream)}
     <div class="section-head reveal">
       <span class="kicker">Ons menu</span>
       <h2>De smaken van Puglia</h2>
-      <p>Dezelfde gerechten als in Piano A en Piano B. Kies 5 pizza's en 4 pasta's voor je buffet.</p>
+      <p>Dezelfde gerechten als in Piano A en Piano B — met dezelfde top-ingrediënten, vers bereid. Kies je pizza's en pasta's voor je buffet.</p>
     </div>
     <div class="menu-columns">
       <div class="menu-col reveal">
@@ -634,7 +680,7 @@ footer a:hover{color:var(--cream)}
       <div class="step reveal" data-d="1"><span class="n">1</span><h4>Kies je formule</h4><p>Pizza, pasta of de combinatie, samen met je aperitivo en dolce.</p></div>
       <div class="step reveal" data-d="2"><span class="n">2</span><h4>Wij stemmen af</h4><p>Aantal gasten, locatie en timing. Je krijgt een heldere offerte.</p></div>
       <div class="step reveal" data-d="3"><span class="n">3</span><h4>Wij bouwen op</h4><p>Onze mobiele keuken en oven worden ter plaatse geïnstalleerd.</p></div>
-      <div class="step reveal" data-d="4"><span class="n">4</span><h4>Vers geserveerd</h4><p>Pizza vers uit de houtoven, pasta warm uitgeserveerd aan je gasten.</p></div>
+      <div class="step reveal" data-d="4"><span class="n">4</span><h4>Vers geserveerd</h4><p>Restaurantkwaliteit ter plaatse: pizza vers uit de houtoven, pasta warm geserveerd — zelfde zorg als in Piano A en Piano B.</p></div>
       <div class="step reveal" data-d="5"><span class="n">5</span><h4>Iedereen blij</h4><p>Jij geniet mee, wij ruimen op. Een zorgeloos Italiaans feest.</p></div>
     </div>
   </div>
@@ -649,8 +695,9 @@ footer a:hover{color:var(--cream)}
     <div class="reveal" data-d="1">
       <span class="kicker">Het Apulian Concept</span>
       <h2>De catering van Piano A &amp; Piano B</h2>
-      <p>Piano C is de cateringtak van Piano in Leuven. Bij Piano A en Piano B proef je elke dag de authentieke keuken van Puglia, het zuiden van Italië. Met Piano C brengen Alessandro, Andrea en Mattia diezelfde recepten, ingrediënten en gerechten naar jouw event. Geen shortcuts, geen alternatieven.</p>
-      <p>Vers deeg, echte ingrediënten en de gastvrijheid van Salento, bij jou ter plaatse. Kom vooraf proeven in onze restaurants en stel zo met vertrouwen je cateringmenu samen.</p>
+      <p>Piano C is de cateringtak van Piano in Leuven. Bij Piano A en Piano B proef je elke dag de authentieke keuken van Puglia. Met Piano C brengen Alessandro, Andrea en Mattia diezelfde recepten, ingrediënten en gerechten naar jouw event — geen shortcuts, geen alternatieven.</p>
+      <p>Wij werken met topproducten en top ingrediënten, vers gemaakt met Italiaanse roots. Onze foodkost ligt hoger dan bij andere caterers, en dat is geen toeval: kwaliteit staat bij ons voorop. Dat is wat Piano C ongezien maakt in de wereld van catering.</p>
+      <p>Kom vooraf proeven in onze restaurants en ervaar zelf dat wat je op je feest krijgt, echt restaurantkwaliteit is.</p>
       <div class="over-links">
         <a href="https://pianoa.piano-ab.be" class="btn btn-light" target="_blank" rel="noopener">Piano A</a>
         <a href="https://pianob.piano-ab.be" class="btn btn-light" target="_blank" rel="noopener">Piano B</a>
@@ -689,8 +736,8 @@ footer a:hover{color:var(--cream)}
 <!-- ============ CTA BAND ============ -->
 <section class="cta-band">
   <div class="wrap">
-    <h2 class="reveal">Klaar voor een Italiaans feest?</h2>
-    <p class="reveal" data-d="1">Vertel ons over je event en ontvang een offerte op maat. Pizza, pasta of de combinatie, wij maken het waar.</p>
+    <h2 class="reveal">Klaar voor restaurantkwaliteit op je feest?</h2>
+    <p class="reveal" data-d="1">Vertel ons over je event en ontvang een offerte op maat. Top ingrediënten, top recepten — hetzelfde als in Piano A en Piano B.</p>
     <a href="offerte-aanvraag.html" class="btn btn-light reveal" data-d="2">Vraag je offerte aan</a>
   </div>
 </section>
@@ -703,7 +750,7 @@ footer a:hover{color:var(--cream)}
     <div class="foot-grid">
       <div>
         <a href="index.html" class="brand"><span class="name">Piano C</span><span class="sub">Apulian Catering</span></a>
-        <p style="margin-top:18px;max-width:36ch;font-size:.92rem">Authentieke Apulische pizza- en pastacatering voor events in Leuven en omstreken.</p>
+        <p style="margin-top:18px;max-width:40ch;font-size:.92rem">Restaurantkwaliteit catering in Leuven. Dezelfde gerechten en top-ingrediënten als Piano A en Piano B — vers gemaakt, met trots geserveerd.</p>
       </div>
       <div>
         <h5>Navigatie</h5>

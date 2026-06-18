@@ -303,6 +303,21 @@ section{padding:var(--section-pad) 0;position:relative}
 .menu-col li span{font-size:.88rem;color:rgba(74,52,42,.75)}
 .menu-wip{margin-top:28px;text-align:center;border:1px dashed var(--terracotta);border-radius:8px;padding:20px 18px;background:rgba(192,86,46,.06);font-size:.92rem;color:rgba(74,52,42,.85)}
 
+.quality-pledge{background:var(--espresso);color:var(--cream);padding:var(--section-pad) 0}
+.quality-pledge .section-head{text-align:center;max-width:44rem;margin:0 auto}
+.quality-pledge .kicker{color:var(--terracotta)}
+.quality-pledge h2{color:var(--cream);font-size:clamp(1.75rem,6vw,2.75rem);margin:12px 0 16px;line-height:1.08}
+.quality-pledge .lead{color:rgba(244,241,236,.88);font-size:1rem;line-height:1.55;margin-bottom:28px}
+@media(min-width:760px){.quality-pledge .lead{font-size:1.06rem;margin-bottom:36px}}
+.quality-grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:600px){.quality-grid{grid-template-columns:1fr 1fr;gap:14px}}
+@media(min-width:980px){.quality-grid{grid-template-columns:repeat(4,1fr);gap:16px}}
+.quality-item{background:rgba(244,241,236,.06);border:1px solid rgba(244,241,236,.12);border-radius:8px;padding:20px 18px;text-align:left}
+.quality-item strong{font-family:var(--font-display);font-size:1.06rem;display:block;margin-bottom:8px;color:var(--cream);font-weight:500}
+.quality-item p{font-size:.86rem;color:rgba(244,241,236,.78);margin:0;line-height:1.45}
+.quality-tagline{font-family:var(--font-display);font-style:italic;font-size:clamp(1.12rem,4.2vw,1.5rem);text-align:center;margin-top:28px;color:var(--terracotta);line-height:1.35}
+@media(min-width:760px){.quality-tagline{margin-top:36px}}
+
 .proef-box{
   background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:28px 22px;
   max-width:820px;margin:36px auto 0;text-align:center;
@@ -442,9 +457,9 @@ footer a:hover{color:var(--cream)}
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="kicker reveal in">Catering Pizza &amp; Pasta · Leuven</span>
+      <span class="kicker reveal in">Piano A &amp; Piano B · Qualità ristorante</span>
       <h1 class="reveal in" data-d="1">Un pezzo di <em>Puglia</em> alla vostra festa.</h1>
-      <p class="lead reveal in" data-d="2">Portiamo i sapori autentici del Sud Italia direttamente da voi. Pizza fresca dal forno a legna mobile e pasta fatta in casa, servite calde e con cura ai vostri ospiti.</p>
+      <p class="lead reveal in" data-d="2">Non semplice catering: gli stessi piatti e ricette dei nostri ristoranti Piano A e Piano B. Impasto fresco fatto in casa, ingredienti top e radici italiane — serviti in loco, con orgoglio.</p>
       <div class="hero-cta reveal in" data-d="3">
         <a href="offerte-aanvraag.html" class="btn">Richiedi preventivo</a>
         <a href="#formules" class="btn btn-ghost">Scopri le formule</a>
@@ -455,24 +470,53 @@ footer a:hover{color:var(--cream)}
       <div class="frame tall reveal in" data-d="2">
         <span class="ph">[ Foto: pizza dal forno mobile<br>4 : 5 verticale ]</span>
       </div>
-      <span class="tag-float tag-float--bot">Fresco · in loco · artigianale</span>
+      <span class="tag-float tag-float--bot">Qualità ristorante · fresco · artigianale</span>
     </div>
   </div>
 </section>
 
 <div class="ticker">
   <div class="ticker-track">
-    <span>Pizza Napoletana</span><b>✦</b><span>Orecchiette</span><b>✦</b><span>Burrata</span><b>✦</b><span>Forno a legna mobile</span><b>✦</b><span>Aperitivo Italiano</span><b>✦</b><span>Dolce</span><b>✦</b><span>Apulian Concept</span><b>✦</b>
-    <span>Pizza Napoletana</span><b>✦</b><span>Orecchiette</span><b>✦</b><span>Burrata</span><b>✦</b><span>Forno a legna mobile</span><b>✦</b><span>Aperitivo Italiano</span><b>✦</b><span>Dolce</span><b>✦</b><span>Apulian Concept</span><b>✦</b>
+    <span>Piano A &amp; Piano B</span><b>✦</b><span>Ingredienti top</span><b>✦</b><span>Impasto fatto in casa</span><b>✦</b><span>Qualità ristorante</span><b>✦</b><span>Forno a legna mobile</span><b>✦</b><span>Pasta fatta in casa</span><b>✦</b><span>Radici pugliesi</span><b>✦</b>
+    <span>Piano A &amp; Piano B</span><b>✦</b><span>Ingredienti top</span><b>✦</b><span>Impasto fatto in casa</span><b>✦</b><span>Qualità ristorante</span><b>✦</b><span>Forno a legna mobile</span><b>✦</b><span>Pasta fatta in casa</span><b>✦</b><span>Radici pugliesi</span><b>✦</b>
   </div>
 </div>
+
+<section class="quality-pledge" id="qualita">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Di cosa siamo orgogliosi</span>
+      <h2>Niente versione catering.<br>Qualità da ristorante.</h2>
+      <p class="lead">Ogni piatto che serviamo al vostro evento è anche nel menu di Piano A e Piano B. Le stesse ricette, le stesse radici italiane — fresco, preparato con cura. È inaudito nel catering.</p>
+    </div>
+    <div class="quality-grid reveal" data-d="1">
+      <div class="quality-item">
+        <strong>Ingredienti top</strong>
+        <p>Lavoriamo con prodotti di assoluta qualità. Il nostro food cost è più alto di altri caterer — di proposito, e con orgoglio.</p>
+      </div>
+      <div class="quality-item">
+        <strong>Ricette top</strong>
+        <p>Niente versioni semplificate. Ciò che assaggiate alla vostra festa è ciò che i nostri ospiti mangiano ogni giorno a Leuven.</p>
+      </div>
+      <div class="quality-item">
+        <strong>Fresco &amp; fatto in casa</strong>
+        <p>Impasto fresco, pasta e salse fatte in casa con la stessa cura dei nostri ristoranti.</p>
+      </div>
+      <div class="quality-item">
+        <strong>Radici italiane</strong>
+        <p>Cucina pugliese autentica di Alessandro, Andrea e Mattia — con l'ospitalità del Salento.</p>
+      </div>
+    </div>
+    <p class="quality-tagline reveal" data-d="2">È davvero inaudito poter avere tutto questo nel catering.</p>
+  </div>
+</section>
 
 <section class="formules" id="formules">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="kicker">Le nostre formule</span>
       <h2>Scegliete la vostra festa: pizza, pasta o entrambe</h2>
-      <p>Due buffet completi dalla cucina pugliese, con le stesse ricette, ingredienti e piatti dei nostri ristoranti Piano A e Piano B. Tutti i prezzi a persona, IVA 12% esclusa.</p>
+      <p>Piatti da ristorante al vostro evento — niente sostituti, niente scorciatoie. Le stesse ricette e prodotti top di Piano A e Piano B. Tutti i prezzi a persona, IVA 12% esclusa.</p>
     </div>
 
     <div class="cards">
@@ -500,8 +544,8 @@ footer a:hover{color:var(--cream)}
         <ul>
           <li>Parmigiana, orecchiette cime di rapa</li>
           <li>Pasta con astice, cacio e pepe</li>
-          <li>Scegliete una o più paste nella pagina preventivo</li>
-          <li>Opzioni vegetariane disponibili</li>
+          <li>Stesse ricette di Piano A e Piano B</li>
+          <li>Ingredienti top, preparati freschi in loco</li>
         </ul>
         <a href="offerte-aanvraag.html#configurator" class="btn">Componete la vostra formula</a>
       </div>
@@ -513,10 +557,10 @@ footer a:hover{color:var(--cream)}
     </div>
 
     <div class="proef-box reveal">
-      <span class="kicker">Assaggiate prima nei nostri ristoranti</span>
-      <h2>Niente versione catering, la vera cucina di Piano A &amp; Piano B</h2>
-      <p>Con Piano C ricevete esattamente le stesse ricette, ingredienti e piatti dei nostri ristoranti. Ciò che servite alla vostra festa è ciò che mangiate ogni giorno a Leuven.</p>
-      <p>Avete dubbi sulla scelta? Passate da Piano A o Piano B per assaggiare tutto in anticipo e comporre insieme il vostro menu.</p>
+      <span class="kicker">Assaggiatelo voi stessi</span>
+      <h2>Lo stesso piatto di Piano A &amp; Piano B</h2>
+      <p>Con Piano C non ricevete una versione catering attenuata, ma esattamente gli stessi piatti, ricette e ingredienti dei nostri ristoranti. Investiamo nella massima qualità — si sente in ogni boccone.</p>
+      <p>Avete dubbi? Passate da Piano A o Piano B, assaggiate tutto in anticipo e componete il menu con fiducia. Ciò che assaggiate lì è ciò che i vostri ospiti riceveranno alla festa.</p>
       <div class="proef-links">
         <a href="https://pianoa.piano-ab.be" class="btn btn-ghost" target="_blank" rel="noopener">Assaggia a Piano A</a>
         <a href="https://pianob.piano-ab.be" class="btn btn-ghost" target="_blank" rel="noopener">Assaggia a Piano B</a>
@@ -530,7 +574,7 @@ footer a:hover{color:var(--cream)}
     <div class="section-head reveal">
       <span class="kicker">Il nostro menu</span>
       <h2>I sapori della Puglia</h2>
-      <p>Gli stessi piatti di Piano A e Piano B. Scegliete 5 pizze e 4 paste per il vostro buffet.</p>
+      <p>Gli stessi piatti di Piano A e Piano B — con gli stessi ingredienti top, preparati freschi. Scegliete le vostre pizze e paste per il buffet.</p>
     </div>
     <div class="menu-columns">
       <div class="menu-col reveal">
@@ -567,7 +611,7 @@ footer a:hover{color:var(--cream)}
       <div class="step reveal" data-d="1"><span class="n">1</span><h4>Scegliete la formule</h4><p>Pizza, pasta o la combinazione, insieme ad aperitivo e dolce.</p></div>
       <div class="step reveal" data-d="2"><span class="n">2</span><h4>Organizziamo insieme</h4><p>Numero di ospiti, location e orari. Riceverete un preventivo chiaro.</p></div>
       <div class="step reveal" data-d="3"><span class="n">3</span><h4>Installiamo tutto</h4><p>La nostra cucina mobile e il forno vengono allestiti in loco.</p></div>
-      <div class="step reveal" data-d="4"><span class="n">4</span><h4>Servizio fresco</h4><p>Pizza appena sfornata, pasta servita calda ai vostri ospiti.</p></div>
+      <div class="step reveal" data-d="4"><span class="n">4</span><h4>Servizio fresco</h4><p>Qualità da ristorante in loco: pizza appena sfornata, pasta servita calda — la stessa cura di Piano A e Piano B.</p></div>
       <div class="step reveal" data-d="5"><span class="n">5</span><h4>Tutti felici</h4><p>Voi godetevi la festa, noi pensiamo al resto. Una serata italiana senza pensieri.</p></div>
     </div>
   </div>
@@ -581,8 +625,9 @@ footer a:hover{color:var(--cream)}
     <div class="reveal" data-d="1">
       <span class="kicker">The Apulian Concept</span>
       <h2>Il catering di Piano A &amp; Piano B</h2>
-      <p>Piano C è il ramo catering di Piano a Leuven. A Piano A e Piano B assaggiate ogni giorno la cucina autentica della Puglia, il Sud Italia. Con Piano C, Alessandro, Andrea e Mattia portano le stesse ricette, ingredienti e piatti al vostro evento, senza scorciatoie, senza compromessi.</p>
-      <p>Impasto fresco, ingredienti veri e l'ospitalità del Salento, direttamente da voi. Assaggiate prima nei nostri ristoranti e componete il vostro menu catering con tranquillità.</p>
+      <p>Piano C è il ramo catering di Piano a Leuven. A Piano A e Piano B assaggiate ogni giorno la cucina autentica della Puglia. Con Piano C, Alessandro, Andrea e Mattia portano le stesse ricette, ingredienti e piatti al vostro evento — senza scorciatoie, senza compromessi.</p>
+      <p>Lavoriamo con prodotti top e ingredienti di prima scelta, freschi, con radici italiane. Il nostro food cost è più alto di altri caterer, e non è un caso: la qualità viene prima. È ciò che rende Piano C inaudito nel catering.</p>
+      <p>Assaggiate prima nei nostri ristoranti e scoprite che ciò che ricevete al vostro evento è vera qualità da ristorante.</p>
       <div class="over-links">
         <a href="https://pianoa.piano-ab.be" class="btn btn-light" target="_blank" rel="noopener">Piano A</a>
         <a href="https://pianob.piano-ab.be" class="btn btn-light" target="_blank" rel="noopener">Piano B</a>
@@ -619,8 +664,8 @@ footer a:hover{color:var(--cream)}
 
 <section class="cta-band">
   <div class="wrap">
-    <h2 class="reveal">Pronti per una festa italiana?</h2>
-    <p class="reveal" data-d="1">Raccontateci il vostro evento e riceverete un preventivo su misura. Pizza, pasta o la combinazione, noi lo realizziamo.</p>
+    <h2 class="reveal">Pronti per qualità da ristorante al vostro evento?</h2>
+    <p class="reveal" data-d="1">Raccontateci il vostro evento e riceverete un preventivo su misura. Ingredienti top, ricette top — come a Piano A e Piano B.</p>
     <a href="offerte-aanvraag.html" class="btn btn-light reveal" data-d="2">Richiedi preventivo</a>
   </div>
 </section>
@@ -631,7 +676,7 @@ footer a:hover{color:var(--cream)}
     <div class="foot-grid">
       <div>
         <a href="index.html" class="brand"><span class="name">Piano C</span><span class="sub">Apulian Catering</span></a>
-        <p style="margin-top:18px;max-width:36ch;font-size:.92rem">Autentico catering pizza e pasta pugliese per eventi a Leuven e dintorni.</p>
+        <p style="margin-top:18px;max-width:40ch;font-size:.92rem">Catering con qualità da ristorante a Leuven. Gli stessi piatti e ingredienti top di Piano A e Piano B — fresco, servito con orgoglio.</p>
       </div>
       <div>
         <h5>Navigazione</h5>
