@@ -172,6 +172,11 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,241,236,.92);backdro
 .form-field:last-of-type{margin-bottom:26px}
 .form-submit{width:100%}
 @media(min-width:480px){.form-submit{width:auto;min-width:240px}}
+.locatie-status{font-family:var(--font-mono);font-size:.72rem;margin-top:10px;line-height:1.45;min-height:1.2em}
+.locatie-status.loading{color:var(--olive)}
+.locatie-status.ok{color:var(--olive)}
+.locatie-status.far{color:var(--terracotta)}
+.locatie-status.error{color:#a63d2a}
 .form-hint{font-size:.88rem;color:rgba(74,52,42,.7);margin-top:8px}
 
 footer{background:var(--espresso-deep);color:rgba(244,241,236,.7);padding:48px 0 28px}
@@ -231,16 +236,11 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
           </div>
           <p class="block-hint" id="guests-hint">Minimum 20 guests for catering</p>
         </div>
-        <div>
-          <label class="form-label" for="locatie">Location</label>
-          <input class="form-input" type="text" id="locatie" name="locatie" placeholder="Town or address" autocomplete="address-level2">
-        </div>
         <div style="grid-column:1/-1">
-          <label class="form-label" for="afstand">Distance from Leuven</label>
-          <select class="form-input" id="afstand" name="afstand">
-            <option value="dichtbij">Within 20 km (no transport fee)</option>
-            <option value="verder">Beyond 20 km (+€2 p.p. transport)</option>
-          </select>
+          <label class="form-label" for="locatie">Event location</label>
+          <input class="form-input" type="text" id="locatie" name="locatie" placeholder="Address or town, e.g. Mechelen or Kortrijksesteenweg 1, Ghent" autocomplete="street-address">
+          <p class="locatie-status" id="locatie-status" aria-live="polite"></p>
+          <p class="block-hint">Free transport within 20 km of Leuven. Beyond that we automatically charge €1.35 per extra kilometre (driving distance).</p>
         </div>
       </div>
     </div>
@@ -371,7 +371,9 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
       <h2 style="font-size:clamp(1.4rem,4vw,1.8rem);margin-bottom:8px">Your details</h2>
       <p class="form-hint" style="margin-bottom:22px">We will send you a personal proposal based on your selection. The price below is indicative.</p>
 
-      <input type="hidden" name="config" id="config-hidden">
+            <input type="hidden" name="config" id="config-hidden">
+      <input type="hidden" name="afstand_km" id="distance-hidden">
+      <input type="hidden" name="transport_totaal" id="transport-hidden">
       <input type="hidden" name="prijs_pp" id="prijs-pp-hidden">
       <input type="hidden" name="prijs_totaal" id="prijs-totaal-hidden">
 
@@ -431,11 +433,21 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
 </footer>
 
 <script>
-const SETUP_TOTAL=200,MIN_GUESTS=20,TRANSPORT_FAR=2,TABLE_SERVICE=8,EXTRA_RATE=0.30;
+const SETUP_TOTAL=200,MIN_GUESTS=20,TABLE_SERVICE=8,EXTRA_RATE=0.30,FREE_KM=20,RATE_PER_KM=1.35;
+const BASE_ADDRESS='Ravenstraat 38, 3000 Leuven, Belgium';
 const VOLUME=[{min:100,disc:.12},{min:75,disc:.09},{min:50,disc:.06},{min:35,disc:.03},{min:1,disc:0}];
 const MAIN_CAT='hoofd';
 const PASTA_IDS=['pasta','pasta-truffel'];
-const L={extra:' (extra course, 30%)',setup:'Setup (spread over ',setupEnd:' guests)',transport:'Transport (>20 km)',table:'Pasta served at table',disc:'Group discount',warn:'Select at least one main course.'};
+const L={
+  extra:' (extra gang, 30%)',setup:'Opstart (verdeeld over ',setupEnd:' pers.)',
+  transportLine:'Transport ({excess} km × €1.35)',table:'Pasta aan tafel geserveerd',
+  disc:'Groepskorting',warn:'Kies minstens één hoofdgerecht.',
+  distLoading:'Calculating distance…',distError:'Location not found. Try town or full address.',
+  distOk:'{km} km from Leuven — no transport fee',
+  distFar:'{km} km from Leuven — transport {cost} total ({excess} km × €1.35)'
+};
+
+let distanceKm=null,baseCoords=null,locatieTimer=null;
 
 const fmt=n=>'€'+n.toLocaleString('en-BE',{minimumFractionDigits:0,maximumFractionDigits:2});
 const fmtDec=n=>'€'+n.toLocaleString('en-BE',{minimumFractionDigits:2,maximumFractionDigits:2});
@@ -482,6 +494,81 @@ function getPastaService(){
   return document.querySelector('.service-btn[data-service="tafel"][aria-pressed="true"]')?'tafel':'buffet';
 }
 
+async function geocode(query){
+  const q=encodeURIComponent(/belgi/i.test(query)?query:query+', Belgium');
+  const res=await fetch('https://nominatim.openstreetmap.org/search?q='+q+'&format=json&limit=1',{
+    headers:{'Accept-Language':'en','User-Agent':'PianoCCatering/1.0 (info@pianocatering.be)'}
+  });
+  if(!res.ok) return null;
+  const data=await res.json();
+  if(!data.length) return null;
+  return {lat:parseFloat(data[0].lat),lon:parseFloat(data[0].lon)};
+}
+
+async function getBaseCoords(){
+  if(baseCoords) return baseCoords;
+  baseCoords=await geocode(BASE_ADDRESS);
+  return baseCoords;
+}
+
+async function drivingDistanceKm(from,to){
+  const url='https://router.project-osrm.org/route/v1/driving/'+from.lon+','+from.lat+';'+to.lon+','+to.lat+'?overview=false';
+  const res=await fetch(url);
+  if(!res.ok) return null;
+  const data=await res.json();
+  if(data.code!=='Ok'||!data.routes.length) return null;
+  return data.routes[0].distance/1000;
+}
+
+function transportTotal(){
+  if(distanceKm===null||distanceKm<=FREE_KM) return 0;
+  return Math.round((distanceKm-FREE_KM)*RATE_PER_KM*100)/100;
+}
+
+async function updateDistance(){
+  const status=document.getElementById('locatie-status');
+  const query=document.getElementById('locatie').value.trim();
+  if(!query){
+    distanceKm=null;
+    status.textContent='';
+    status.className='locatie-status';
+    document.getElementById('distance-hidden').value='';
+    document.getElementById('transport-hidden').value='';
+    calculate();
+    return;
+  }
+  status.textContent=L.distLoading;
+  status.className='locatie-status loading';
+  try{
+    const dest=await geocode(query);
+    if(!dest){distanceKm=null;status.textContent=L.distError;status.className='locatie-status error';calculate();return}
+    const base=await getBaseCoords();
+    if(!base){distanceKm=null;status.textContent=L.distError;status.className='locatie-status error';calculate();return}
+    const km=await drivingDistanceKm(base,dest);
+    if(km===null){distanceKm=null;status.textContent=L.distError;status.className='locatie-status error';calculate();return}
+    distanceKm=Math.round(km*10)/10;
+    const excess=Math.max(0,distanceKm-FREE_KM);
+    const tTotal=transportTotal();
+    document.getElementById('distance-hidden').value=distanceKm;
+    document.getElementById('transport-hidden').value=tTotal;
+    if(excess<=0){
+      status.textContent=L.distOk.replace('{km}',String(distanceKm).replace('.',','));
+      status.className='locatie-status ok';
+    }else{
+      status.textContent=L.distFar
+        .replace('{km}',String(distanceKm).replace('.',','))
+        .replace('{excess}',excess.toFixed(1).replace('.',','))
+        .replace('{cost}',fmtDec(tTotal));
+      status.className='locatie-status far';
+    }
+  }catch(e){
+    distanceKm=null;
+    status.textContent=L.distError;
+    status.className='locatie-status error';
+  }
+  calculate();
+}
+
 function calculate(){
   const guests=getGuests();
   const billable=Math.max(guests,MIN_GUESTS);
@@ -511,9 +598,11 @@ function calculate(){
   food+=setupPP;
   lines.push({label:L.setup+billable+L.setupEnd,value:setupPP});
 
-  if(document.getElementById('afstand').value==='verder'){
-    food+=TRANSPORT_FAR;
-    lines.push({label:L.transport,value:TRANSPORT_FAR});
+  const tTotal=transportTotal();
+  if(tTotal>0){
+    const transportPP=tTotal/guests;
+    food+=transportPP;
+    lines.push({label:L.transportLine.replace('{excess}',(distanceKm-FREE_KM).toFixed(1).replace('.',',')),value:transportPP});
   }
 
   const disc=volumeDiscount(guests);
@@ -548,8 +637,7 @@ function calculate(){
   document.getElementById('prijs-totaal-hidden').value=total.toFixed(2);
   document.getElementById('config-hidden').value=JSON.stringify({
     guests,locatie:document.getElementById('locatie').value,
-    afstand:document.getElementById('afstand').value,
-    pastaService:getPastaService(),selected
+    distanceKm,transportTotal:tTotal,pastaService:getPastaService(),selected
   });
 }
 
@@ -571,11 +659,15 @@ document.querySelectorAll('.service-btn').forEach(btn=>{
   });
 });
 
-['guests','afstand','locatie'].forEach(id=>{
+['guests','locatie'].forEach(id=>{
   const el=document.getElementById(id);
-  el.addEventListener('input',calculate);
-  el.addEventListener('change',calculate);
+  el.addEventListener('input',()=>{
+    if(id==='locatie'){clearTimeout(locatieTimer);locatieTimer=setTimeout(updateDistance,700)}
+    else calculate();
+  });
+  el.addEventListener('change',()=>{if(id==='locatie')updateDistance();else calculate()});
 });
+document.getElementById('locatie').addEventListener('blur',updateDistance);
 
 document.getElementById('guests-minus').addEventListener('click',()=>{
   const inp=document.getElementById('guests');
