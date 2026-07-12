@@ -16,6 +16,9 @@
 <meta property="og:title" content="Piano C | Restaurant-quality Italian catering · Leuven">
 <meta property="og:description" content="Dishes from Piano A, at your home. Top ingredients, freshly made — unheard of in catering.">
 <meta property="og:locale" content="en_BE">
+<meta property="og:image" content="https://www.pianocatering.be/images/hero-pizza.jpg">
+<meta property="og:image:alt" content="Fresh pizza from the mobile wood-fired oven — Piano C catering">
+<meta name="twitter:image" content="https://www.pianocatering.be/images/hero-pizza.jpg">
 <meta property="og:url" content="https://www.pianocatering.be/en/">
 <meta property="og:site_name" content="Piano C Catering">
 <meta property="og:locale:alternate" content="nl_BE">
@@ -36,15 +39,8 @@
   "alternateName": ["Piano C Apulian Catering", "Piano A Catering"],
   "url": "https://www.pianocatering.be/en/",
   "email": "info@pianocatering.be",
-  "telephone": "+32-16-43-58-36",
+  "telephone": "+32-475-26-39-34",
   "slogan": "Restaurant-quality Italian at your home — unheard of in catering.",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Ravenstraat 38",
-    "addressLocality": "Leuven",
-    "postalCode": "3000",
-    "addressCountry": "BE"
-  },
   "servesCuisine": ["Italian", "Apulian", "Pizza", "Pasta"],
   "priceRange": "€€",
   "description": "Catering extension of Piano A in Leuven. Same dishes, top ingredients and restaurant quality at your home — unheard of in catering.",
@@ -216,6 +212,17 @@ header{
 }
 .frame.tall{aspect-ratio:4/5}
 .frame.wide{aspect-ratio:3/2}
+
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:1}
+.frame:not(.is-empty) .ph{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.menu-photos{display:grid;grid-template-columns:1fr;gap:16px;margin-top:28px}
+@media(min-width:760px){.menu-photos{grid-template-columns:1fr 1fr;gap:24px}}
+.page-photo{margin:28px auto 0;max-width:900px}
+.menu-card-photo{margin:-24px -22px 18px;border-radius:8px 8px 0 0;overflow:hidden}
+@media(min-width:760px){.menu-card-photo{margin:-38px -34px 22px}}
+.menu-card-photo .frame{border:none;border-radius:0;aspect-ratio:16/10}
+.menu-card-photo .frame::after{display:none}
+
 .frame .ph{
   font-family:var(--font-mono);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;
   color:rgba(74,52,42,.4);text-align:center;padding:0 20px;
@@ -469,7 +476,8 @@ footer a:hover{color:var(--cream)}
     <div class="hero-visual">
       <span class="tag-float tag-float--top">from Puglia with Love</span>
       <div class="frame tall reveal in" data-d="2">
-        <span class="ph">[ Photo: pizza from the mobile oven<br>4 : 5 portrait ]</span>
+        <img src="/images/hero-pizza.jpg" alt="Fresh pizza from the mobile wood oven at Piano C catering" width="800" height="1000" decoding="async" loading="eager">
+        <span class="ph">Foto volgt binnenkort</span>
       </div>
       <span class="tag-float tag-float--bot">Restaurant quality · fresh · artisan</span>
     </div>
@@ -597,7 +605,10 @@ footer a:hover{color:var(--cream)}
         </ul>
       </div>
     </div>
-    <p class="menu-wip reveal">Hey, we're still working on this. We'll add photos soon. Aperitivo €16 p.p. · Dolce €11 p.p.</p>
+    <div class="menu-photos reveal">
+      <div class="frame wide"><img src="/images/menu-pizza.jpg" alt="Piano C pizza buffet" width="1200" height="800" decoding="async" loading="lazy"><span class="ph">Photo coming soon</span></div>
+      <div class="frame wide"><img src="/images/menu-pasta.jpg" alt="Piano C pasta catering" width="1200" height="800" decoding="async" loading="lazy"><span class="ph">Photo coming soon</span></div>
+    </div>
   </div>
 </section>
 
@@ -620,7 +631,8 @@ footer a:hover{color:var(--cream)}
 <section class="over" id="over-ons">
   <div class="wrap">
     <div class="frame tall reveal">
-      <span class="ph">[ Photo: the Piano team /<br>the mobile kitchen in action ]</span>
+      <img src="/images/team-kitchen.jpg" alt="Piano C catering — aperitivo and Italian bites" width="800" height="1000" decoding="async" loading="lazy">
+        <span class="ph">Foto volgt binnenkort</span>
     </div>
     <div class="reveal" data-d="1">
       <span class="kicker">The Apulian Concept</span>
@@ -643,15 +655,15 @@ footer a:hover{color:var(--cream)}
     <div class="reviews-grid">
       <article class="review-card reveal" data-d="1">
         <blockquote>"It felt like Puglia came to visit us for an evening. The pizzas came straight from the oven, everyone gathered around to watch."</blockquote>
-        <div class="cite">Sophie Van den Berg · Birthday party</div>
+        <div class="cite">Sophie · Birthday party</div>
       </article>
       <article class="review-card reveal" data-d="2">
         <blockquote>"We had the combo buffet at our company event. Fresh pasta, crispy pizza, and a team that takes care of every detail."</blockquote>
-        <div class="cite">Tom De Clercq · Company event</div>
+        <div class="cite">Tom · Company event</div>
       </article>
       <article class="review-card reveal" data-d="3">
         <blockquote>"Our guests talked about it for weeks. The burrata, the orecchiette, it truly felt like an evening in the south."</blockquote>
-        <div class="cite">Elise Maes · Garden party</div>
+        <div class="cite">Elise · Garden party</div>
       </article>
       <article class="review-card reveal" data-d="4">
         <blockquote>"Not standard catering, but real flavours like at Piano A. Our family was completely won over, young and old."</blockquote>
@@ -687,14 +699,13 @@ footer a:hover{color:var(--cream)}
       </div>
       <div>
         <h5>Contact</h5>
-        <a href="#">Ravenstraat 38, 3000 Leuven</a>
-        <a href="mailto:info@pianocatering.be">info@pianocatering.be</a>
-        <a href="tel:+3216435836">+32 16 43 58 36</a>
+                <a href="mailto:info@pianocatering.be">info@pianocatering.be</a>
+        <a href="tel:+32475263934">0475 26 39 34</a>
       </div>
     </div>
     <div class="foot-bottom">
       <span>© 2026 Piano C Catering · Kumbaya BV</span>
-      <p class="foot-legal">Kumbaya BV<br>BE0793492662<br>Koekheideweg 4<br>3210 Linden</p>
+      <p class="foot-legal">Kumbaya BV<br>BE0793492662</p>
     </div>
   </div>
 </footer>
@@ -716,6 +727,12 @@ if(toggle&&menu){
   menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));
   window.addEventListener('resize',()=>{if(window.innerWidth>=980)close()});
 }
+
+document.querySelectorAll('.frame img').forEach(function(img){
+  function fail(){img.parentElement.classList.add('is-empty')}
+  if(img.complete && !img.naturalWidth) fail();
+  img.addEventListener('error',fail);
+});
 </script>
 </body>
 </html>

@@ -1,0 +1,12 @@
+Foto's in deze map (JPG, ~1600px breed):
+
+hero-pizza.jpg       → Homepage hero (4:5)          ✓ pizza 4.jpg
+team-kitchen.jpg     → Team / over ons (4:5)        ✓ Aperitivo.png (catering spread)
+pizza-buffet.jpg     → Pizza buffet pagina (3:2)    ✓ pizza.jpg
+menu-pizza.jpg       → Menu cards + homepage        ✓ pizza 5.jpg
+
+menu-pasta.jpg       → Menu + homepage pasta        ✗ nog geen pastafoto
+pasta-buffet.jpg     → Pasta buffet pagina          ✗ nog geen pastafoto
+
+Tip: exporteer rond 1600px breed, JPG ~80% kwaliteit.
+Vervang bestanden met dezelfde naam — geen code aanpassen nodig.

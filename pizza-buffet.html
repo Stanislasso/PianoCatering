@@ -69,6 +69,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,241,236,.92);backdro
 @media(hover:hover){.btn:hover{background:var(--terracotta);transform:translateY(-2px)}}
 .btn-ghost{background:transparent;color:var(--espresso);border:1px solid var(--espresso)}
 @media(hover:hover){.btn-ghost:hover{background:var(--espresso);color:var(--cream)}}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:1}.frame:not(.is-empty) .ph{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.page-photo{margin:28px auto 0;max-width:900px}
+.page-photo{margin:32px auto 0;max-width:960px}
+.frame{position:relative;border-radius:6px;overflow:hidden;background:linear-gradient(135deg,var(--cream-soft),#ddd3c4);border:1px solid var(--line);aspect-ratio:3/2;display:flex;align-items:center;justify-content:center}.frame.wide{aspect-ratio:3/2}.frame .ph{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(74,52,42,.4);text-align:center;padding:0 20px}
 .page{padding:var(--section-pad) 0}
 .page-head{text-align:center;max-width:54ch;margin:0 auto}
 .page-head .kicker{margin-bottom:16px;display:block}
@@ -142,6 +145,12 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
       <p>Verse pizza's gebakken in onze mobiele houtoven, à volonté geserveerd aan je gasten. De geliefde pizza's uit Piano A — met vers zelfgemaakt deeg en toppings van top, top, topkwaliteit. Je krijgt een buffet met <strong>vijf soorten pizza</strong> uit onze kaart.</p>
       <p class="price-tag">vanaf €24 p.p.<small>Min. 20 personen · setup €200 · geen transportkosten binnen 20 km rond Leuven</small></p>
     </div>
+    <div class="page-photo reveal in">
+      <div class="frame wide">
+        <img src="/images/pizza-buffet.jpg" alt="Verse pizza uit de mobiele houtoven — Piano C pizzabuffet" width="1200" height="800" decoding="async" loading="lazy">
+        <span class="ph">Foto volgt binnenkort</span>
+      </div>
+    </div>
     <div class="teaser reveal in">
       <h2>Wat je mag verwachten</h2>
       <p class="teaser-lead">Geen cateringversie — dezelfde pizza's als in Piano A, met vers zelfgemaakt deeg en toppings van topkwaliteit. Ongezien in catering.</p>
@@ -177,8 +186,8 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
       <p class="menu-note">Dit zijn onze vijf pizza's. Voor je event kies je er vijf van — of het volledige aanbod — in overleg met ons team. Geen keuze nodig bij je offerte aanvraag.</p>
     </div>
     <div class="wip-box reveal in">
-      <span class="kicker">Nog even geduld</span>
-      <p>Hé, hier wordt nagewerkt. Binnenkort voegen we foto's toe. Vraag alvast je offerte aan, wij helpen je graag verder.</p>
+      <span class="kicker">Tip</span>
+      <p>Wil je al proeven? Kom gerust langs in Piano A — of vraag meteen je offerte aan.</p>
     </div>
     <div class="page-cta reveal in">
       <a href="offerte-aanvraag.html" class="btn">Vraag je offerte</a>
@@ -204,14 +213,13 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
       </div>
       <div>
         <h5>Contact</h5>
-        <a href="#">Ravenstraat 38, 3000 Leuven</a>
-        <a href="mailto:info@pianocatering.be">info@pianocatering.be</a>
-        <a href="tel:+3216435836">+32 16 43 58 36</a>
+                <a href="mailto:info@pianocatering.be">info@pianocatering.be</a>
+        <a href="tel:+32475263934">0475 26 39 34</a>
       </div>
     </div>
     <div class="foot-bottom">
       <span>© 2026 Piano C Catering · Kumbaya BV</span>
-      <p class="foot-legal">Kumbaya BV<br>BE0793492662<br>Koekheideweg 4<br>3210 Linden</p>
+      <p class="foot-legal">Kumbaya BV<br>BE0793492662</p>
     </div>
   </div>
 </footer>
@@ -220,6 +228,15 @@ const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.t
 document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
 const toggle=document.querySelector('.nav-toggle');const menu=document.getElementById('nav-menu');
 if(toggle&&menu){const close=()=>{toggle.setAttribute('aria-expanded','false');menu.classList.remove('open');document.body.style.overflow=''};toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',open);menu.classList.toggle('open',open);document.body.style.overflow=open?'hidden':''});menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));window.addEventListener('resize',()=>{if(window.innerWidth>=980)close()})}
+</script>
+<script>
+(function(){
+  document.querySelectorAll('.frame img').forEach(function(img){
+    function fail(){img.parentElement.classList.add('is-empty')}
+    if(img.complete && !img.naturalWidth) fail();
+    img.addEventListener('error',fail);
+  });
+})();
 </script>
 </body>
 </html>
