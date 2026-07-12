@@ -1,10 +1,10 @@
 # Piano C Catering
 
-> Italiaans restaurant bij je thuis. Catering van Piano A en Piano B — restaurantkwaliteit, top ingrediënten, ongezien in catering.
+> Italiaans restaurant bij je thuis. Catering-extensie van Piano A — restaurantkwaliteit, top ingrediënten, ongezien in catering.
 
 ## Over Piano C
 
-Piano C brengt exact dezelfde gerechten, recepten en ingrediënten als de restaurants Piano A en Piano B naar events op locatie. Geen cateringversie — restaurantkwaliteit. Topproducten, vers zelfgemaakt deeg, huisgemaakte pasta, Italiaanse roots. Team: Alessandro, Andrea en Mattia. Uitgebaat door Kumbaya BV.
+Piano C brengt exact dezelfde gerechten, recepten en ingrediënten als Piano A naar events op locatie. Geen cateringversie — restaurantkwaliteit. Topproducten, vers zelfgemaakt deeg, huisgemaakte pasta, Italiaanse roots. Team: Alessandro, Andrea en Mattia. Uitgebaat door Kumbaya BV.
 
 Onze foodkost ligt bewust hoger dan bij andere caterers — kwaliteit staat voorop. Dit is ongezien in catering.
 
@@ -17,7 +17,7 @@ Onze foodkost ligt bewust hoger dan bij andere caterers — kwaliteit staat voor
 
 ## Pizza's
 
-Margherita, Diavola, 4 Formaggi, Napoli, Honey — geliefde pizza's uit Piano A en Piano B
+Margherita, Diavola, 4 Formaggi, Napoli, Honey — geliefde pizza's uit Piano A
 
 ## Pasta
 
@@ -39,9 +39,8 @@ Parmigiana, Orecchiette cime di rapa, Pasta met kreeft, Cacio e pepe
 
 ## English summary
 
-Piano C is restaurant-quality Apulian catering in Leuven, Belgium. Same dishes and top ingredients as Piano A and Piano B — not a watered-down catering version. Pizza from mobile wood oven (from €24/person), individual pasta dishes, configurable via quote page. Contact: info@pianocatering.be, +32 16 43 58 36.
+Piano C is restaurant-quality Apulian catering in Leuven, Belgium. Same dishes and top ingredients as Piano A — not a watered-down catering version. Pizza from mobile wood oven (from €24/person), individual pasta dishes, configurable via quote page. Contact: info@pianocatering.be, +32 16 43 58 36.
 
 ## Gerelateerd
 
 - Piano A restaurant: https://pianoa.piano-ab.be
-- Piano B restaurant: https://pianob.piano-ab.be

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quote · Restaurant-quality catering at home | Piano C Leuven</title>
-<meta name="description" content="Build your catering with dishes from Piano A &amp; B. Restaurant quality at your home in Leuven — see your per-person price instantly.">
+<meta name="description" content="Build your catering with dishes from Piano A. Restaurant quality at your home in Leuven — see your per-person price instantly.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.pianocatering.be/en/offerte-aanvraag.html">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
@@ -20,7 +20,7 @@
 <link rel="alternate" hreflang="x-default" href="https://www.pianocatering.be/offerte-aanvraag.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Quote · Restaurant-quality Italian catering | Piano C">
-<meta property="og:description" content="Dishes from Piano A &amp; B at your home. Build your menu and see the live price — unheard of in catering.">
+<meta property="og:description" content="Dishes from Piano A at your home. Build your menu and see the live price — unheard of in catering.">
 <meta property="og:locale" content="en_BE">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -283,7 +283,7 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
       <div class="opt-wrap">
         <button type="button" class="opt-btn" data-id="pizza" data-category="hoofd" data-price="24" aria-pressed="true">
           <span class="opt-name">Wood-fired pizza</span>
-          <span class="opt-desc">The beloved pizzas from Piano A and Piano B: fresh homemade dough and top, top, top-quality toppings. Buffet with 5 types, freshly baked in our mobile wood oven. Which five? You choose together with us later.</span>
+          <span class="opt-desc">The beloved pizzas from Piano A: fresh homemade dough and top, top, top-quality toppings. Buffet with 5 types, freshly baked in our mobile wood oven. Which five? You choose together with us later.</span>
           <span class="opt-price" id="pizza-price-label">from €24 p.p. · all you can eat</span>
           <span class="opt-check">Selected</span>
         </button>
@@ -351,34 +351,29 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
       <h2>Drinks</h2>
       <p class="block-desc">Optional.</p>
       <div class="option-grid" role="group" aria-label="Drinks">
-        <button type="button" class="opt-btn" data-id="water" data-category="drank" data-price="10" aria-pressed="false">
+        <button type="button" class="opt-btn" data-id="water" data-category="drank" data-price="5" aria-pressed="false">
           <span class="opt-name">Still &amp; sparkling water</span>
+          <span class="opt-price">€5 p.p.</span>
+          <span class="opt-check">Selected</span>
+        </button>
+        <button type="button" class="opt-btn" data-id="frisdrank" data-category="drank" data-price="5" aria-pressed="false">
+          <span class="opt-name">Soft drinks</span>
+          <span class="opt-price">€5 p.p.</span>
+          <span class="opt-check">Selected</span>
+        </button>
+        <button type="button" class="opt-btn" data-id="bier-pils" data-category="drank" data-price="7.5" aria-pressed="false">
+          <span class="opt-name">Beer</span>
+          <span class="opt-price">€7.50 p.p.</span>
+          <span class="opt-check">Selected</span>
+        </button>
+        <button type="button" class="opt-btn" data-id="wijn" data-category="drank" data-price="10" aria-pressed="false">
+          <span class="opt-name">Wine (white, red &amp; rosé)</span>
           <span class="opt-price">€10 p.p.</span>
           <span class="opt-check">Selected</span>
         </button>
-        <button type="button" class="opt-btn" data-id="frisdrank" data-category="drank" data-price="12" aria-pressed="false">
-          <span class="opt-name">Soft drinks</span>
-          <span class="opt-price">€12 p.p.</span>
-          <span class="opt-check">Selected</span>
-        </button>
-        <button type="button" class="opt-btn" data-id="bier-pils" data-category="drank" data-price="6" aria-pressed="false">
-          <span class="opt-name">Beer (lager)</span>
-          <span class="opt-price">€6 p.p.</span>
-          <span class="opt-check">Selected</span>
-        </button>
-        <button type="button" class="opt-btn" data-id="bier-sterk" data-category="drank" data-price="16" aria-pressed="false">
-          <span class="opt-name">Beer (special &amp; strong)</span>
-          <span class="opt-price">€16 p.p.</span>
-          <span class="opt-check">Selected</span>
-        </button>
-        <button type="button" class="opt-btn" data-id="prosecco" data-category="drank" data-price="14" aria-pressed="false">
+        <button type="button" class="opt-btn" data-id="prosecco" data-category="drank" data-price="12" aria-pressed="false">
           <span class="opt-name">Prosecco &amp; spritz</span>
-          <span class="opt-price">€14 p.p.</span>
-          <span class="opt-check">Selected</span>
-        </button>
-        <button type="button" class="opt-btn" data-id="wijn" data-category="drank" data-price="18" aria-pressed="false">
-          <span class="opt-name">Wine package</span>
-          <span class="opt-price">€18 p.p.</span>
+          <span class="opt-price">€12 p.p.</span>
           <span class="opt-check">Selected</span>
         </button>
       </div>
@@ -472,8 +467,7 @@ const BASE_ADDRESS='Ravenstraat 38, 3000 Leuven, Belgium';
 const VOLUME=[{min:100,disc:.12},{min:75,disc:.09},{min:50,disc:.06},{min:35,disc:.03},{min:1,disc:0}];
 const PIZZA_PRICE=[{min:100,price:21},{min:75,price:22},{min:50,price:23},{min:35,price:23},{min:1,price:24}];
 const MAIN_CAT='hoofd',DRANK_CAT='drank';
-const DRINK_NONALC={water:10,frisdrank:12,bundle:12};
-const DRINK_EXTRA_CAT=.35,DRINK_VARIETY_MARKUP=.15;
+const DRINK_WATER=5,DRINK_EXTRA_RATE=.30;
 const L={
   setup:'Setup (split across ',setupEnd:' guests)',
   transportLine:'Transport ({excess} km × €1.35)',
@@ -481,8 +475,7 @@ const L={
   distLoading:'Calculating distance…',distError:'Location not found. Try a town or full address.',
   distOk:'{km} km from Leuven — no transport charge',
   distFar:'{km} km from Leuven — transport {cost} total ({excess} km × €1.35)',
-  drinkBundle:'Water & soft drinks',
-  drinkExtraCat:' (extra category, 35%)'
+  drinkExtra:' (extra, 30%)'
 };
 
 let distanceKm=null,baseCoords=null,locatieTimer=null;
@@ -538,40 +531,29 @@ function priceCategoryItems(items){
   return {total:value,lines:[{label,value}]};
 }
 
-function drinkNonalcGroup(items){
-  const picked=items.filter(i=>i.id==='water'||i.id==='frisdrank');
-  if(!picked.length) return null;
-  if(picked.length===2) return {label:L.drinkBundle,value:DRINK_NONALC.bundle};
-  const one=picked[0];
-  return {label:one.name,value:one.id==='water'?DRINK_NONALC.water:DRINK_NONALC.frisdrank};
-}
-
-function drinkVarietyGroup(items,ids){
-  const picked=items.filter(i=>ids.includes(i.id));
-  if(!picked.length) return null;
-  if(picked.length===1) return {label:picked[0].name,value:picked[0].price};
-  const avg=picked.reduce((a,i)=>a+i.price,0)/picked.length;
-  const value=Math.round(avg*(1+DRINK_VARIETY_MARKUP)*100)/100;
-  return {label:picked.map(i=>i.name).join(' + '),value};
-}
-
 function priceDrinkItems(items){
   if(!items.length) return {total:0,lines:[]};
-  const groups=[
-    drinkNonalcGroup(items),
-    drinkVarietyGroup(items,['bier-pils','bier-sterk']),
-    drinkVarietyGroup(items,['prosecco','wijn'])
-  ].filter(Boolean);
-  if(groups.length===1){
-    return {total:groups[0].value,lines:[{label:groups[0].label,value:groups[0].value}]};
+  const water=items.find(i=>i.id==='water');
+  const others=items.filter(i=>i.id!=='water');
+  let total=0;
+  const lines=[];
+  if(water){
+    total+=DRINK_WATER;
+    lines.push({label:water.name,value:DRINK_WATER});
   }
-  const sorted=[...groups].sort((a,b)=>b.value-a.value);
-  let total=sorted[0].value;
-  const lines=[{label:sorted[0].label,value:sorted[0].value}];
+  if(!others.length) return {total:Math.round(total*100)/100,lines};
+  if(others.length===1){
+    total+=others[0].price;
+    lines.push({label:others[0].name,value:others[0].price});
+    return {total:Math.round(total*100)/100,lines};
+  }
+  const sorted=[...others].sort((a,b)=>b.price-a.price);
+  total+=sorted[0].price;
+  lines.push({label:sorted[0].name,value:sorted[0].price});
   for(let i=1;i<sorted.length;i++){
-    const contrib=Math.round(sorted[i].value*DRINK_EXTRA_CAT*100)/100;
+    const contrib=Math.round(sorted[i].price*DRINK_EXTRA_RATE*100)/100;
     total+=contrib;
-    lines.push({label:sorted[i].label+L.drinkExtraCat,value:contrib});
+    lines.push({label:sorted[i].name+L.drinkExtra,value:contrib});
   }
   return {total:Math.round(total*100)/100,lines};
 }
