@@ -2,5 +2,6 @@
 __MACOSX/
 Websitehtml.zip
 .cursor/
+.claude/
 .env
 aanvragen-fallback.csv
