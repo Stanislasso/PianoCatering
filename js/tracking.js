@@ -16,9 +16,9 @@
 (function () {
   'use strict';
 
-  var GA4_ID = 'G-XXXXXXXXXX';          // TODO: meet-ID van de GA4-webstream Piano C
-  var ADS_ID = 'AW-XXXXXXXXXX';         // TODO: conversie-ID van het Google Ads-account Piano C
-  var ADS_LABEL_LEAD = 'XXXXXXXXXXXXX'; // TODO: label van de conversieactie "Offerteaanvraag Piano C" (hoofdlettergevoelig)
+  var GA4_ID = 'G-CQPYMJLMHF';                 // meet-ID webstream Piano C (property 561393943)
+  var ADS_ID = 'AW-18543398066';               // conversie-ID Google Ads Piano C (customer 321-490-4525)
+  var ADS_LABEL_LEAD = '259FCMaly60dELKZl4pF'; // label "Offerteaanvraag Piano C", hoofdlettergevoelig
   var LEAD_VALUE = 350;                 // conversiewaarde van een offerteaanvraag, euro excl. btw
   var IDS_SET = !/X{6,}/.test(GA4_ID + ADS_ID + ADS_LABEL_LEAD);
 
