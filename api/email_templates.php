@@ -74,7 +74,6 @@ function pianocT(string $lang): array
             'locatie' => 'Locatie',
             'afstand' => 'Afstand vanaf Piano A',
             'afstand_waarde' => '%s km',
-            'keuzes' => 'Je keuzes',
             'prijsopbouw' => 'Prijs per persoon',
             'opstart' => 'Opstart (%s verdeeld over %d personen)',
             'transport' => 'Transport (%s km boven de gratis zone, %s totaal)',
@@ -107,7 +106,6 @@ function pianocT(string $lang): array
             'locatie' => 'Location',
             'afstand' => 'Distance from Piano A',
             'afstand_waarde' => '%s km',
-            'keuzes' => 'Your choices',
             'prijsopbouw' => 'Price per person',
             'opstart' => 'Setup (%s split across %d guests)',
             'transport' => 'Transport (%s km beyond the free zone, %s in total)',
@@ -140,7 +138,6 @@ function pianocT(string $lang): array
             'locatie' => 'Luogo',
             'afstand' => 'Distanza da Piano A',
             'afstand_waarde' => '%s km',
-            'keuzes' => 'Le vostre scelte',
             'prijsopbouw' => 'Prezzo a persona',
             'opstart' => 'Allestimento (%s ripartiti su %d persone)',
             'transport' => 'Trasporto (%s km oltre la zona gratuita, %s in totale)',
@@ -255,21 +252,89 @@ function emailKnop(string $url, string $label, string $kleur): string
 }
 
 /**
- * Lijst van de gekozen items per categorie, voor de detailtabel.
+ * Gekozen items per categorie, als aparte rijen voor de detailtabel:
+ * voorgerecht, hoofdgerecht, dessert en drank elk op hun eigen regel.
+ *
+ * $lang: taal van de labels en namen. Null = de taal waarin de prijs is
+ * berekend (de klantmail). 'nl' voor de interne mail, ook als de klant in
+ * het Engels of Italiaans aanvroeg. $alleCategorieen: ook lege categorieën
+ * tonen, met '(geen)', zodat je in één oogopslag ziet wat niet gekozen is.
+ *
+ * @return array<string,string> label => "item, item"
  */
-function emailKeuzesTekst(array $prijs): string
+function emailKeuzesRijen(array $prijs, ?string $lang = null, bool $alleCategorieen = false): array
 {
-    $delen = [];
-    foreach ($prijs['lijnen'] as $l) {
-        if ($l['type'] === 'item') {
-            $delen[$l['categorie_naam']][] = $l['naam'];
+    $config = function_exists('pianocConfig') ? pianocConfig() : null;
+    $taal = $lang ?? (string) ($prijs['lang'] ?? 'nl');
+    $cats = [];
+    if ($config !== null) {
+        foreach ($config['categorieen'] as $cat) {
+            $cats[$cat['id']] = ['label' => (string) ($cat['naam'][$taal] ?? $cat['naam']['nl']), 'namen' => []];
         }
     }
-    $out = [];
-    foreach ($delen as $cat => $namen) {
-        $out[] = $cat . ': ' . implode(', ', $namen);
+    foreach ($prijs['lijnen'] as $l) {
+        if ($l['type'] !== 'item') {
+            continue;
+        }
+        $id = (string) $l['categorie'];
+        if (!isset($cats[$id])) {
+            $cats[$id] = ['label' => (string) $l['categorie_naam'], 'namen' => []];
+        }
+        if ($config !== null && !empty($l['ids'])) {
+            foreach ($l['ids'] as $itemId) {
+                $item = findItem($config, (string) $itemId);
+                $cats[$id]['namen'][] = $item !== null ? itemNaam($item, $taal) : (string) $itemId;
+            }
+        } else {
+            foreach (explode(' + ', (string) $l['naam']) as $naam) {
+                $cats[$id]['namen'][] = $naam;
+            }
+        }
     }
-    return implode(' · ', $out);
+    $rows = [];
+    foreach ($cats as $cat) {
+        if (!$cat['namen'] && !$alleCategorieen) {
+            continue;
+        }
+        $rows[$cat['label']] = $cat['namen'] ? implode(', ', $cat['namen']) : '(geen)';
+    }
+    return $rows;
+}
+
+/**
+ * Zelfde opsplitsing voor de fallbackmail, waar enkel de ruwe item-ids
+ * bekend zijn (de prijsberekening is mislukt).
+ *
+ * @param string[] $ids
+ * @return array<string,string>
+ */
+function emailItemsRijenFallback(array $ids): array
+{
+    if (!function_exists('pianocConfig')) {
+        return ['Items' => implode(', ', $ids)];
+    }
+    $config = pianocConfig();
+    $cats = [];
+    foreach ($config['categorieen'] as $cat) {
+        $cats[$cat['id']] = ['label' => (string) $cat['naam']['nl'], 'namen' => []];
+    }
+    $onbekend = [];
+    foreach ($ids as $id) {
+        $item = findItem($config, (string) $id);
+        if ($item === null || !isset($cats[$item['categorie']])) {
+            $onbekend[] = (string) $id;
+            continue;
+        }
+        $cats[$item['categorie']]['namen'][] = itemNaam($item, 'nl');
+    }
+    $rows = [];
+    foreach ($cats as $cat) {
+        $rows[$cat['label']] = $cat['namen'] ? implode(', ', $cat['namen']) : '(geen)';
+    }
+    if ($onbekend) {
+        $rows['Onbekende items'] = implode(', ', $onbekend);
+    }
+    return $rows;
 }
 
 // ─── Klantmail ───────────────────────────────────────────────────────────
@@ -284,7 +349,7 @@ function buildKlantEmailHtml(array $input, array $prijs, string $lang, string $r
         $t['personen'] => (string) $prijs['aantal_personen'],
         $t['locatie'] => $input['locatie'] ?? '',
         $t['afstand'] => $prijs['afstand_bekend'] ? sprintf($t['afstand_waarde'], number_format((float) $prijs['afstand_km'], 1, ',', '')) : null,
-        $t['keuzes'] => emailKeuzesTekst($prijs),
+    ] + emailKeuzesRijen($prijs) + [
         $t['ref'] => $referentie,
     ];
 
@@ -336,7 +401,7 @@ function buildInterneEmailHtml(array $input, array $prijs, string $referentie): 
         'Aantal personen' => (string) $prijs['aantal_personen'] . ($prijs['minimum_toegepast'] ? ' (onder het minimum van ' . $prijs['min_gasten'] . ', opstart verdeeld over ' . $prijs['aantal_gefactureerd_opstart'] . ')' : ''),
         'Locatie' => $input['locatie'] ?? '',
         'Afstand' => $prijs['afstand_bekend'] ? number_format((float) $prijs['afstand_km'], 1, ',', '') . ' km (bron: ' . ($input['afstand_bron'] ?? 'onbekend') . ')' : 'ONBEKEND, transport niet in de prijs',
-        'Keuzes' => emailKeuzesTekst($prijs),
+    ] + emailKeuzesRijen($prijs, 'nl', true) + [
         'Richtprijs p.p. excl. btw' => pianocEuro($prijs['prijs_pp_excl_btw']),
         'Totaal excl. btw' => pianocEuro($prijs['totaal_excl_btw']),
         'Totaal incl. btw' => pianocEuro($prijs['totaal_incl_btw']),
@@ -370,7 +435,7 @@ function buildFallbackEmailHtml(array $input, string $reden): string
         'Datum event' => emailDatumLang((string) ($input['datum'] ?? ''), 'nl'),
         'Aantal personen' => (string) ($input['aantal_personen'] ?? ''),
         'Locatie' => $input['locatie'] ?? '',
-        'Items' => implode(', ', (array) ($input['items'] ?? [])),
+    ] + emailItemsRijenFallback(array_map('strval', (array) ($input['items'] ?? []))) + [
         'Opmerkingen' => ($input['opmerkingen'] ?? '') !== '' ? $input['opmerkingen'] : '(geen)',
         'Taal website' => emailTaalLabel($input['lang'] ?? null),
     ];
