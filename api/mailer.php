@@ -25,6 +25,28 @@ function mailSafeHeaderValue(string $value): string
     return trim(str_replace(["\r", "\n"], ' ', $value));
 }
 
+/**
+ * Bouwt een adres voor From, To of Reply-To: "Naam" <adres>.
+ *
+ * mb_encode_mimeheader() laat een naam met enkel ASCII-tekens ongewijzigd.
+ * Een komma of puntkomma in die naam (bv. "TEST Piano C, niet opvolgen")
+ * splitst de header dan in meerdere adressen. Daarom: ASCII-namen tussen
+ * aanhalingstekens (quoted-string, RFC 5322), namen met accenten als
+ * encoded-word (RFC 2047), waarin leestekens altijd gecodeerd zijn.
+ * Zonder bruikbare naam enkel het adres.
+ */
+function mailAddress(?string $name, string $email): string
+{
+    $name = trim(mb_substr(mailSafeHeaderValue((string) $name), 0, 120));
+    if ($name === '' || strcasecmp($name, $email) === 0) {
+        return '<' . $email . '>';
+    }
+    if (preg_match('/[^\x20-\x7E]/', $name)) {
+        return mb_encode_mimeheader($name, 'UTF-8', 'B', "\r\n") . ' <' . $email . '>';
+    }
+    return '"' . str_replace(['\\', '"'], ['\\\\', '\\"'], $name) . '" <' . $email . '>';
+}
+
 function mailEncodeHeader(string $value): string
 {
     return mb_encode_mimeheader(mailSafeHeaderValue($value), 'UTF-8', 'B', "\r\n");
@@ -59,13 +81,13 @@ function sendMail(
     $headers[] = 'MIME-Version: 1.0';
     $headers[] = 'Content-Type: text/html; charset=UTF-8';
     $headers[] = 'Content-Transfer-Encoding: quoted-printable';
-    $headers[] = 'From: ' . mailEncodeHeader(mailFromName()) . ' <' . mailFromEmail() . '>';
+    $headers[] = 'From: ' . mailAddress(mailFromName(), mailFromEmail());
     if ($replyToEmail && filter_var($replyToEmail, FILTER_VALIDATE_EMAIL)) {
         $replyToName ??= $replyToEmail;
-        $headers[] = 'Reply-To: ' . mailEncodeHeader($replyToName) . ' <' . $replyToEmail . '>';
+        $headers[] = 'Reply-To: ' . mailAddress($replyToName, $replyToEmail);
     }
 
-    $to = mailEncodeHeader($toName) . ' <' . $toEmail . '>';
+    $to = mailAddress($toName, $toEmail);
     $encodedSubject = mailEncodeHeader($subject);
     $encodedBody = quoted_printable_encode($htmlBody);
 

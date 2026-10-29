@@ -363,7 +363,7 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
 }
 </script>
 <!-- Meting: GA4, Google Ads en cookietoestemming (Consent Mode v2). De ID's staan enkel in js/tracking.js. -->
-<script src="/js/tracking.js?v=20261029"></script>
+<script src="/js/tracking.js?v=20261029b"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Naar inhoud</a>
@@ -1042,7 +1042,7 @@ if(toggle&&menu){
       let data=null;
       try{data=await res.json()}catch(err){data=null}
       if(res.ok&&data&&data.ok){
-        window.location.href='bedankt.html';
+        window.location.href='bedankt.html'+(data.referentie?'?ref='+encodeURIComponent(data.referentie):'');
         return;
       }
       submitBtn.disabled=false;

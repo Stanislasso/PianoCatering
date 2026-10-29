@@ -91,15 +91,26 @@
     console.info('Piano C tracking: meet-ID\'s nog niet ingevuld in js/tracking.js, gtag.js wordt niet geladen.');
   }
 
-  /* 5. Bedankpagina: lead voor GA4 en conversie voor Ads (eenmalig per sessie). */
-  if (/(^|\/)bedankt\.html$/.test(window.location.pathname)) {
-    var leadKey = 'pianoc_lead_sent';
-    if (session.get(leadKey) !== '1') {
-      session.set(leadKey, '1');
-      gtag('event', 'generate_lead', { lead_type: 'catering', brand: 'pianoc', lang: lang, value: LEAD_VALUE, currency: 'EUR' });
-      gtag('event', 'conversion', { send_to: ADS_ID + '/' + ADS_LABEL_LEAD, value: LEAD_VALUE, currency: 'EUR' });
+  /* 5. Bedankpagina: lead voor GA4 en conversie voor Ads, één keer per aanvraag.
+     Het formulier stuurt door naar bedankt.html?ref=<offertereferentie>. Die
+     referentie gaat mee als transaction_id, zodat Google Ads een herladen of
+     teruggekeerde bedankpagina niet dubbel telt. Zonder geldige referentie
+     (oude link, rechtstreeks bezoek) geldt de oude regel: één keer per sessie. */
+  if (/(^|\/)bedankt(\.html)?\/?$/.test(window.location.pathname)) {
+    var ref = String(params.get('ref') || '').toUpperCase();
+    if (!/^PC-\d{8}-[0-9A-F]{6}$/.test(ref)) { ref = ''; }
+    var leadKey = ref ? 'pianoc_lead_' + ref : 'pianoc_lead_sent';
+    var alreadySent = ref ? store.get(leadKey) === '1' : session.get(leadKey) === '1';
+    if (!alreadySent) {
+      if (ref) { store.set(leadKey, '1'); } else { session.set(leadKey, '1'); }
+      var lead = { lead_type: 'catering', brand: 'pianoc', lang: lang, value: LEAD_VALUE, currency: 'EUR' };
+      var conv = { send_to: ADS_ID + '/' + ADS_LABEL_LEAD, value: LEAD_VALUE, currency: 'EUR' };
+      if (ref) { lead.transaction_id = ref; conv.transaction_id = ref; }
+      gtag('event', 'generate_lead', lead);
+      gtag('event', 'conversion', conv);
     }
   }
+
 
   /* 3. Klik-events op telefoon, mail en WhatsApp. */
   document.addEventListener('click', function (e) {
