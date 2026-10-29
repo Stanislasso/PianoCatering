@@ -18,6 +18,18 @@
     Require all denied
 </FilesMatch>
 
+# HTML altijd opnieuw valideren bij de server. Zonder deze header hergebruiken
+# browsers een oude pagina op eigen houtje (heuristische caching), waardoor een
+# bezoeker een verouderd formulier kan invullen. Met no-cache vraagt de browser
+# telkens na of er iets veranderde (ETag), wat licht blijft.
+<FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+</FilesMatch>
+
+# js/tracking.js wordt in de pagina's geladen met ?v=<datum>. Pas die versie aan
+# bij elke wijziging, dan halen alle browsers meteen de nieuwe versie op, ook al
+# cachet de hoster statische bestanden een week.
+
 # llms.txt: platte tekst, UTF-8
 <FilesMatch "^llms\.txt$">
     Header set Content-Type "text/plain; charset=utf-8"

@@ -10,7 +10,8 @@
  *  6. Intern verkeer markeren via ?intern=1 (uitzetten met ?intern=0)
  *  7. De cookiebanner zelf (NL, EN, IT) en de link "Cookie-instellingen" in de footer
  *
- * De drie ID's hieronder zijn de enige plek waar ze staan. Vul ze in zodra de
+ * Na elke wijziging aan dit bestand: verhoog ?v= in de script-tag van alle pagina's
+ * (de hoster cachet .js een week). De drie ID's hieronder zijn de enige plek waar ze staan. Vul ze in zodra de
  * GA4-property en het Ads-account van Piano C bestaan (zie README-DEPLOY.md).
  */
 (function () {
