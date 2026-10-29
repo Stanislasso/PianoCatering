@@ -392,18 +392,21 @@ footer a{color:rgba(244,241,236,.7);text-decoration:none;display:block;margin-bo
 
 <section class="contact-section" id="contact-form">
   <div class="wrap">
-    <form class="contact-form" action="https://formsubmit.co/info@pianocatering.be" method="POST" id="offerte-form">
+    <form class="contact-form" action="/api/aanvraag.php" method="POST" id="offerte-form">
       <h2 style="font-size:clamp(1.4rem,4vw,1.8rem);margin-bottom:8px">I vostri dati</h2>
       <p class="form-hint" style="margin-bottom:22px">Vi invieremo una proposta personalizzata in base alla selezione. Il prezzo sotto è indicativo.</p>
-
-      <input type="hidden" name="_subject" value="Nuova richiesta preventivo Piano C">
-      <input type="hidden" name="_next" value="https://www.pianocatering.be/it/bedankt.html">
-      <input type="hidden" name="_template" value="table">
-      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
       <input type="hidden" name="ospiti" id="guests-hidden">
       <input type="hidden" name="data_evento" id="datum-hidden">
       <input type="hidden" name="luogo_evento" id="locatie-hidden">
       <input type="hidden" name="config" id="config-hidden">
+      <input type="hidden" name="items" id="items-hidden">
+      <input type="hidden" name="lang" value="it">
+      <input type="hidden" name="utm_source" id="utm_source-hidden">
+      <input type="hidden" name="utm_medium" id="utm_medium-hidden">
+      <input type="hidden" name="utm_campaign" id="utm_campaign-hidden">
+      <input type="hidden" name="utm_term" id="utm_term-hidden">
+      <input type="hidden" name="pagina" id="pagina-hidden">
       <input type="hidden" name="afstand_km" id="distance-hidden">
       <input type="hidden" name="transport_totaal" id="transport-hidden">
       <input type="hidden" name="prijs_pp" id="prijs-pp-hidden">
@@ -474,7 +477,10 @@ const L={
   distLoading:'Calcolo distanza…',distError:'Posizione non trovata. Provate comune o indirizzo completo.',
   distOk:'{km} km da Leuven — nessun costo di trasporto',
   distFar:'{km} km da Leuven — trasporto {cost} totale ({excess} km × €1,35)',
-  drinkExtra:' (extra, 30%)'
+  drinkExtra:' (extra, 30%)',
+  sending:'Invio in corso…',
+  sendError:'Qualcosa è andato storto. Riprovate o scrivete a info@pianocatering.be.',
+  needBasics:'Inserite prima la data e il luogo del vostro evento.'
 };
 
 let distanceKm=null,baseCoords=null,locatieTimer=null;
@@ -703,6 +709,7 @@ function calculate(){
     guests,locatie:document.getElementById('locatie').value,
     distanceKm,transportTotal:tTotal,selected
   });
+  document.getElementById('items-hidden').value=selected.map(s=>s.id).join(',');
 }
 
 document.querySelectorAll('.opt-btn').forEach(btn=>{
@@ -756,12 +763,76 @@ if(toggle&&menu){
   el.value=y>=2026?`${y}-${m}-${d}`:'2026-01-01';
 })();
 
-document.getElementById('offerte-form').addEventListener('submit',()=>{
-  calculate();
-  document.getElementById('guests-hidden').value=document.getElementById('guests').value;
-  document.getElementById('datum-hidden').value=document.getElementById('datum').value;
-  document.getElementById('locatie-hidden').value=document.getElementById('locatie').value;
-});
+/* UTM-parameters bewaren bij het eerste bezoek en meesturen met de aanvraag. */
+(function initUtm(){
+  const keys=['utm_source','utm_medium','utm_campaign','utm_term'];
+  let stored={};
+  try{stored=JSON.parse(sessionStorage.getItem('pianoc_utm')||'{}')||{}}catch(e){stored={}}
+  const params=new URLSearchParams(location.search);
+  let fresh=false;
+  keys.forEach(k=>{const v=params.get(k);if(v){stored[k]=v.slice(0,150);fresh=true}});
+  if(fresh){try{sessionStorage.setItem('pianoc_utm',JSON.stringify(stored))}catch(e){}}
+  keys.forEach(k=>{const el=document.getElementById(k+'-hidden');if(el)el.value=stored[k]||''});
+  const pg=document.getElementById('pagina-hidden');
+  if(pg)pg.value=location.pathname;
+})();
+
+/* Verzenden naar de eigen backend (api/aanvraag.php): de server herrekent de prijs,
+   mailt de klant de richtprijs en meldt de aanvraag intern. Daarna naar de bedankpagina. */
+(function initSubmit(){
+  const form=document.getElementById('offerte-form');
+  const submitBtn=document.getElementById('submit-btn');
+  const buttonLabel=submitBtn.textContent;
+  function notice(msg,isError){
+    let el=document.getElementById('form-notice');
+    if(!el){
+      el=document.createElement('p');
+      el.id='form-notice';
+      el.setAttribute('role','alert');
+      el.style.cssText='margin-top:14px;padding:12px 14px;border-radius:10px;background:var(--cream-soft);font-size:.92rem;line-height:1.5';
+      submitBtn.insertAdjacentElement('afterend',el);
+    }
+    el.style.color=isError?'var(--terracotta)':'var(--espresso)';
+    el.textContent=msg;
+    el.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+  function clearNotice(){const el=document.getElementById('form-notice');if(el)el.remove()}
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    calculate();
+    document.getElementById('guests-hidden').value=document.getElementById('guests').value;
+    document.getElementById('datum-hidden').value=document.getElementById('datum').value;
+    document.getElementById('locatie-hidden').value=document.getElementById('locatie').value;
+    if(!document.getElementById('datum').value||!document.getElementById('locatie').value.trim()){
+      notice(L.needBasics,true);
+      document.getElementById('locatie').focus();
+      return;
+    }
+    clearNotice();
+    submitBtn.disabled=true;
+    submitBtn.textContent=L.sending;
+    try{
+      const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});
+      let data=null;
+      try{data=await res.json()}catch(err){data=null}
+      if(res.ok&&data&&data.ok){
+        window.location.href='bedankt.html';
+        return;
+      }
+      submitBtn.disabled=false;
+      submitBtn.textContent=buttonLabel;
+      if(data&&data.lead_captured){
+        notice(data.error||L.sendError,false);
+      }else{
+        notice((data&&data.error)||L.sendError,true);
+      }
+    }catch(err){
+      submitBtn.disabled=false;
+      submitBtn.textContent=buttonLabel;
+      notice(L.sendError,true);
+    }
+  });
+})();
 calculate();
 </script>
 </body>
