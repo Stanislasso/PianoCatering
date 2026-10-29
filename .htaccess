@@ -1,0 +1,24 @@
+# Piano C Catering: serverregels (Apache achter de nginx-proxy van de hoster, zoals bij PND)
+
+# CORS: pricing-config.json en openapi.json mogen door tools en agents opgehaald worden
+<FilesMatch "^(pricing-config|openapi)\.json$">
+    Header set Access-Control-Allow-Origin "*"
+    Header set Cache-Control "public, max-age=3600"
+    Header set Content-Type "application/json; charset=utf-8"
+</FilesMatch>
+
+# Nooit .env, het CSV-vangnet of de deploy-notities publiek serveren, ook al
+# belanden ze per ongeluk in de webroot (ze horen er buiten te staan).
+<FilesMatch "^\.env|aanvragen-fallback\.csv$|^README-DEPLOY\.md$|^LEADFLOW-CHECKLIST\.md$|^PROMPTS\.md$">
+    Require all denied
+</FilesMatch>
+
+# Hulpbestanden van de api die nooit via het web mogen draaien
+<FilesMatch "^(bootstrap|env|pricing|distance|mailer|email_templates|lead_log|pricing_test)\.php$">
+    Require all denied
+</FilesMatch>
+
+# llms.txt: platte tekst, UTF-8
+<FilesMatch "^llms\.txt$">
+    Header set Content-Type "text/plain; charset=utf-8"
+</FilesMatch>

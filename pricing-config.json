@@ -1,0 +1,71 @@
+{
+  "bron": "https://www.pianocatering.be/pricing-config.json",
+  "merk": "Piano C Catering",
+  "versie": "2026-10-28",
+  "btw_inbegrepen": false,
+  "opmerking": "Rekenregels identiek aan de configurator op offerte-aanvraag.html. Prijzen per persoon, excl. btw. Server (api/pricing.php) is de bron van waarheid voor de klantmail.",
+  "min_gasten": 20,
+  "opstartkost": 200,
+  "pizza_staffel": [
+    { "min": 100, "prijs_pp": 21 },
+    { "min": 75, "prijs_pp": 22 },
+    { "min": 50, "prijs_pp": 23 },
+    { "min": 35, "prijs_pp": 23 },
+    { "min": 1, "prijs_pp": 24 }
+  ],
+  "combi_opslag": {
+    "opmerking": "Meerdere keuzes binnen één categorie (behalve drank): gemiddelde prijs plus opslag, afhankelijk van het aantal keuzes. Vanaf 6 keuzes 40 %.",
+    "2": 0.25,
+    "3": 0.30,
+    "4": 0.35,
+    "5": 0.38,
+    "6": 0.40
+  },
+  "groepskorting": [
+    { "min": 100, "korting": 0.12 },
+    { "min": 75, "korting": 0.09 },
+    { "min": 50, "korting": 0.06 },
+    { "min": 35, "korting": 0.03 },
+    { "min": 1, "korting": 0 }
+  ],
+  "drank": {
+    "opmerking": "Water telt altijd volledig. Van de andere dranken telt de duurste volledig, elke extra drank voor 30 %.",
+    "water_id": "water",
+    "extra_aandeel": 0.30
+  },
+  "transport": {
+    "vertrekpunt": "Ravenstraat 38, 3000 Leuven, Belgium",
+    "gratis_km": 20,
+    "prijs_per_km": 1.35,
+    "basis": "Rijafstand in één richting vanaf Piano A, afgerond op 0,1 km. Enkel de kilometers boven de gratis zone worden aangerekend, als één totaalbedrag verdeeld over de gasten."
+  },
+  "btw": {
+    "food": 0.12,
+    "drinks": 0.21
+  },
+  "categorieen": [
+    { "id": "aperitief", "btw_categorie": "food", "naam": { "nl": "Voorgerecht", "en": "Starter", "it": "Antipasto" } },
+    { "id": "hoofd", "btw_categorie": "food", "verplicht": true, "naam": { "nl": "Hoofdgerecht", "en": "Main course", "it": "Piatto principale" } },
+    { "id": "dessert", "btw_categorie": "food", "naam": { "nl": "Dessert", "en": "Dessert", "it": "Dolce" } },
+    { "id": "drank", "btw_categorie": "drinks", "naam": { "nl": "Drank", "en": "Drinks", "it": "Bevande" } }
+  ],
+  "items": [
+    { "id": "charcuterie", "categorie": "aperitief", "prijs_pp": 15, "naam": { "nl": "Charcuterieplank", "en": "Charcuterie board", "it": "Tagliere di salumi" } },
+    { "id": "vitello", "categorie": "aperitief", "prijs_pp": 10, "naam": { "nl": "Vitello tonnato", "en": "Vitello tonnato", "it": "Vitello tonnato" } },
+    { "id": "carpaccio", "categorie": "aperitief", "prijs_pp": 10, "naam": { "nl": "Carpaccio", "en": "Carpaccio", "it": "Carpaccio" } },
+    { "id": "pizza", "categorie": "hoofd", "prijs_pp": 24, "staffel": "pizza_staffel", "naam": { "nl": "Pizza uit de houtoven (5 soorten, à volonté)", "en": "Wood-fired pizza (5 kinds, unlimited)", "it": "Pizza dal forno a legna (5 tipi, a volontà)" } },
+    { "id": "parmigiana", "categorie": "hoofd", "prijs_pp": 25, "naam": { "nl": "Parmigiana", "en": "Parmigiana", "it": "Parmigiana" } },
+    { "id": "cime-di-rapa", "categorie": "hoofd", "prijs_pp": 24, "naam": { "nl": "Orecchiette cime di rapa", "en": "Orecchiette cime di rapa", "it": "Orecchiette cime di rapa" } },
+    { "id": "pasta-kreeft", "categorie": "hoofd", "prijs_pp": 30, "naam": { "nl": "Pasta met kreeft", "en": "Lobster pasta", "it": "Pasta con astice" } },
+    { "id": "cacio-e-pepe", "categorie": "hoofd", "prijs_pp": 26, "naam": { "nl": "Cacio e pepe", "en": "Cacio e pepe", "it": "Cacio e pepe" } },
+    { "id": "tiramisu", "categorie": "dessert", "prijs_pp": 10, "naam": { "nl": "Tiramisu", "en": "Tiramisu", "it": "Tiramisù" } },
+    { "id": "panna-cotta", "categorie": "dessert", "prijs_pp": 10, "naam": { "nl": "Panna cotta", "en": "Panna cotta", "it": "Panna cotta" } },
+    { "id": "chocolademousse", "categorie": "dessert", "prijs_pp": 10, "naam": { "nl": "Chocolademousse", "en": "Chocolate mousse", "it": "Mousse al cioccolato" } },
+    { "id": "cheesecake", "categorie": "dessert", "prijs_pp": 10, "naam": { "nl": "Cheesecake", "en": "Cheesecake", "it": "Cheesecake" } },
+    { "id": "water", "categorie": "drank", "prijs_pp": 5, "naam": { "nl": "Water plat & bruisend", "en": "Still & sparkling water", "it": "Acqua naturale & frizzante" } },
+    { "id": "frisdrank", "categorie": "drank", "prijs_pp": 5, "naam": { "nl": "Frisdranken", "en": "Soft drinks", "it": "Bibite" } },
+    { "id": "bier-pils", "categorie": "drank", "prijs_pp": 7.5, "naam": { "nl": "Bier", "en": "Beer", "it": "Birra" } },
+    { "id": "wijn", "categorie": "drank", "prijs_pp": 10, "naam": { "nl": "Wijn (wit, rood & rosé)", "en": "Wine (white, red & rosé)", "it": "Vino (bianco, rosso & rosato)" } },
+    { "id": "prosecco", "categorie": "drank", "prijs_pp": 12, "naam": { "nl": "Prosecco & spritz", "en": "Prosecco & spritz", "it": "Prosecco & spritz" } }
+  ]
+}

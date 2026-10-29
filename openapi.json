@@ -1,0 +1,115 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Piano C Catering: offerte-API",
+    "version": "1.0.0",
+    "description": "Vraag een richtprijs aan voor Italiaanse catering van Piano C (de catering-extensie van restaurant Piano A, Leuven): pizza uit de houtoven, pasta's, voorgerechten, desserts en drank. De klant krijgt de richtprijs per e-mail met de uitnodiging om eerst te komen proeven in Piano A; het team krijgt dezelfde aanvraag intern binnen. Prijzen, items en rekenregels: https://www.pianocatering.be/pricing-config.json. Alle prijzen zijn per persoon en exclusief btw (12 % eten, 21 % drank). Minimum 20 personen, opstartkost 200 euro, transport gratis binnen 20 km rond Leuven.",
+    "contact": {
+      "name": "Piano C Catering",
+      "email": "info@pianocatering.be",
+      "url": "https://www.pianocatering.be/"
+    }
+  },
+  "servers": [
+    { "url": "https://www.pianocatering.be" }
+  ],
+  "paths": {
+    "/api/offerte.php": {
+      "options": {
+        "summary": "CORS preflight",
+        "responses": { "204": { "description": "Geen inhoud" } }
+      },
+      "post": {
+        "operationId": "vraagOfferteAan",
+        "summary": "Richtprijs aanvragen",
+        "description": "Berekent de richtprijs met dezelfde regels als de configurator op de site en verstuurt de klantmail en de interne melding. Maximaal 10 aanvragen per IP-adres per uur. Het veld 'website' is een honeypot en moet leeg blijven. Onder 20 personen wordt de opstartkost verdeeld over 20 personen. Transport: rijafstand vanaf Piano A, de kilometers boven 20 km aan 1,35 euro per km.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/OfferteAanvraag" },
+              "examples": {
+                "huwelijk": {
+                  "summary": "Huwelijk, pizza en pasta",
+                  "value": {
+                    "datum": "2027-06-20",
+                    "aantal_personen": 40,
+                    "locatie": "Herent",
+                    "items": ["charcuterie", "pizza", "cime-di-rapa", "tiramisu", "water", "wijn"],
+                    "naam": "Voornaam Achternaam",
+                    "email": "naam@example.com",
+                    "telefoon": "+32 470 00 00 00",
+                    "opmerkingen": "2 vegetarische gasten",
+                    "taal": "nl"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Aanvraag ontvangen en richtprijs berekend", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/OfferteAntwoord" } } } },
+          "400": { "description": "Ongeldige invoer (ook de honeypot)", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Fout" } } } },
+          "405": { "description": "Alleen POST en OPTIONS", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Fout" } } } },
+          "415": { "description": "Content-Type moet application/json zijn", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Fout" } } } },
+          "422": { "description": "Prijs kon niet berekend worden (bv. geen hoofdgerecht), maar de aanvraag is geregistreerd en het team is verwittigd", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Fout" } } } },
+          "429": { "description": "Te veel aanvragen vanaf dit IP-adres (max 10 per uur)", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Fout" } } } }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "OfferteAanvraag": {
+        "type": "object",
+        "required": ["datum", "aantal_personen", "locatie", "items", "naam", "email"],
+        "properties": {
+          "datum": { "type": "string", "format": "date", "description": "Datum van het event, YYYY-MM-DD, niet in het verleden" },
+          "aantal_personen": { "type": "integer", "minimum": 1, "description": "Aantal gasten. Minimum 20; daaronder wordt de opstartkost over 20 verdeeld." },
+          "locatie": { "type": "string", "description": "Adres of gemeente in België. Bepaalt de transportkost vanaf Piano A (Ravenstraat 38, Leuven)." },
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "enum": ["charcuterie", "vitello", "carpaccio", "pizza", "parmigiana", "cime-di-rapa", "pasta-kreeft", "cacio-e-pepe", "tiramisu", "panna-cotta", "chocolademousse", "cheesecake", "water", "frisdrank", "bier-pils", "wijn", "prosecco"]
+            },
+            "description": "Gekozen items (ids uit pricing-config.json). Minstens één hoofdgerecht: pizza, parmigiana, cime-di-rapa, pasta-kreeft of cacio-e-pepe. Meerdere keuzes in één categorie worden gecombineerd (gemiddelde plus opslag)."
+          },
+          "naam": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "telefoon": { "type": "string" },
+          "opmerkingen": { "type": "string" },
+          "taal": { "type": "string", "enum": ["nl", "en", "it"], "default": "nl", "description": "Taal van de klantmail" },
+          "afstand_km": { "type": "number", "description": "Optioneel: rijafstand in km die al gekend is. Wordt enkel gebruikt als de server de afstand zelf niet kan opzoeken." },
+          "utm_source": { "type": "string" },
+          "utm_medium": { "type": "string" },
+          "utm_campaign": { "type": "string" },
+          "utm_term": { "type": "string" },
+          "website": { "type": "string", "description": "Honeypot: leeg laten" }
+        }
+      },
+      "OfferteAntwoord": {
+        "type": "object",
+        "properties": {
+          "status": { "type": "string", "enum": ["ok"] },
+          "referentie": { "type": "string", "description": "PC-JJJJMMDD-XXXXXX" },
+          "prijs_pp_excl_btw": { "type": "number" },
+          "totaal_excl_btw": { "type": "number" },
+          "btw": { "type": "number" },
+          "totaal_incl_btw": { "type": "number" },
+          "details": { "type": "object", "description": "Prijsopbouw per lijn, afstand, korting, of het minimum is toegepast en of de klantmail vertrok" }
+        }
+      },
+      "Fout": {
+        "type": "object",
+        "properties": {
+          "status": { "type": "string", "enum": ["error"] },
+          "fouten": { "type": "array", "items": { "type": "string" } },
+          "lead_captured": { "type": "boolean" },
+          "referentie": { "type": "string" }
+        }
+      }
+    }
+  }
+}
