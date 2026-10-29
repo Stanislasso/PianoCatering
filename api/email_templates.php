@@ -8,7 +8,7 @@ declare(strict_types=1);
  *
  * Drie mails:
  *  - klantmail: de richtprijs, de keuzes nog eens bevestigd, en als
- *    vervolgstap de uitnodiging om eerst te komen proeven in Piano A.
+ *    een blok over de keuken van Piano A (restaurantkwaliteit).
  *  - interne melding: alle gegevens in een tabel, zelfde opzet als bij
  *    Pretty Nice Dough zodat Sofie ze op dezelfde manier leest.
  *  - fallback: als de prijs niet berekend kon worden.
@@ -88,9 +88,9 @@ function pianocT(string $lang): array
             'extra' => 'extra drank, 30 %',
             'minimum' => 'We werken met een minimum van %d personen. Je aanvraag zat daar net onder, dus de opstartkost is verdeeld over %d personen.',
             'afstand_onbekend' => 'We konden de afstand naar je locatie nog niet automatisch berekenen. Transport zit dus nog niet in deze richtprijs; we rekenen dat na in ons voorstel (gratis binnen 20 km rond Leuven, daarbuiten €1,35 per extra km).',
-            'proef_titel' => 'Kom eerst proeven in Piano A',
-            'proef_tekst' => 'Twijfel je nog? Kom langs in Piano A, Ravenstraat 38 in Leuven. Wat je daar proeft, is exact wat je gasten op je feest krijgen. Reserveer een tafel en zeg erbij dat je voor een feest komt proeven, dan nemen we de tijd om je menu samen te stellen.',
-            'proef_knop' => 'Reserveer in Piano A',
+            'proef_titel' => 'Uit de keuken van Piano A',
+            'proef_tekst' => 'Piano C is de catering van ons restaurant Piano A in de Ravenstraat in Leuven. Op je feest koken we precies wat we elke avond in het restaurant serveren: hetzelfde deeg, dezelfde producten, dezelfde recepten uit Puglia.',
+            'proef_knop' => 'Ontdek Piano A',
             'vervolg' => 'Dit is een richtprijs. We nemen binnen één werkdag contact met je op om de datum te bevestigen en de details te overlopen. Heb je intussen een vraag? Antwoord gewoon op deze mail, bel ons op %s of stuur een WhatsApp.',
             'whatsapp' => 'WhatsApp ons',
             'whatsapp_tekst' => 'Dag Piano C, ik ontving jullie richtprijs (ref. %s) en wil graag mijn datum bespreken.',
@@ -121,9 +121,9 @@ function pianocT(string $lang): array
             'extra' => 'extra drink, 30 %',
             'minimum' => 'We work with a minimum of %d guests. Your request was just below that, so the setup cost is split across %d guests.',
             'afstand_onbekend' => 'We could not calculate the distance to your location automatically yet, so transport is not included in this quote. We will add it in our proposal (free within 20 km of Leuven, €1.35 per extra km beyond that).',
-            'proef_titel' => 'Taste it first at Piano A',
-            'proef_tekst' => 'Not sure yet? Come by Piano A, Ravenstraat 38 in Leuven. What you taste there is exactly what your guests will get at your event. Book a table and mention you are tasting for an event, and we will take the time to build your menu together.',
-            'proef_knop' => 'Book at Piano A',
+            'proef_titel' => 'From the kitchen of Piano A',
+            'proef_tekst' => 'Piano C is the catering of our restaurant Piano A on Ravenstraat in Leuven. At your event we cook exactly what we serve in the restaurant every evening: the same dough, the same products, the same recipes from Puglia.',
+            'proef_knop' => 'Discover Piano A',
             'vervolg' => 'This is an indicative price. We will contact you within one working day to confirm the date and go through the details. Questions in the meantime? Just reply to this email, call us on %s or send us a WhatsApp.',
             'whatsapp' => 'WhatsApp us',
             'whatsapp_tekst' => 'Hi Piano C, I received your quote (ref. %s) and would like to discuss my date.',
@@ -154,9 +154,9 @@ function pianocT(string $lang): array
             'extra' => 'bevanda extra, 30 %',
             'minimum' => 'Lavoriamo con un minimo di %d persone. La vostra richiesta era appena sotto, quindi il costo di allestimento è ripartito su %d persone.',
             'afstand_onbekend' => 'Non siamo ancora riusciti a calcolare automaticamente la distanza fino al vostro luogo, quindi il trasporto non è incluso in questo preventivo. Lo aggiungeremo nella nostra proposta (gratuito entro 20 km da Leuven, oltre €1,35 per km extra).',
-            'proef_titel' => 'Venite prima ad assaggiare da Piano A',
-            'proef_tekst' => 'Avete ancora dubbi? Passate da Piano A, Ravenstraat 38 a Leuven. Quello che assaggiate lì è esattamente quello che i vostri ospiti riceveranno alla festa. Prenotate un tavolo e dite che venite ad assaggiare per una festa, così prendiamo il tempo per comporre insieme il vostro menù.',
-            'proef_knop' => 'Prenotate da Piano A',
+            'proef_titel' => 'Dalla cucina di Piano A',
+            'proef_tekst' => 'Piano C è il catering del nostro ristorante Piano A in Ravenstraat a Leuven. Alla vostra festa cuciniamo esattamente quello che serviamo ogni sera al ristorante: lo stesso impasto, gli stessi prodotti, le stesse ricette della Puglia.',
+            'proef_knop' => 'Scopri Piano A',
             'vervolg' => 'Questo è un prezzo indicativo. Vi contatteremo entro un giorno lavorativo per confermare la data e rivedere i dettagli. Nel frattempo avete una domanda? Rispondete a questa e-mail, chiamateci al %s o scriveteci su WhatsApp.',
             'whatsapp' => 'Scriveteci su WhatsApp',
             'whatsapp_tekst' => 'Ciao Piano C, ho ricevuto il vostro preventivo (rif. %s) e vorrei parlare della mia data.',
@@ -347,7 +347,7 @@ function buildInterneEmailHtml(array $input, array $prijs, string $referentie): 
         'Pagina' => $input['pagina'] ?? '',
     ];
 
-    $html = '<p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;">Nieuwe aanvraag via pianocatering.be. De klant kreeg automatisch de richtprijs hieronder, met de uitnodiging om te komen proeven in Piano A. Antwoorden op deze mail gaat rechtstreeks naar de klant.</p>';
+    $html = '<p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;">Nieuwe aanvraag via pianocatering.be. De klant kreeg automatisch de richtprijs hieronder, met een blok over de keuken van Piano A. Antwoorden op deze mail gaat rechtstreeks naar de klant.</p>';
     $html .= '<table cellpadding="5" cellspacing="0" style="font-family:Arial,Helvetica,sans-serif;font-size:14px;">';
     foreach ($rows as $label => $value) {
         if ($value === '' || $value === null) {
