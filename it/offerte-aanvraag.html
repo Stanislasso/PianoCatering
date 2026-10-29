@@ -261,6 +261,25 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
 @media(hover:hover){footer a:hover{color:var(--cream)}}
 .foot-legal a{display:inline;margin:0;padding:0;font-size:inherit;color:rgba(244,241,236,.75);text-decoration:underline;text-underline-offset:2px}
 .reveal{opacity:1}
+
+/* Prijsblok op gsm: compacte balk die onderaan meescrollt, opbouw uitklapbaar.
+   Op desktop blijft het de meescrollende zijkolom. */
+.pp-toggle{display:none}
+.pp-btn-short{display:none}
+@media(max-width:979px){
+  body{padding-bottom:84px}
+  .price-panel{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:14px;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));border-radius:14px 14px 0 0}
+  .price-panel .pp-label{display:none}
+  .price-panel .pp-amount{grid-column:1;font-size:1.65rem;margin:0}
+  .price-panel .pp-total{grid-column:1;font-size:.68rem;line-height:1.35;margin:2px 0 0}
+  .price-panel .btn{grid-column:2;grid-row:1 / span 2;width:auto;min-height:44px;padding:12px 18px;font-size:.72rem}
+  .price-panel .price-warn{grid-column:1 / -1;margin:6px 0 0}
+  .price-panel .price-breakdown{display:none;grid-column:1 / -1;max-height:45vh;overflow:auto;margin:10px 0 0}
+  .price-panel.open .price-breakdown{display:block}
+  .pp-toggle{display:inline;background:none;border:0;padding:0 0 0 6px;font:inherit;color:rgba(244,241,236,.85);text-decoration:underline;cursor:pointer}
+  .pp-btn-long{display:none}
+  .pp-btn-short{display:inline}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -359,8 +378,6 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
       <a href="offerte-aanvraag.html" class="btn nav-cta">Preventivo</a>
     </nav>
     <div class="nav-actions">
-      <a href="tel:+32475263934" class="nav-ico" aria-label="Chiama Piano C"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></a>
-      <a href="https://wa.me/32475263934" class="nav-ico nav-ico--wa" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
       <a href="offerte-aanvraag.html" class="btn nav-cta">Preventivo</a>
       <button type="button" class="nav-toggle" aria-label="Apri il menu" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span><span></span></button>
     </div>
@@ -538,10 +555,10 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
   <aside class="price-panel" aria-live="polite" aria-atomic="true">
     <p class="pp-label">Prezzo indicativo a persona</p>
     <p class="pp-amount" id="price-pp">€30<span>,00</span></p>
-    <p class="pp-total">Totale per <b id="price-guests">30</b> ospiti: <b id="price-total">€900</b> <span style="opacity:.6">IVA esclusa</span></p>
+    <p class="pp-total">Totale per <b id="price-guests">30</b> ospiti: <b id="price-total">€900</b> <span style="opacity:.6">IVA esclusa</span> <button type="button" class="pp-toggle" aria-expanded="false" aria-controls="price-breakdown">dettagli</button></p>
     <p class="price-warn" id="price-warn" hidden>Selezionate almeno un piatto principale.</p>
     <ul class="price-breakdown" id="price-breakdown"></ul>
-    <a href="#contact-form" class="btn">Continua con la richiesta</a>
+    <a href="#contact-form" class="btn"><span class="pp-btn-long">Continua con la richiesta</span><span class="pp-btn-short">Richiedi</span></a>
   </aside>
 </section>
 
@@ -586,12 +603,8 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
       <button type="submit" class="btn form-submit" id="submit-btn">Invia richiesta</button>
     </form>
     <div class="contact-aside">
-      <h3>Preferite chiamare o scrivere su WhatsApp?</h3>
-      <p>Chiamate Piano C allo <a href="tel:+32475263934">0475 26 39 34</a> o scrivete su <a href="https://wa.me/32475263934" target="_blank" rel="noopener">WhatsApp</a>. Nei giorni lavorativi rispondiamo entro poche ore.</p>
-      <div class="btn-row">
-        <a href="tel:+32475263934" class="btn btn-ghost"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg> 0475 26 39 34</a>
-        <a href="https://wa.me/32475263934" class="btn btn-ghost" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> WhatsApp</a>
-      </div>
+      <h3>Avete prima una domanda?</h3>
+      <p>Scriveteci a <a href="mailto:info@pianocatering.be">info@pianocatering.be</a>. Nei giorni lavorativi rispondiamo entro poche ore.</p>
       <p class="legal">Inviando la richiesta accettate la nostra <a href="privacy.html">informativa sulla privacy</a> e le <a href="voorwaarden.html">condizioni generali</a>. Nessun acconto; il prezzo indicativo è IVA esclusa e viene confermato nel preventivo.</p>
     </div>
   </div>
@@ -655,8 +668,6 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
       <div>
         <h5>Contatti</h5>
         <a href="mailto:info@pianocatering.be">info@pianocatering.be</a>
-        <a href="tel:+32475263934">0475 26 39 34</a>
-        <a href="https://wa.me/32475263934" target="_blank" rel="noopener">WhatsApp</a>
         <p class="foot-addr">Venite prima ad assaggiare da<br>Piano A · Ravenstraat 38, 3000 Leuven</p>
       </div>
     </div>
@@ -1041,5 +1052,14 @@ if(toggle&&menu){
 calculate();
 </script>
 <script>document.querySelectorAll('.frame img').forEach(function(img){function fail(){img.parentElement.classList.add('is-empty')}if(img.complete&&!img.naturalWidth)fail();img.addEventListener('error',fail)});</script>
+<script>
+/* Gsm: opbouw van de richtprijs open- en dichtklappen. */
+(function(){
+  const panel=document.querySelector('.price-panel');
+  const t=panel&&panel.querySelector('.pp-toggle');
+  if(!t)return;
+  t.addEventListener('click',()=>{const open=panel.classList.toggle('open');t.setAttribute('aria-expanded',open?'true':'false')});
+})();
+</script>
 </body>
 </html>

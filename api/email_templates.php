@@ -21,8 +21,7 @@ const PIANOC_COLOR_CREAM_SOFT = '#EBE5DA';
 const PIANOC_COLOR_TERRACOTTA = '#C0562E';
 const PIANOC_COLOR_OLIVE = '#74764E';
 const PIANOC_PIANO_A_URL = 'https://pianoa.piano-ab.be';
-const PIANOC_PHONE_DISPLAY = '0475 26 39 34';
-const PIANOC_PHONE_INTL = '32475263934';
+const PIANOC_MAIL = 'info@pianocatering.be';
 const PIANOC_SITE = 'https://www.pianocatering.be';
 
 function emailEsc(string $v): string
@@ -91,9 +90,9 @@ function pianocT(string $lang): array
             'proef_titel' => 'Kom eerst proeven in Piano A',
             'proef_tekst' => 'Twijfel je nog? Kom langs in Piano A, Ravenstraat 38 in Leuven. Wat je daar proeft, is exact wat je gasten op je feest krijgen. Reserveer een tafel en zeg erbij dat je voor een feest komt proeven, dan nemen we de tijd om je menu samen te stellen.',
             'proef_knop' => 'Reserveer in Piano A',
-            'vervolg' => 'Dit is een richtprijs. We nemen binnen één werkdag contact met je op om de datum te bevestigen en de details te overlopen. Heb je intussen een vraag? Antwoord gewoon op deze mail, bel ons op %s of stuur een WhatsApp.',
-            'whatsapp' => 'WhatsApp ons',
-            'whatsapp_tekst' => 'Dag Piano C, ik ontving jullie richtprijs (ref. %s) en wil graag mijn datum bespreken.',
+            'vervolg' => 'Dit is een richtprijs. We mailen je binnen één werkdag om de datum te bevestigen en de details te overlopen. Heb je intussen een vraag of wil je je datum al vastleggen? Antwoord gewoon op deze mail.',
+            'antwoord' => 'Antwoord op deze mail',
+            'antwoord_onderwerp' => 'Mijn richtprijs (ref. %s)',
             'ref' => 'Referentie',
             'groeten' => 'A presto,<br>Alessandro, Andrea en Mattia<br><span style="color:' . PIANOC_COLOR_OLIVE . '">Piano C Catering, de catering van Piano A</span>',
             'footer' => 'Piano C Catering is de catering-extensie van restaurant Piano A, Ravenstraat 38, 3000 Leuven. Uitgebaat door Kumbaya BV, BE0793492662. Prijzen excl. btw.',
@@ -124,9 +123,9 @@ function pianocT(string $lang): array
             'proef_titel' => 'Taste it first at Piano A',
             'proef_tekst' => 'Not sure yet? Come by Piano A, Ravenstraat 38 in Leuven. What you taste there is exactly what your guests will get at your event. Book a table and mention you are tasting for an event, and we will take the time to build your menu together.',
             'proef_knop' => 'Book at Piano A',
-            'vervolg' => 'This is an indicative price. We will contact you within one working day to confirm the date and go through the details. Questions in the meantime? Just reply to this email, call us on %s or send us a WhatsApp.',
-            'whatsapp' => 'WhatsApp us',
-            'whatsapp_tekst' => 'Hi Piano C, I received your quote (ref. %s) and would like to discuss my date.',
+            'vervolg' => 'This is an indicative price. We will email you within one working day to confirm the date and go through the details. A question in the meantime, or want to secure your date? Just reply to this email.',
+            'antwoord' => 'Reply to this email',
+            'antwoord_onderwerp' => 'My quote (ref. %s)',
             'ref' => 'Reference',
             'groeten' => 'A presto,<br>Alessandro, Andrea and Mattia<br><span style="color:' . PIANOC_COLOR_OLIVE . '">Piano C Catering, the catering of Piano A</span>',
             'footer' => 'Piano C Catering is the catering extension of restaurant Piano A, Ravenstraat 38, 3000 Leuven, Belgium. Operated by Kumbaya BV, BE0793492662. Prices excl. VAT.',
@@ -157,9 +156,9 @@ function pianocT(string $lang): array
             'proef_titel' => 'Venite prima ad assaggiare da Piano A',
             'proef_tekst' => 'Avete ancora dubbi? Passate da Piano A, Ravenstraat 38 a Leuven. Quello che assaggiate lì è esattamente quello che i vostri ospiti riceveranno alla festa. Prenotate un tavolo e dite che venite ad assaggiare per una festa, così prendiamo il tempo per comporre insieme il vostro menù.',
             'proef_knop' => 'Prenotate da Piano A',
-            'vervolg' => 'Questo è un prezzo indicativo. Vi contatteremo entro un giorno lavorativo per confermare la data e rivedere i dettagli. Nel frattempo avete una domanda? Rispondete a questa e-mail, chiamateci al %s o scriveteci su WhatsApp.',
-            'whatsapp' => 'Scriveteci su WhatsApp',
-            'whatsapp_tekst' => 'Ciao Piano C, ho ricevuto il vostro preventivo (rif. %s) e vorrei parlare della mia data.',
+            'vervolg' => 'Questo è un prezzo indicativo. Vi scriveremo entro un giorno lavorativo per confermare la data e rivedere i dettagli. Avete una domanda o volete già fissare la data? Rispondete pure a questa e-mail.',
+            'antwoord' => 'Rispondi a questa e-mail',
+            'antwoord_onderwerp' => 'Il mio preventivo (rif. %s)',
             'ref' => 'Riferimento',
             'groeten' => 'A presto,<br>Alessandro, Andrea e Mattia<br><span style="color:' . PIANOC_COLOR_OLIVE . '">Piano C Catering, il catering di Piano A</span>',
             'footer' => 'Piano C Catering è l\'estensione catering del ristorante Piano A, Ravenstraat 38, 3000 Leuven, Belgio. Gestito da Kumbaya BV, BE0793492662. Prezzi IVA esclusa.',
@@ -184,7 +183,7 @@ function emailWrapper(string $title, string $bodyHtml, string $footer): string
         . $bodyHtml
         . '</td></tr>'
         . '<tr><td style="background:' . PIANOC_COLOR_ESPRESSO_DEEP . ';padding:18px 28px;text-align:center;color:rgba(244,241,236,0.7);font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.5;">'
-        . emailEsc($footer) . '<br><a href="' . PIANOC_SITE . '" style="color:' . PIANOC_COLOR_CREAM . ';">pianocatering.be</a> · <a href="mailto:info@pianocatering.be" style="color:' . PIANOC_COLOR_CREAM . ';">info@pianocatering.be</a> · ' . PIANOC_PHONE_DISPLAY
+        . emailEsc($footer) . '<br><a href="' . PIANOC_SITE . '" style="color:' . PIANOC_COLOR_CREAM . ';">pianocatering.be</a> · <a href="mailto:info@pianocatering.be" style="color:' . PIANOC_COLOR_CREAM . ';">info@pianocatering.be</a>'
         . '</td></tr>'
         . '</table></td></tr></table></body></html>';
 }
@@ -310,9 +309,9 @@ function buildKlantEmailHtml(array $input, array $prijs, string $lang, string $r
         . emailKnop(PIANOC_PIANO_A_URL, $t['proef_knop'], PIANOC_COLOR_TERRACOTTA)
         . '</td></tr></table>';
 
-    $html .= $p(emailEsc(sprintf($t['vervolg'], PIANOC_PHONE_DISPLAY)));
-    $waUrl = 'https://wa.me/' . PIANOC_PHONE_INTL . '?text=' . rawurlencode(sprintf($t['whatsapp_tekst'], $referentie));
-    $html .= '<p style="text-align:center;margin:18px 0 22px;">' . emailKnop($waUrl, $t['whatsapp'], PIANOC_COLOR_OLIVE) . '</p>';
+    $html .= $p(emailEsc($t['vervolg']));
+    $mailUrl = 'mailto:' . PIANOC_MAIL . '?subject=' . rawurlencode(sprintf($t['antwoord_onderwerp'], $referentie));
+    $html .= '<p style="text-align:center;margin:18px 0 22px;">' . emailKnop($mailUrl, $t['antwoord'], PIANOC_COLOR_OLIVE) . '</p>';
     $html .= $p($t['groeten']);
 
     return emailWrapper($t['titel'], $html, $t['footer']);
