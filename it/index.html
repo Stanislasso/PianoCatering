@@ -98,14 +98,14 @@
       "name": "Buffet di pizza",
       "price": "24",
       "priceCurrency": "EUR",
-      "description": "Min. 20 persone · allestimento €200 · trasporto gratuito entro 20 km da Leuven"
+      "description": "Cinque pizze del menu di Piano A, cotte al momento nel nostro forno a legna mobile. Per due ore, una pizza dopo l'altra."
      },
      {
       "@type": "Offer",
       "name": "Pasta",
       "price": "24",
       "priceCurrency": "EUR",
-      "description": "Da sola o con il buffet di pizza · min. 20 persone · allestimento €200"
+      "description": "Quattro paste come escono ogni sera dalla cucina di Piano A. Servite calde, a buffet o come portata accanto alla pizza."
      }
     ]
    }
@@ -148,11 +148,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,241,236,.92);backdro
 .brand .sub{font-family:var(--font-mono);font-size:.48rem;letter-spacing:.22em;text-transform:uppercase;margin-top:3px;color:var(--espresso)}
 @media(min-width:760px){.brand .name{font-size:1.5rem}.brand .sub{font-size:.58rem;letter-spacing:.34em}}
 .nav-actions{display:flex;align-items:center;gap:5px;flex-shrink:0}
-.nav-ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--cream);color:var(--espresso);flex-shrink:0;text-decoration:none;-webkit-tap-highlight-color:transparent}
-.nav-ico svg{width:18px;height:18px;fill:currentColor}
-.nav-ico--wa{color:#1f8a4c}
 @media(min-width:760px){.nav-actions{gap:10px}}
-@media(max-width:359px){.nav-ico--wa{display:none}}
 .nav-toggle{display:flex;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;padding:0;border:1px solid var(--line);border-radius:8px;background:var(--cream);cursor:pointer;flex-shrink:0}
 .nav-toggle span{display:block;width:18px;height:2px;background:var(--espresso);margin:0 auto;transition:transform .25s,opacity .25s}
 .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -188,8 +184,6 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,241,236,.92);backdro
 @media(hover:hover){.btn-light:hover{background:var(--terracotta);color:var(--cream)}}
 .btn-terra{background:var(--terracotta);color:var(--cream)}
 @media(hover:hover){.btn-terra:hover{background:var(--espresso)}}
-.btn-wa{background:#1f8a4c;color:#fff}
-@media(hover:hover){.btn-wa:hover{background:#176b3b}}
 .btn-row{display:flex;flex-direction:column;gap:12px}
 .btn-row .btn{width:100%}
 @media(min-width:480px){.btn-row{flex-direction:row;flex-wrap:wrap}.btn-row .btn{width:auto}}
@@ -267,8 +261,8 @@ section{padding:var(--section-pad) 0;position:relative}
 .card .num{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.14em;color:var(--terracotta);margin-bottom:14px}
 .card h3{font-size:1.6rem;margin-bottom:6px}
 @media(min-width:760px){.card h3{font-size:1.9rem}}
-.card .price{font-family:var(--font-mono);font-size:1rem;margin:10px 0 18px;color:var(--espresso)}
-.card .price small{display:block;font-size:.68rem;opacity:.65;letter-spacing:.03em;margin-top:6px;line-height:1.45}
+.card .card-lead{font-size:.97rem;color:rgba(74,52,42,.85);line-height:1.55;margin:8px 0 18px}
+.card .card-meta{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.02em;color:rgba(74,52,42,.62);margin:0 0 18px;line-height:1.6}
 .card ul{list-style:none;margin:0 0 24px;display:flex;flex-direction:column;gap:10px}
 .card li{padding-left:22px;position:relative;font-size:.94rem}
 .card li::before{content:"✦";position:absolute;left:0;top:.35em;color:var(--terracotta);font-size:.6rem}
@@ -372,8 +366,7 @@ section{padding:var(--section-pad) 0;position:relative}
 .page-head .kicker{margin-bottom:16px;display:block}
 .page-head h1{font-size:clamp(2rem,7vw,3.4rem);margin-bottom:18px}
 .page-head p{font-size:1.05rem;color:rgba(74,52,42,.85)}
-.price-tag{font-family:var(--font-mono);font-size:1.1rem;margin-top:20px;color:var(--terracotta)}
-.price-tag small{display:block;font-size:.72rem;color:rgba(74,52,42,.6);margin-top:6px;letter-spacing:.04em;line-height:1.5}
+.price-tag{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.02em;color:rgba(74,52,42,.62);margin-top:16px;line-height:1.7}
 .page-photo{margin:32px auto 0;max-width:960px}
 .teaser{margin:40px auto 0;max-width:48ch;border-top:1px solid var(--line);padding-top:28px}
 .teaser h2{font-size:1.4rem;margin-bottom:14px}
@@ -391,8 +384,9 @@ section{padding:var(--section-pad) 0;position:relative}
 .staffel{margin:36px auto 0;max-width:640px;background:var(--cream-soft);border:1px solid var(--line);border-radius:8px;padding:22px 20px}
 .staffel h2{font-size:1.25rem;margin-bottom:12px}
 .staffel table{width:100%;border-collapse:collapse;font-size:.94rem}
-.staffel td{padding:8px 0;border-bottom:1px solid var(--line)}
-.staffel td:last-child{text-align:right;font-family:var(--font-mono);color:var(--terracotta)}
+.staffel td{padding:10px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.staffel td:first-child{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--olive);width:38%;padding-right:12px;padding-top:13px}
+.staffel td:last-child{font-size:.94rem;color:rgba(74,52,42,.9)}
 .staffel p{font-size:.88rem;color:rgba(74,52,42,.75);margin-top:12px}
 .page-cta{margin-top:36px}
 .menu-section{margin-top:44px}
@@ -512,22 +506,24 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
 </section>
 <section class="formules soft" id="formules">
   <div class="wrap">
-    <div class="section-head reveal"><span class="kicker">Le nostre formule</span><h2>Pizza, pasta o entrambe</h2><p>Componete il menu da soli nella pagina del preventivo e vedete subito il prezzo indicativo. Tutti i prezzi a persona, IVA 12 % esclusa.</p></div>
+    <div class="section-head reveal"><span class="kicker">Le nostre formule</span><h2>Pizza, pasta o entrambe</h2><p>Pizza dal forno a legna, pasta fatta in casa o entrambe, con antipasto, dolce e bevande se volete. Tutto dal menu di Piano A, con le stesse ricette.</p></div>
     <div class="cards">
       <div class="card reveal" data-d="1" id="pizza-buffet">
         <span class="num">Formula 01</span><h3>Buffet di pizza</h3>
-        <div class="price">da €24 a persona<small>Min. 20 persone · allestimento €200 · trasporto gratuito entro 20 km da Leuven</small></div>
-        <ul><li>Cinque pizze del menu di Piano A: Margherita, Diavola, 4 Formaggi, Napoli e Honey</li><li>Impasto e condimenti dalla cucina di Piano A</li><li>Cotte al momento nel nostro forno a legna mobile</li><li>Due ore a volontà per tutti gli ospiti</li></ul>
+        <p class="card-lead">Cinque pizze del menu di Piano A, cotte al momento nel nostro forno a legna mobile. Per due ore, una pizza dopo l'altra.</p>
+        <ul><li>Margherita, Diavola, 4 Formaggi, Napoli e Honey</li><li>Impasto e condimenti dalla cucina di Piano A</li><li>Il nostro pizzaiolo cuoce sul posto, alla vostra festa</li><li>Due ore a volontà per tutti gli ospiti</li></ul>
+        <p class="card-meta">Da €24 a persona IVA esclusa · min. 20 ospiti</p>
         <a href="pizza-buffet.html" class="btn">Scopri il buffet di pizza</a>
       </div>
       <div class="card reveal" data-d="2" id="pasta-buffet">
         <span class="num">Formula 02</span><h3>Pasta</h3>
-        <div class="price">da €24 a persona<small>Da sola o con il buffet di pizza · min. 20 persone · allestimento €200</small></div>
-        <ul><li>Parmigiana e orecchiette con cime di rapa</li><li>Pasta all'astice e cacio e pepe</li><li>Le stesse ricette del menu di Piano A</li><li>Servita calda ai vostri ospiti</li></ul>
+        <p class="card-lead">Quattro paste come escono ogni sera dalla cucina di Piano A. Servite calde, a buffet o come portata accanto alla pizza.</p>
+        <ul><li>Parmigiana e orecchiette con cime di rapa</li><li>Pasta all'astice e cacio e pepe</li><li>Fatte in casa nella cucina di Piano A</li><li>Da sola o con il buffet di pizza</li></ul>
+        <p class="card-meta">Da €24 a persona IVA esclusa · min. 20 ospiti</p>
         <a href="pasta-buffet.html" class="btn">Scopri le paste</a>
       </div>
     </div>
-    <div class="combi-note reveal"><span><b>COMBI ▸</b> Pizza e pasta insieme? Componete il menu nella pagina del preventivo.</span><span>Antipasto da €10 · Dolce €10 · Bevande da €5 a persona</span></div>
+    <div class="combi-note reveal"><span><b>COMBI ▸</b> Pizza e pasta insieme? Componete il menu nella pagina del preventivo.</span><span>Antipasti, dolci e bevande li aggiungete come volete. Tutti dal menu di Piano A.</span></div>
   </div>
 </section>
 <section class="proef" id="proef">
@@ -563,13 +559,13 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
 <section class="events soft" id="feesten">
   <div class="wrap">
     <div class="section-head reveal"><span class="kicker">Per ogni festa</span><h2>Festa aziendale, matrimonio o festa in giardino</h2></div>
-    <div class="events-grid"><a href="../bedrijfsfeest.html" class="event-card reveal" data-d="1" hreflang="nl"><h3>Festa aziendale</h3><p>Pizza e pasta per il vostro team, in ufficio o in location. Una sola fattura, prezzi IVA esclusa.</p><span class="more">Leggi di più (in olandese) →</span></a><a href="../huwelijk.html" class="event-card reveal" data-d="2" hreflang="nl"><h3>Matrimonio</h3><p>Una serata italiana con il forno a legna al centro della festa. Assaggiate prima da Piano A.</p><span class="more">Leggi di più (in olandese) →</span></a><a href="../verjaardag.html" class="event-card reveal" data-d="3" hreflang="nl"><h3>Compleanno e comunione</h3><p>Una festa in giardino con la pizza dal forno a legna, per grandi e piccoli. Da 20 ospiti.</p><span class="more">Leggi di più (in olandese) →</span></a></div>
+    <div class="events-grid"><a href="../bedrijfsfeest.html" class="event-card reveal" data-d="1" hreflang="nl"><h3>Festa aziendale</h3><p>Pizza e pasta per il vostro team, in ufficio o in location. Un solo referente, una sola fattura.</p><span class="more">Leggi di più (in olandese) →</span></a><a href="../huwelijk.html" class="event-card reveal" data-d="2" hreflang="nl"><h3>Matrimonio</h3><p>Una serata italiana con il forno a legna al centro della festa. Assaggiate prima da Piano A.</p><span class="more">Leggi di più (in olandese) →</span></a><a href="../verjaardag.html" class="event-card reveal" data-d="3" hreflang="nl"><h3>Compleanno e comunione</h3><p>Una festa in giardino con la pizza dal forno a legna, per grandi e piccoli. Da 20 ospiti.</p><span class="more">Leggi di più (in olandese) →</span></a></div>
   </div>
 </section>
 <section class="steps">
   <div class="wrap">
     <div class="section-head reveal"><span class="kicker">Come funziona</span><h2>Dall'assaggio alla festa in cinque passi</h2></div>
-    <div class="steps-grid"><div class="step reveal" data-d="1"><span class="n">1</span><h4>Assaggiate da Piano A</h4><p>Prenotate un tavolo e mangiate quello che vorreste servire. Non è obbligatorio, ma lo consigliamo.</p></div><div class="step reveal" data-d="2"><span class="n">2</span><h4>Componete il menu</h4><p>La pagina del preventivo mostra subito il prezzo indicativo a persona.</p></div><div class="step reveal" data-d="3"><span class="n">3</span><h4>Vi scriviamo</h4><p>Entro un giorno lavorativo. Confermiamo data, numero di ospiti e dettagli pratici.</p></div><div class="step reveal" data-d="4"><span class="n">4</span><h4>Montiamo tutto</h4><p>Forno e cucina sono pronti da voi un'ora e mezza prima del pasto.</p></div><div class="step reveal" data-d="4"><span class="n">5</span><h4>Buon appetito</h4><p>Pizza dopo pizza dal forno, pasta servita calda. Alla fine sistemiamo noi.</p></div></div>
+    <div class="steps-grid"><div class="step reveal" data-d="1"><span class="n">1</span><h4>Assaggiate da Piano A</h4><p>Prenotate un tavolo e mangiate quello che vorreste servire. Non è obbligatorio, ma lo consigliamo.</p></div><div class="step reveal" data-d="2"><span class="n">2</span><h4>Componete il menu</h4><p>Scegliete dal menu di Piano A cosa volete servire. Accanto vedete subito un prezzo indicativo.</p></div><div class="step reveal" data-d="3"><span class="n">3</span><h4>Vi scriviamo</h4><p>Entro un giorno lavorativo. Confermiamo data, numero di ospiti e dettagli pratici.</p></div><div class="step reveal" data-d="4"><span class="n">4</span><h4>Montiamo tutto</h4><p>Forno e cucina sono pronti da voi un'ora e mezza prima del pasto.</p></div><div class="step reveal" data-d="4"><span class="n">5</span><h4>Buon appetito</h4><p>Pizza dopo pizza dal forno, pasta servita calda. Alla fine sistemiamo noi.</p></div></div>
   </div>
 </section>
 <section class="over dark" id="over-ons">
@@ -603,7 +599,7 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
 <section class="cta-band">
   <div class="wrap">
     <h2 class="reveal">Pronti per la qualità del ristorante alla vostra festa?</h2>
-    <p class="reveal" data-d="1">Componete il menu e vedete subito il prezzo indicativo. Ricevete una mail in pochi minuti e una risposta personale entro un giorno lavorativo.</p>
+    <p class="reveal" data-d="1">Lo stesso impasto, gli stessi prodotti e le stesse ricette di Piano A, nella vostra location. Componete il menu e ricevete una risposta personale entro un giorno lavorativo.</p>
     <div class="btn-row center reveal" data-d="2">
       <a href="offerte-aanvraag.html" class="btn btn-light">Richiedi il preventivo</a>
       <a href="mailto:info@pianocatering.be" class="btn btn-ghost">Oppure scriveteci la vostra domanda</a>

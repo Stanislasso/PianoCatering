@@ -62,11 +62,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,241,236,.92);backdro
 .brand .sub{font-family:var(--font-mono);font-size:.48rem;letter-spacing:.22em;text-transform:uppercase;margin-top:3px;color:var(--espresso)}
 @media(min-width:760px){.brand .name{font-size:1.5rem}.brand .sub{font-size:.58rem;letter-spacing:.34em}}
 .nav-actions{display:flex;align-items:center;gap:5px;flex-shrink:0}
-.nav-ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--cream);color:var(--espresso);flex-shrink:0;text-decoration:none;-webkit-tap-highlight-color:transparent}
-.nav-ico svg{width:18px;height:18px;fill:currentColor}
-.nav-ico--wa{color:#1f8a4c}
 @media(min-width:760px){.nav-actions{gap:10px}}
-@media(max-width:359px){.nav-ico--wa{display:none}}
 .nav-toggle{display:flex;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;padding:0;border:1px solid var(--line);border-radius:8px;background:var(--cream);cursor:pointer;flex-shrink:0}
 .nav-toggle span{display:block;width:18px;height:2px;background:var(--espresso);margin:0 auto;transition:transform .25s,opacity .25s}
 .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -102,8 +98,6 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,241,236,.92);backdro
 @media(hover:hover){.btn-light:hover{background:var(--terracotta);color:var(--cream)}}
 .btn-terra{background:var(--terracotta);color:var(--cream)}
 @media(hover:hover){.btn-terra:hover{background:var(--espresso)}}
-.btn-wa{background:#1f8a4c;color:#fff}
-@media(hover:hover){.btn-wa:hover{background:#176b3b}}
 .btn-row{display:flex;flex-direction:column;gap:12px}
 .btn-row .btn{width:100%}
 @media(min-width:480px){.btn-row{flex-direction:row;flex-wrap:wrap}.btn-row .btn{width:auto}}
@@ -181,8 +175,8 @@ section{padding:var(--section-pad) 0;position:relative}
 .card .num{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.14em;color:var(--terracotta);margin-bottom:14px}
 .card h3{font-size:1.6rem;margin-bottom:6px}
 @media(min-width:760px){.card h3{font-size:1.9rem}}
-.card .price{font-family:var(--font-mono);font-size:1rem;margin:10px 0 18px;color:var(--espresso)}
-.card .price small{display:block;font-size:.68rem;opacity:.65;letter-spacing:.03em;margin-top:6px;line-height:1.45}
+.card .card-lead{font-size:.97rem;color:rgba(74,52,42,.85);line-height:1.55;margin:8px 0 18px}
+.card .card-meta{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.02em;color:rgba(74,52,42,.62);margin:0 0 18px;line-height:1.6}
 .card ul{list-style:none;margin:0 0 24px;display:flex;flex-direction:column;gap:10px}
 .card li{padding-left:22px;position:relative;font-size:.94rem}
 .card li::before{content:"✦";position:absolute;left:0;top:.35em;color:var(--terracotta);font-size:.6rem}
@@ -286,8 +280,7 @@ section{padding:var(--section-pad) 0;position:relative}
 .page-head .kicker{margin-bottom:16px;display:block}
 .page-head h1{font-size:clamp(2rem,7vw,3.4rem);margin-bottom:18px}
 .page-head p{font-size:1.05rem;color:rgba(74,52,42,.85)}
-.price-tag{font-family:var(--font-mono);font-size:1.1rem;margin-top:20px;color:var(--terracotta)}
-.price-tag small{display:block;font-size:.72rem;color:rgba(74,52,42,.6);margin-top:6px;letter-spacing:.04em;line-height:1.5}
+.price-tag{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.02em;color:rgba(74,52,42,.62);margin-top:16px;line-height:1.7}
 .page-photo{margin:32px auto 0;max-width:960px}
 .teaser{margin:40px auto 0;max-width:48ch;border-top:1px solid var(--line);padding-top:28px}
 .teaser h2{font-size:1.4rem;margin-bottom:14px}
@@ -305,8 +298,9 @@ section{padding:var(--section-pad) 0;position:relative}
 .staffel{margin:36px auto 0;max-width:640px;background:var(--cream-soft);border:1px solid var(--line);border-radius:8px;padding:22px 20px}
 .staffel h2{font-size:1.25rem;margin-bottom:12px}
 .staffel table{width:100%;border-collapse:collapse;font-size:.94rem}
-.staffel td{padding:8px 0;border-bottom:1px solid var(--line)}
-.staffel td:last-child{text-align:right;font-family:var(--font-mono);color:var(--terracotta)}
+.staffel td{padding:10px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.staffel td:first-child{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--olive);width:38%;padding-right:12px;padding-top:13px}
+.staffel td:last-child{font-size:.94rem;color:rgba(74,52,42,.9)}
 .staffel p{font-size:.88rem;color:rgba(74,52,42,.75);margin-top:12px}
 .page-cta{margin-top:36px}
 .menu-section{margin-top:44px}
@@ -404,7 +398,7 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
       <span class="kicker">Package 01 · Pizza buffet</span>
       <h1>The same pizza as at Piano A, <em>from our wood-fired oven</em></h1>
       <p>The dough rises in the kitchen of Piano A and travels to your party. Our pizzaiolo bakes on site in the mobile wood-fired oven, two hours all you can eat. Five pizzas from the menu, not a catering version.</p>
-      <p class="price-tag">from €24 p.p.<small>Min. 20 guests · set-up €200 · free transport within 20 km of Leuven · excl. 12 % VAT</small></p>
+      <p class="price-tag">From €24 p.p. excl. VAT · min. 20 guests</p>
     </div>
     <div class="page-photo reveal in"><div class="frame wide"><img src="/images/pizza-buffet.jpg" alt="Pizza from the mobile wood-fired oven at a Piano C party" width="1200" height="800" decoding="async" loading="lazy"></div></div>
     <div class="teaser reveal in">
@@ -418,9 +412,9 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
       <p class="menu-note">These are the five pizzas of the buffet. Want to swap one for another pizza from the Piano A menu? Ask when you request your quote.</p>
     </div>
     <div class="staffel reveal in">
-      <h2>More guests, lower price</h2>
-      <table><tr><td>20 to 34 guests</td><td>€24 p.p.</td></tr><tr><td>35 to 74 guests</td><td>€23 p.p.</td></tr><tr><td>75 to 99 guests</td><td>€22 p.p.</td></tr><tr><td>From 100 guests</td><td>€21 p.p.</td></tr></table>
-      <p>On top of that, a group discount of 3 to 12 % applies to the whole menu from 35 guests. The quote page calculates everything right away, excl. 12 % VAT.</p>
+      <h2>Practical</h2>
+      <table><tr><td>Guests</td><td>From 20, up to 150 with one oven.</td></tr><tr><td>Duration</td><td>Two hours, all you can eat. The oven is ready an hour and a half beforehand.</td></tr><tr><td>Price</td><td>From €24 p.p. excl. VAT. You see your exact price on the quote page.</td></tr><tr><td>Set-up and transport</td><td>Set-up €200, spread over your guests. Free transport within 20 km of Leuven, €1.35 per km beyond.</td></tr></table>
+      <p>Build your menu on the quote page and see right away what it comes to for your party.</p>
     </div>
     <div class="btn-row center page-cta reveal in">
       <a href="offerte-aanvraag.html" class="btn">Request your quote</a>

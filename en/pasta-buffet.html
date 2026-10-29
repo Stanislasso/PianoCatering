@@ -62,11 +62,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,241,236,.92);backdro
 .brand .sub{font-family:var(--font-mono);font-size:.48rem;letter-spacing:.22em;text-transform:uppercase;margin-top:3px;color:var(--espresso)}
 @media(min-width:760px){.brand .name{font-size:1.5rem}.brand .sub{font-size:.58rem;letter-spacing:.34em}}
 .nav-actions{display:flex;align-items:center;gap:5px;flex-shrink:0}
-.nav-ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--cream);color:var(--espresso);flex-shrink:0;text-decoration:none;-webkit-tap-highlight-color:transparent}
-.nav-ico svg{width:18px;height:18px;fill:currentColor}
-.nav-ico--wa{color:#1f8a4c}
 @media(min-width:760px){.nav-actions{gap:10px}}
-@media(max-width:359px){.nav-ico--wa{display:none}}
 .nav-toggle{display:flex;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;padding:0;border:1px solid var(--line);border-radius:8px;background:var(--cream);cursor:pointer;flex-shrink:0}
 .nav-toggle span{display:block;width:18px;height:2px;background:var(--espresso);margin:0 auto;transition:transform .25s,opacity .25s}
 .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -102,8 +98,6 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,241,236,.92);backdro
 @media(hover:hover){.btn-light:hover{background:var(--terracotta);color:var(--cream)}}
 .btn-terra{background:var(--terracotta);color:var(--cream)}
 @media(hover:hover){.btn-terra:hover{background:var(--espresso)}}
-.btn-wa{background:#1f8a4c;color:#fff}
-@media(hover:hover){.btn-wa:hover{background:#176b3b}}
 .btn-row{display:flex;flex-direction:column;gap:12px}
 .btn-row .btn{width:100%}
 @media(min-width:480px){.btn-row{flex-direction:row;flex-wrap:wrap}.btn-row .btn{width:auto}}
@@ -181,8 +175,8 @@ section{padding:var(--section-pad) 0;position:relative}
 .card .num{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.14em;color:var(--terracotta);margin-bottom:14px}
 .card h3{font-size:1.6rem;margin-bottom:6px}
 @media(min-width:760px){.card h3{font-size:1.9rem}}
-.card .price{font-family:var(--font-mono);font-size:1rem;margin:10px 0 18px;color:var(--espresso)}
-.card .price small{display:block;font-size:.68rem;opacity:.65;letter-spacing:.03em;margin-top:6px;line-height:1.45}
+.card .card-lead{font-size:.97rem;color:rgba(74,52,42,.85);line-height:1.55;margin:8px 0 18px}
+.card .card-meta{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.02em;color:rgba(74,52,42,.62);margin:0 0 18px;line-height:1.6}
 .card ul{list-style:none;margin:0 0 24px;display:flex;flex-direction:column;gap:10px}
 .card li{padding-left:22px;position:relative;font-size:.94rem}
 .card li::before{content:"✦";position:absolute;left:0;top:.35em;color:var(--terracotta);font-size:.6rem}
@@ -286,8 +280,7 @@ section{padding:var(--section-pad) 0;position:relative}
 .page-head .kicker{margin-bottom:16px;display:block}
 .page-head h1{font-size:clamp(2rem,7vw,3.4rem);margin-bottom:18px}
 .page-head p{font-size:1.05rem;color:rgba(74,52,42,.85)}
-.price-tag{font-family:var(--font-mono);font-size:1.1rem;margin-top:20px;color:var(--terracotta)}
-.price-tag small{display:block;font-size:.72rem;color:rgba(74,52,42,.6);margin-top:6px;letter-spacing:.04em;line-height:1.5}
+.price-tag{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.02em;color:rgba(74,52,42,.62);margin-top:16px;line-height:1.7}
 .page-photo{margin:32px auto 0;max-width:960px}
 .teaser{margin:40px auto 0;max-width:48ch;border-top:1px solid var(--line);padding-top:28px}
 .teaser h2{font-size:1.4rem;margin-bottom:14px}
@@ -305,8 +298,9 @@ section{padding:var(--section-pad) 0;position:relative}
 .staffel{margin:36px auto 0;max-width:640px;background:var(--cream-soft);border:1px solid var(--line);border-radius:8px;padding:22px 20px}
 .staffel h2{font-size:1.25rem;margin-bottom:12px}
 .staffel table{width:100%;border-collapse:collapse;font-size:.94rem}
-.staffel td{padding:8px 0;border-bottom:1px solid var(--line)}
-.staffel td:last-child{text-align:right;font-family:var(--font-mono);color:var(--terracotta)}
+.staffel td{padding:10px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.staffel td:first-child{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--olive);width:38%;padding-right:12px;padding-top:13px}
+.staffel td:last-child{font-size:.94rem;color:rgba(74,52,42,.9)}
 .staffel p{font-size:.88rem;color:rgba(74,52,42,.75);margin-top:12px}
 .page-cta{margin-top:36px}
 .menu-section{margin-top:44px}
@@ -404,7 +398,7 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
       <span class="kicker">Package 02 · Pasta</span>
       <h1>Pasta as at Piano A, <em>served warm at your party</em></h1>
       <p>We make our pastas in the kitchen of Piano A, with the same recipes that leave that kitchen every evening. At your party we serve them warm, as a buffet or as an extra course next to the pizza.</p>
-      <p class="price-tag">from €24 p.p.<small>On its own or with the pizza buffet · min. 20 guests · set-up €200 · excl. 12 % VAT</small></p>
+      <p class="price-tag">From €24 p.p. excl. VAT · on its own or with the pizza buffet · min. 20 guests</p>
     </div>
     <div class="page-photo reveal in"><div class="frame wide"><img src="/images/pasta-buffet.jpg" alt="Homemade orecchiette by Piano C" width="1200" height="800" decoding="async" loading="lazy"></div></div>
     <div class="teaser reveal in">
@@ -415,7 +409,7 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
     <div class="menu-list reveal in">
       <h2>Our four pastas</h2>
       <article class="menu-item"><h3>Parmigiana <span class="tag-veg">Vegetarian</span><span class="pr">€25</span></h3><p>Layered aubergine with tomato sauce, mozzarella and basil.</p></article><article class="menu-item"><h3>Orecchiette con cime di rapa <span class="tag-veg">Vegetarian</span><span class="pr">€24</span></h3><p>Homemade orecchiette with turnip tops, garlic and peperoncino. The dish of Salento.</p></article><article class="menu-item"><h3>Lobster pasta<span class="pr">€30</span></h3><p>Fresh pasta with lobster, festive and full of flavour.</p></article><article class="menu-item"><h3>Cacio e pepe <span class="tag-veg">Vegetarian</span><span class="pr">€26</span></h3><p>Tortelloni with pecorino and black pepper.</p></article>
-      <p class="menu-note">Prices per person, excl. 12 % VAT. If you choose several pastas we charge the average plus a small supplement for the variety. The quote page calculates it right away.</p>
+      <p class="menu-note">Prices per person, excl. VAT. You can combine several pastas; the quote page works it out for you right away.</p>
     </div>
     <div class="btn-row center page-cta reveal in">
       <a href="offerte-aanvraag.html" class="btn">Request your quote</a>

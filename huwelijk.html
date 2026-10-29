@@ -164,11 +164,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,241,236,.92);backdro
 .brand .sub{font-family:var(--font-mono);font-size:.48rem;letter-spacing:.22em;text-transform:uppercase;margin-top:3px;color:var(--espresso)}
 @media(min-width:760px){.brand .name{font-size:1.5rem}.brand .sub{font-size:.58rem;letter-spacing:.34em}}
 .nav-actions{display:flex;align-items:center;gap:5px;flex-shrink:0}
-.nav-ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--cream);color:var(--espresso);flex-shrink:0;text-decoration:none;-webkit-tap-highlight-color:transparent}
-.nav-ico svg{width:18px;height:18px;fill:currentColor}
-.nav-ico--wa{color:#1f8a4c}
 @media(min-width:760px){.nav-actions{gap:10px}}
-@media(max-width:359px){.nav-ico--wa{display:none}}
 .nav-toggle{display:flex;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;padding:0;border:1px solid var(--line);border-radius:8px;background:var(--cream);cursor:pointer;flex-shrink:0}
 .nav-toggle span{display:block;width:18px;height:2px;background:var(--espresso);margin:0 auto;transition:transform .25s,opacity .25s}
 .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -204,8 +200,6 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,241,236,.92);backdro
 @media(hover:hover){.btn-light:hover{background:var(--terracotta);color:var(--cream)}}
 .btn-terra{background:var(--terracotta);color:var(--cream)}
 @media(hover:hover){.btn-terra:hover{background:var(--espresso)}}
-.btn-wa{background:#1f8a4c;color:#fff}
-@media(hover:hover){.btn-wa:hover{background:#176b3b}}
 .btn-row{display:flex;flex-direction:column;gap:12px}
 .btn-row .btn{width:100%}
 @media(min-width:480px){.btn-row{flex-direction:row;flex-wrap:wrap}.btn-row .btn{width:auto}}
@@ -283,8 +277,8 @@ section{padding:var(--section-pad) 0;position:relative}
 .card .num{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.14em;color:var(--terracotta);margin-bottom:14px}
 .card h3{font-size:1.6rem;margin-bottom:6px}
 @media(min-width:760px){.card h3{font-size:1.9rem}}
-.card .price{font-family:var(--font-mono);font-size:1rem;margin:10px 0 18px;color:var(--espresso)}
-.card .price small{display:block;font-size:.68rem;opacity:.65;letter-spacing:.03em;margin-top:6px;line-height:1.45}
+.card .card-lead{font-size:.97rem;color:rgba(74,52,42,.85);line-height:1.55;margin:8px 0 18px}
+.card .card-meta{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.02em;color:rgba(74,52,42,.62);margin:0 0 18px;line-height:1.6}
 .card ul{list-style:none;margin:0 0 24px;display:flex;flex-direction:column;gap:10px}
 .card li{padding-left:22px;position:relative;font-size:.94rem}
 .card li::before{content:"✦";position:absolute;left:0;top:.35em;color:var(--terracotta);font-size:.6rem}
@@ -388,8 +382,7 @@ section{padding:var(--section-pad) 0;position:relative}
 .page-head .kicker{margin-bottom:16px;display:block}
 .page-head h1{font-size:clamp(2rem,7vw,3.4rem);margin-bottom:18px}
 .page-head p{font-size:1.05rem;color:rgba(74,52,42,.85)}
-.price-tag{font-family:var(--font-mono);font-size:1.1rem;margin-top:20px;color:var(--terracotta)}
-.price-tag small{display:block;font-size:.72rem;color:rgba(74,52,42,.6);margin-top:6px;letter-spacing:.04em;line-height:1.5}
+.price-tag{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.02em;color:rgba(74,52,42,.62);margin-top:16px;line-height:1.7}
 .page-photo{margin:32px auto 0;max-width:960px}
 .teaser{margin:40px auto 0;max-width:48ch;border-top:1px solid var(--line);padding-top:28px}
 .teaser h2{font-size:1.4rem;margin-bottom:14px}
@@ -407,8 +400,9 @@ section{padding:var(--section-pad) 0;position:relative}
 .staffel{margin:36px auto 0;max-width:640px;background:var(--cream-soft);border:1px solid var(--line);border-radius:8px;padding:22px 20px}
 .staffel h2{font-size:1.25rem;margin-bottom:12px}
 .staffel table{width:100%;border-collapse:collapse;font-size:.94rem}
-.staffel td{padding:8px 0;border-bottom:1px solid var(--line)}
-.staffel td:last-child{text-align:right;font-family:var(--font-mono);color:var(--terracotta)}
+.staffel td{padding:10px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.staffel td:first-child{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--olive);width:38%;padding-right:12px;padding-top:13px}
+.staffel td:last-child{font-size:.94rem;color:rgba(74,52,42,.9)}
 .staffel p{font-size:.88rem;color:rgba(74,52,42,.75);margin-top:12px}
 .page-cta{margin-top:36px}
 .menu-section{margin-top:44px}
@@ -527,22 +521,24 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
 </section>
 <section class="formules soft" id="formules">
   <div class="wrap">
-    <div class="section-head reveal"><span class="kicker">Onze formules</span><h2>Pizza, pasta of allebei</h2><p>Je stelt je menu zelf samen op de offertepagina en ziet meteen de richtprijs. Alle prijzen per persoon, excl. 12 % btw.</p></div>
+    <div class="section-head reveal"><span class="kicker">Onze formules</span><h2>Pizza, pasta of allebei</h2><p>Pizza uit de houtoven, huisgemaakte pasta of allebei, met voorgerecht, dessert en drank erbij als je wil. Alles van de kaart van Piano A, volgens dezelfde recepten.</p></div>
     <div class="cards">
       <div class="card reveal" data-d="1" id="pizza-buffet">
         <span class="num">Formule 01</span><h3>Pizzabuffet</h3>
-        <div class="price">vanaf €24 p.p.<small>Min. 20 personen · setup €200 · gratis transport binnen 20 km rond Leuven</small></div>
-        <ul><li>Vijf pizza's van de kaart van Piano A: Margherita, Diavola, 4 Formaggi, Napoli en Honey</li><li>Deeg en toppings uit de keuken van Piano A</li><li>Vers gebakken in onze mobiele houtoven</li><li>Twee uur à volonté voor al je gasten</li></ul>
+        <p class="card-lead">Vijf pizza's van de kaart van Piano A, vers gebakken in onze mobiele houtoven. Twee uur lang, pizza na pizza.</p>
+        <ul><li>Margherita, Diavola, 4 Formaggi, Napoli en Honey</li><li>Deeg en toppings uit de keuken van Piano A</li><li>Onze pizzaiolo bakt af op je feest</li><li>Twee uur à volonté voor al je gasten</li></ul>
+        <p class="card-meta">Vanaf €24 p.p. excl. btw · min. 20 gasten</p>
         <a href="pizza-buffet.html" class="btn">Ontdek het pizzabuffet</a>
       </div>
       <div class="card reveal" data-d="2" id="pasta-buffet">
         <span class="num">Formule 02</span><h3>Pasta</h3>
-        <div class="price">vanaf €24 p.p.<small>Los of bij het pizzabuffet · min. 20 personen · setup €200</small></div>
-        <ul><li>Parmigiana en orecchiette con cime di rapa</li><li>Pasta met kreeft en cacio e pepe</li><li>Dezelfde recepten als op de kaart van Piano A</li><li>Warm geserveerd aan je gasten</li></ul>
+        <p class="card-lead">Vier pasta's zoals ze elke avond in Piano A de keuken uitgaan. Warm geserveerd, als buffet of als gang bij de pizza.</p>
+        <ul><li>Parmigiana en orecchiette con cime di rapa</li><li>Pasta met kreeft en cacio e pepe</li><li>Huisgemaakt in de keuken van Piano A</li><li>Los of bij het pizzabuffet</li></ul>
+        <p class="card-meta">Vanaf €24 p.p. excl. btw · min. 20 gasten</p>
         <a href="pasta-buffet.html" class="btn">Ontdek de pasta's</a>
       </div>
     </div>
-    <div class="combi-note reveal"><span><b>COMBI ▸</b> Pizza én pasta? Stel je menu samen op de offertepagina.</span><span>Voorgerecht vanaf €10 p.p. · Dessert €10 p.p. · Drank vanaf €5 p.p.</span></div>
+    <div class="combi-note reveal"><span><b>COMBI ▸</b> Pizza én pasta? Stel je menu samen op de offertepagina.</span><span>Voorgerechten, desserts en drank kies je erbij. Allemaal van de kaart van Piano A.</span></div>
   </div>
 </section>
 <section class="proef" id="proef">
@@ -567,7 +563,7 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
 <section class="steps">
   <div class="wrap">
     <div class="section-head reveal"><span class="kicker">Zo werkt het</span><h2>Van proeven tot feest in vijf stappen</h2></div>
-    <div class="steps-grid"><div class="step reveal" data-d="1"><span class="n">1</span><h4>Proef met z'n tweeën in Piano A</h4><p>Kies daar wat jullie willen serveren.</p></div><div class="step reveal" data-d="2"><span class="n">2</span><h4>Stel je menu samen</h4><p>Richtprijs per persoon, meteen online.</p></div><div class="step reveal" data-d="3"><span class="n">3</span><h4>Wij mailen jullie</h4><p>Binnen één werkdag, met de details.</p></div><div class="step reveal" data-d="4"><span class="n">4</span><h4>Wij stemmen af met de locatie</h4><p>Oven, timing, stroom en servies.</p></div><div class="step reveal" data-d="4"><span class="n">5</span><h4>Jullie feesten</h4><p>Wij bakken, serveren en ruimen op.</p></div></div>
+    <div class="steps-grid"><div class="step reveal" data-d="1"><span class="n">1</span><h4>Proef met z'n tweeën in Piano A</h4><p>Kies daar wat jullie willen serveren.</p></div><div class="step reveal" data-d="2"><span class="n">2</span><h4>Stel je menu samen</h4><p>Van de kaart van Piano A, met een richtprijs erbij.</p></div><div class="step reveal" data-d="3"><span class="n">3</span><h4>Wij mailen jullie</h4><p>Binnen één werkdag, met de details.</p></div><div class="step reveal" data-d="4"><span class="n">4</span><h4>Wij stemmen af met de locatie</h4><p>Oven, timing, stroom en servies.</p></div><div class="step reveal" data-d="4"><span class="n">5</span><h4>Jullie feesten</h4><p>Wij bakken, serveren en ruimen op.</p></div></div>
   </div>
 </section>
 <section class="faq soft" id="faq">
@@ -595,7 +591,7 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
 <section class="cta-band">
   <div class="wrap">
     <h2 class="reveal">Een trouwfeest met de smaak van Salento?</h2>
-    <p class="reveal" data-d="1">Stel je menu samen en zie meteen je richtprijs. Daarna nodigen we jullie uit om te komen proeven in Piano A.</p>
+    <p class="reveal" data-d="1">Stel je menu samen en kom met z'n tweeën proeven in Piano A. Wat jullie daar eten, krijgen jullie gasten.</p>
     <div class="btn-row center reveal" data-d="2">
       <a href="offerte-aanvraag.html" class="btn btn-light">Vraag je offerte aan</a>
       <a href="mailto:info@pianocatering.be" class="btn btn-ghost">Of mail ons je vraag</a>
