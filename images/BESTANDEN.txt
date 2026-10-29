@@ -1,12 +1,23 @@
-Foto's in deze map (JPG, ~1600px breed):
+Foto's in deze map (JPG, ongeveer 1600 px breed, kwaliteit 80 %).
+Vervang een bestand met dezelfde naam en de site laadt het meteen, zonder code aan te passen.
+Ontbreekt een foto, dan toont de site een neutraal kader in plaats van een kapotte afbeelding.
 
-hero-pizza.jpg       → Homepage hero (4:5)          ✓ pizza 4.jpg
-team-kitchen.jpg     → Team / over ons (4:5)        ✓ Aperitivo.png (catering spread)
-pizza-buffet.jpg     → Pizza buffet pagina (3:2)    ✓ pizza.jpg
-menu-pizza.jpg       → Menu cards + homepage        ✓ pizza 5.jpg
+AANWEZIG
+hero-pizza.jpg          Homepage hero, staand 4:5                     (pizza 4.jpg)
+team-kitchen.jpg        Over ons en homepage, staand 4:5              (Aperitivo.png, cateringspread)
+pizza-buffet.jpg        Pizzabuffetpagina en hero huwelijk, 3:2       (pizza.jpg)
+menu-pizza.jpg          Menu, homepage en hero verjaardag, 3:2        (pizza 5.jpg)
 
-menu-pasta.jpg       → Menu + homepage pasta        ✗ nog geen pastafoto
-pasta-buffet.jpg     → Pasta buffet pagina          ✗ nog geen pastafoto
+NOG TE LEVEREN DOOR PIANO A
+piano-a-restaurant.jpg  Gevel of interieur van Piano A, 3:2. Staat in de sectie "Proef eerst in Piano A" op
+                        home, pizza, pasta, menu, over ons, offerte, bedankt en de drie landingspagina's.
+menu-pasta.jpg          Pastafoto voor menu en homepage, 3:2 (bij voorkeur orecchiette con cime di rapa)
+pasta-buffet.jpg        Pastafoto voor de pastapagina, 3:2 (buffet of bord op een feest)
+team-piano-a.jpg        Alessandro, Andrea en Mattia, vierkant 1:1. Pagina over ons.
+keuken-piano-a.jpg      De keuken of de oven van Piano A, vierkant 1:1. Pagina over ons.
 
-Tip: exporteer rond 1600px breed, JPG ~80% kwaliteit.
-Vervang bestanden met dezelfde naam — geen code aanpassen nodig.
+OPTIONEEL, LATER
+bedrijfsfeest.jpg, huwelijk.jpg, verjaardag.jpg
+                        Eigen foto's per landingspagina, staand 4:5. Nu gebruiken die pagina's
+                        team-kitchen.jpg, pizza-buffet.jpg en menu-pizza.jpg. Wil je ze wisselen,
+                        pas dan de img src aan in bedrijfsfeest.html, huwelijk.html en verjaardag.html.
