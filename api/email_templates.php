@@ -205,10 +205,41 @@ function emailDetailsTabel(array $rows): string
 
 /**
  * Prijsopbouw per persoon, zoals het paneel op de site, plus totaal en btw.
+ *
+ * $toonKorting = false (klantmail): geen aparte kortingsregel. De korting
+ * zit dan verwerkt in de prijzen van de gerechten en dranken, naar rato van
+ * hun bedrag; setup en transport blijven op hun gewone bedrag. De regels
+ * tellen samen exact op tot de prijs per persoon (afrondingsrest op de
+ * duurste regel). $toonKorting = true (interne mail): de korting als aparte regel.
  */
-function emailPrijsTabel(array $prijs, string $lang): string
+function emailPrijsTabel(array $prijs, string $lang, bool $toonKorting = true): string
 {
     $t = pianocT($lang);
+    $lijnen = $prijs['lijnen'];
+    $verwerkKorting = !$toonKorting && $prijs['korting_percentage'] > 0;
+    if ($verwerkKorting) {
+        $itemSom = 0.0;
+        foreach ($lijnen as $l) {
+            if ($l['type'] === 'item') {
+                $itemSom += (float) $l['prijs_pp'];
+            }
+        }
+        $korting = (float) $prijs['korting_pp'];
+        $getoond = 0.0;
+        $duurste = null;
+        foreach ($lijnen as $i => $l) {
+            if ($l['type'] === 'item' && $itemSom > 0) {
+                $lijnen[$i]['prijs_pp'] = round((float) $l['prijs_pp'] - $korting * (float) $l['prijs_pp'] / $itemSom, 2);
+                if ($duurste === null || $lijnen[$i]['prijs_pp'] > $lijnen[$duurste]['prijs_pp']) {
+                    $duurste = $i;
+                }
+            }
+            $getoond += round((float) $lijnen[$i]['prijs_pp'], 2);
+        }
+        if ($duurste !== null) {
+            $lijnen[$duurste]['prijs_pp'] = round($lijnen[$duurste]['prijs_pp'] + ((float) $prijs['prijs_pp_excl_btw'] - $getoond), 2);
+        }
+    }
     $rij = static fn(string $label, string $value, string $style = ''): string =>
         '<tr style="border-bottom:1px solid rgba(74,52,42,.14);">'
         . '<td style="font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:8px 0;' . $style . '">' . $label . '</td>'
@@ -216,7 +247,7 @@ function emailPrijsTabel(array $prijs, string $lang): string
         . '</tr>';
 
     $html = '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin:12px 0;">';
-    foreach ($prijs['lijnen'] as $l) {
+    foreach ($lijnen as $l) {
         if ($l['type'] === 'item') {
             $label = emailEsc($l['naam']);
             if (!empty($l['extra'])) {
@@ -231,7 +262,7 @@ function emailPrijsTabel(array $prijs, string $lang): string
             $html .= $rij(emailEsc(sprintf($t['transport'], number_format($l['extra_km'], 1, ',', ''), pianocEuro($l['totaal']))), pianocEuro($l['prijs_pp']));
         }
     }
-    if ($prijs['korting_percentage'] > 0) {
+    if ($toonKorting && $prijs['korting_percentage'] > 0) {
         $html .= $rij(emailEsc(sprintf($t['korting'], (int) round($prijs['korting_percentage'] * 100))), '−' . pianocEuro($prijs['korting_pp']), 'color:' . PIANOC_COLOR_OLIVE . ';');
     }
     $html .= '<tr><td style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:bold;padding:14px 0 4px;border-top:2px solid ' . PIANOC_COLOR_TERRACOTTA . ';">' . emailEsc($t['pp']) . '</td>'
@@ -366,7 +397,7 @@ function buildKlantEmailHtml(array $input, array $prijs, string $lang, string $r
     }
 
     $html .= '<h2 style="font-size:12px;font-family:\'Courier New\',Courier,monospace;letter-spacing:.14em;text-transform:uppercase;color:' . PIANOC_COLOR_TERRACOTTA . ';margin:22px 0 4px;">' . emailEsc($t['prijsopbouw']) . '</h2>';
-    $html .= emailPrijsTabel($prijs, $lang);
+    $html .= emailPrijsTabel($prijs, $lang, false);
 
     $html .= '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:22px 0;background:' . PIANOC_COLOR_ESPRESSO . ';border-radius:12px;"><tr><td style="padding:22px 24px;text-align:center;">'
         . '<p style="font-size:20px;color:' . PIANOC_COLOR_CREAM . ';margin:0 0 8px;">' . emailEsc($t['proef_titel']) . '</p>'

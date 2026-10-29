@@ -881,6 +881,7 @@ function calculate(){
     lines.push(...r.lines);
   });
 
+  const itemLineCount=lines.length;
   const setupPP=SETUP_TOTAL/billable;
   food+=setupPP;
   lines.push({label:L.setup+billable+L.setupEnd,value:setupPP});
@@ -906,19 +907,28 @@ function calculate(){
   document.getElementById('price-guests').textContent=guests;
   document.getElementById('price-total').textContent=fmt(total);
 
+  /* Geen aparte kortingsregel voor de klant: de groepskorting zit verwerkt in de
+     prijzen van gerechten en dranken, naar rato; setup en transport blijven gelijk.
+     De getoonde regels tellen exact op tot de prijs per persoon. */
+  const r2=n=>Math.round(n*100)/100;
+  let shown=lines.map(l=>({label:l.label,value:r2(l.value)}));
+  if(disc>0&&itemLineCount>0){
+    const itemSum=lines.slice(0,itemLineCount).reduce((a,l)=>a+l.value,0);
+    let top=0;
+    for(let i=0;i<itemLineCount;i++){
+      shown[i].value=r2(lines[i].value-discAmt*lines[i].value/itemSum);
+      if(shown[i].value>shown[top].value)top=i;
+    }
+    const sum=shown.reduce((a,l)=>a+l.value,0);
+    shown[top].value=r2(shown[top].value+(r2(perPerson)-sum));
+  }
   const bd=document.getElementById('price-breakdown');
   bd.innerHTML='';
-  lines.forEach(l=>{
+  shown.forEach(l=>{
     const li=document.createElement('li');
     li.innerHTML='<span>'+l.label+'</span><span>'+fmtDec(l.value)+'</span>';
     bd.appendChild(li);
   });
-  if(disc>0){
-    const li=document.createElement('li');
-    li.className='disc';
-    li.innerHTML='<span>'+L.disc+' ('+Math.round(disc*100)+'%)</span><span>−'+fmtDec(discAmt)+'</span>';
-    bd.appendChild(li);
-  }
 
   document.getElementById('prijs-pp-hidden').value=perPerson.toFixed(2);
   document.getElementById('prijs-totaal-hidden').value=total.toFixed(2);
