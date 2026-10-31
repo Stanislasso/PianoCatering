@@ -67,7 +67,7 @@ function pianocT(string $lang): array
         'nl' => [
             'titel' => 'Je richtprijs',
             'groet' => 'Dag %s,',
-            'intro' => 'Bedankt voor je aanvraag. Hieronder vind je de richtprijs voor je feest op <strong>%s</strong>, met de keuzes die je op onze site maakte. Alles wat we serveren is exact wat je in Piano A op je bord krijgt: hetzelfde deeg, dezelfde toppings, dezelfde recepten uit Puglia.',
+            'intro' => 'Bedankt voor je aanvraag. Hieronder vind je de richtprijs voor je feest op <strong>%s</strong>, met de keuzes die je op onze site maakte. Alles wat we serveren is exact wat je in Piano A op je bord krijgt, geen cateringversie: hetzelfde deeg, dezelfde producten rechtstreeks uit Italië en de recepten uit Salento, gemaakt door ons Italiaanse team.',
             'details' => 'Wat we noteerden',
             'datum' => 'Datum',
             'personen' => 'Aantal personen',
@@ -99,7 +99,7 @@ function pianocT(string $lang): array
         'en' => [
             'titel' => 'Your quote',
             'groet' => 'Hi %s,',
-            'intro' => 'Thank you for your request. Below is the indicative price for your event on <strong>%s</strong>, based on the choices you made on our site. Everything we serve is exactly what you get on your plate at Piano A: the same dough, the same toppings, the same recipes from Puglia.',
+            'intro' => 'Thank you for your request. Below is the indicative price for your event on <strong>%s</strong>, based on the choices you made on our site. Everything we serve is exactly what you get on your plate at Piano A, not a catering version: the same dough, the same products straight from Italy and the recipes of Salento, made by our Italian team.',
             'details' => 'What we noted',
             'datum' => 'Date',
             'personen' => 'Number of guests',
@@ -131,7 +131,7 @@ function pianocT(string $lang): array
         'it' => [
             'titel' => 'Il vostro preventivo',
             'groet' => 'Ciao %s,',
-            'intro' => 'Grazie per la richiesta. Qui sotto trovate il prezzo indicativo per la vostra festa del <strong>%s</strong>, con le scelte fatte sul nostro sito. Tutto ciò che serviamo è esattamente quello che trovate nel piatto da Piano A: lo stesso impasto, gli stessi ingredienti, le stesse ricette della Puglia.',
+            'intro' => 'Grazie per la richiesta. Qui sotto trovate il prezzo indicativo per la vostra festa del <strong>%s</strong>, con le scelte fatte sul nostro sito. Tutto ciò che serviamo è esattamente quello che trovate nel piatto da Piano A, non una versione da catering: lo stesso impasto, gli stessi prodotti direttamente dall\'Italia e le ricette del Salento, preparati dal nostro team italiano.',
             'details' => 'Cosa abbiamo annotato',
             'datum' => 'Data',
             'personen' => 'Numero di persone',
