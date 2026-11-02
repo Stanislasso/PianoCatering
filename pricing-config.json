@@ -53,7 +53,7 @@
     { "id": "charcuterie", "categorie": "aperitief", "prijs_pp": 15, "naam": { "nl": "Charcuterieplank", "en": "Charcuterie board", "it": "Tagliere di salumi" } },
     { "id": "vitello", "categorie": "aperitief", "prijs_pp": 10, "naam": { "nl": "Vitello tonnato", "en": "Vitello tonnato", "it": "Vitello tonnato" } },
     { "id": "carpaccio", "categorie": "aperitief", "prijs_pp": 10, "naam": { "nl": "Carpaccio", "en": "Carpaccio", "it": "Carpaccio" } },
-    { "id": "pizza", "categorie": "hoofd", "prijs_pp": 24, "staffel": "pizza_staffel", "naam": { "nl": "Pizza uit de houtoven (5 soorten, à volonté)", "en": "Wood-fired pizza (5 kinds, unlimited)", "it": "Pizza dal forno a legna (5 tipi, a volontà)" } },
+    { "id": "pizza", "categorie": "hoofd", "prijs_pp": 24, "staffel": "pizza_staffel", "naam": { "nl": "Pizza uit de houtoven (vijf naar keuze uit een 40-tal, à volonté)", "en": "Wood-fired pizza (five of your choice from around 40, unlimited)", "it": "Pizza dal forno a legna (cinque a scelta tra una quarantina, a volontà)" } },
     { "id": "parmigiana", "categorie": "hoofd", "prijs_pp": 25, "naam": { "nl": "Parmigiana", "en": "Parmigiana", "it": "Parmigiana" } },
     { "id": "cime-di-rapa", "categorie": "hoofd", "prijs_pp": 24, "naam": { "nl": "Orecchiette cime di rapa", "en": "Orecchiette cime di rapa", "it": "Orecchiette cime di rapa" } },
     { "id": "pasta-kreeft", "categorie": "hoofd", "prijs_pp": 30, "naam": { "nl": "Pasta met kreeft", "en": "Lobster pasta", "it": "Pasta con astice" } },

@@ -86,10 +86,10 @@ function pianocT(string $lang): array
             'extra' => 'extra drank, 30 %',
             'minimum' => 'We werken met een minimum van %d personen. Je aanvraag zat daar net onder, dus de opstartkost is verdeeld over %d personen.',
             'afstand_onbekend' => 'We konden de afstand naar je locatie nog niet automatisch berekenen. Transport zit dus nog niet in deze richtprijs; we rekenen dat na in ons voorstel (gratis binnen 20 km rond Leuven, daarbuiten €1,35 per extra km).',
-            'proef_titel' => 'Uit de keuken van Piano A',
-            'proef_tekst' => 'Piano C is de catering van ons restaurant Piano A in de Ravenstraat in Leuven. Op je feest koken we precies wat we elke avond in het restaurant serveren: hetzelfde deeg, dezelfde producten, dezelfde recepten uit Puglia.',
-            'proef_knop' => 'Ontdek Piano A',
-            'vervolg' => 'Dit is een richtprijs. We mailen je binnen één werkdag om de datum te bevestigen en de details te overlopen. Heb je intussen een vraag of wil je je datum al vastleggen? Antwoord gewoon op deze mail.',
+            'proef_titel' => 'Kies je vijf uit een 40-tal pizza\'s',
+            'proef_tekst' => 'Piano C is de catering van ons restaurant Piano A in de Ravenstraat in Leuven. Je kiest je vijf pizza\'s uit een 40-tal op onze kaart, met hetzelfde deeg en dezelfde toppings als in het restaurant, vers uit de houtoven. Twijfel je? Kom ze eerst proeven in Piano A.',
+            'proef_knop' => 'Bekijk onze pizza\'s',
+            'vervolg' => 'Dit is een richtprijs. We mailen je binnen één werkdag om de datum te bevestigen en de details te overlopen. Laat ook gerust weten welke vijf pizza\'s je wil. Heb je intussen een vraag of wil je je datum al vastleggen? Antwoord gewoon op deze mail.',
             'antwoord' => 'Antwoord op deze mail',
             'antwoord_onderwerp' => 'Mijn richtprijs (ref. %s)',
             'ref' => 'Referentie',
@@ -118,10 +118,10 @@ function pianocT(string $lang): array
             'extra' => 'extra drink, 30 %',
             'minimum' => 'We work with a minimum of %d guests. Your request was just below that, so the setup cost is split across %d guests.',
             'afstand_onbekend' => 'We could not calculate the distance to your location automatically yet, so transport is not included in this quote. We will add it in our proposal (free within 20 km of Leuven, €1.35 per extra km beyond that).',
-            'proef_titel' => 'From the kitchen of Piano A',
-            'proef_tekst' => 'Piano C is the catering of our restaurant Piano A on Ravenstraat in Leuven. At your event we cook exactly what we serve in the restaurant every evening: the same dough, the same products, the same recipes from Puglia.',
-            'proef_knop' => 'Discover Piano A',
-            'vervolg' => 'This is an indicative price. We will email you within one working day to confirm the date and go through the details. A question in the meantime, or want to secure your date? Just reply to this email.',
+            'proef_titel' => 'Choose your five from around 40 pizzas',
+            'proef_tekst' => 'Piano C is the catering of our restaurant Piano A on Ravenstraat in Leuven. You choose your five pizzas from around 40 on our menu, with the same dough and toppings as in the restaurant, fresh from the wood-fired oven. Not sure? Come and taste them first at Piano A.',
+            'proef_knop' => 'See our pizzas',
+            'vervolg' => 'This is an indicative price. We will email you within one working day to confirm the date and go through the details. Feel free to tell us which five pizzas you would like. A question in the meantime, or want to secure your date? Just reply to this email.',
             'antwoord' => 'Reply to this email',
             'antwoord_onderwerp' => 'My quote (ref. %s)',
             'ref' => 'Reference',
@@ -150,10 +150,10 @@ function pianocT(string $lang): array
             'extra' => 'bevanda extra, 30 %',
             'minimum' => 'Lavoriamo con un minimo di %d persone. La vostra richiesta era appena sotto, quindi il costo di allestimento è ripartito su %d persone.',
             'afstand_onbekend' => 'Non siamo ancora riusciti a calcolare automaticamente la distanza fino al vostro luogo, quindi il trasporto non è incluso in questo preventivo. Lo aggiungeremo nella nostra proposta (gratuito entro 20 km da Leuven, oltre €1,35 per km extra).',
-            'proef_titel' => 'Dalla cucina di Piano A',
-            'proef_tekst' => 'Piano C è il catering del nostro ristorante Piano A in Ravenstraat a Leuven. Alla vostra festa cuciniamo esattamente quello che serviamo ogni sera al ristorante: lo stesso impasto, gli stessi prodotti, le stesse ricette della Puglia.',
-            'proef_knop' => 'Scopri Piano A',
-            'vervolg' => 'Questo è un prezzo indicativo. Vi scriveremo entro un giorno lavorativo per confermare la data e rivedere i dettagli. Avete una domanda o volete già fissare la data? Rispondete pure a questa e-mail.',
+            'proef_titel' => 'Scegliete le vostre cinque tra una quarantina di pizze',
+            'proef_tekst' => 'Piano C è il catering del nostro ristorante Piano A in Ravenstraat a Leuven. Scegliete le vostre cinque pizze tra la quarantina del nostro menu, con lo stesso impasto e gli stessi condimenti del ristorante, appena sfornate dal forno a legna. Avete dubbi? Venite prima ad assaggiarle da Piano A.',
+            'proef_knop' => 'Vedi le nostre pizze',
+            'vervolg' => 'Questo è un prezzo indicativo. Vi scriveremo entro un giorno lavorativo per confermare la data e rivedere i dettagli. Diteci pure quali cinque pizze desiderate. Avete una domanda o volete già fissare la data? Rispondete pure a questa e-mail.',
             'antwoord' => 'Rispondi a questa e-mail',
             'antwoord_onderwerp' => 'Il mio preventivo (rif. %s)',
             'ref' => 'Riferimento',
@@ -402,7 +402,7 @@ function buildKlantEmailHtml(array $input, array $prijs, string $lang, string $r
     $html .= '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:22px 0;background:' . PIANOC_COLOR_ESPRESSO . ';border-radius:12px;"><tr><td style="padding:22px 24px;text-align:center;">'
         . '<p style="font-size:20px;color:' . PIANOC_COLOR_CREAM . ';margin:0 0 8px;">' . emailEsc($t['proef_titel']) . '</p>'
         . '<p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6;color:rgba(244,241,236,.85);margin:0 0 16px;">' . emailEsc($t['proef_tekst']) . '</p>'
-        . emailKnop(PIANOC_PIANO_A_URL, $t['proef_knop'], PIANOC_COLOR_TERRACOTTA)
+        . emailKnop(PIANOC_SITE . ($lang === 'nl' ? '' : '/' . $lang) . '/pizza-buffet.html#kaart', $t['proef_knop'], PIANOC_COLOR_TERRACOTTA)
         . '</td></tr></table>';
 
     $html .= $p(emailEsc($t['vervolg']));
