@@ -103,19 +103,24 @@ function groepskorting(array $config, int $guests): float
 }
 
 /**
- * Transportkost (totaalbedrag) voor een rijafstand in km, zoals de
- * configurator: enkel de km boven de gratis zone, afgerond op de cent.
+ * Aangerekende transportkilometers, zoals de configurator: de rit heen en
+ * terug (enkele rit maal twee) min de gratis kilometers.
+ */
+function transportExtraKm(array $config, float $afstandKm): float
+{
+    return max(0.0, round($afstandKm * 2 - (float) $config['transport']['gratis_km'], 1));
+}
+
+/**
+ * Transportkost (totaalbedrag) voor een rijafstand in km (enkele rit), zoals
+ * de configurator, afgerond op de cent.
  */
 function transportTotaal(array $config, ?float $afstandKm): float
 {
     if ($afstandKm === null) {
         return 0.0;
     }
-    $gratis = (float) $config['transport']['gratis_km'];
-    if ($afstandKm <= $gratis) {
-        return 0.0;
-    }
-    return jsRound2(($afstandKm - $gratis) * (float) $config['transport']['prijs_per_km']);
+    return jsRound2(transportExtraKm($config, $afstandKm) * (float) $config['transport']['prijs_per_km']);
 }
 
 /**
@@ -297,7 +302,7 @@ function calculatePrice(array $config, array $input): array
             'prijs_pp' => $transportPP,
             'totaal' => $transportTotaal,
             'afstand_km' => $afstandKm,
-            'extra_km' => $afstandKm - (float) $config['transport']['gratis_km'],
+            'extra_km' => transportExtraKm($config, $afstandKm),
             'btw_categorie' => 'food',
         ];
     }

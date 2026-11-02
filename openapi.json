@@ -3,7 +3,7 @@
   "info": {
     "title": "Piano C Catering: offerte-API",
     "version": "1.0.0",
-    "description": "Vraag een richtprijs aan voor Italiaanse catering van Piano C (de catering-extensie van restaurant Piano A, Leuven): pizza uit de houtoven, pasta's, voorgerechten, desserts en drank. De klant krijgt de richtprijs per e-mail met de uitnodiging om eerst te komen proeven in Piano A; het team krijgt dezelfde aanvraag intern binnen. Prijzen, items en rekenregels: https://www.pianocatering.be/pricing-config.json. Alle prijzen zijn per persoon en exclusief btw (12 % eten, 21 % drank). Minimum 20 personen, opstartkost 200 euro, transport gratis binnen 20 km rond Leuven.",
+    "description": "Vraag een richtprijs aan voor Italiaanse catering van Piano C (de catering-extensie van restaurant Piano A, Leuven): pizza uit de houtoven, pasta's, voorgerechten, desserts en drank. De klant krijgt de richtprijs per e-mail met de uitnodiging om eerst te komen proeven in Piano A; het team krijgt dezelfde aanvraag intern binnen. Prijzen, items en rekenregels: https://www.pianocatering.be/pricing-config.json. Alle prijzen zijn per persoon en exclusief btw (12 % eten, 21 % drank). Minimum 20 personen, opstartkost 200 euro, de eerste 20 km transport heen en terug gratis.",
     "contact": {
       "name": "Piano C Catering",
       "email": "info@pianocatering.be",
@@ -22,7 +22,7 @@
       "post": {
         "operationId": "vraagOfferteAan",
         "summary": "Richtprijs aanvragen",
-        "description": "Berekent de richtprijs met dezelfde regels als de configurator op de site en verstuurt de klantmail en de interne melding. Maximaal 10 aanvragen per IP-adres per uur. Het veld 'website' is een honeypot en moet leeg blijven. Onder 20 personen wordt de opstartkost verdeeld over 20 personen. Transport: rijafstand vanaf Piano A, de kilometers boven 20 km aan 1,35 euro per km.",
+        "description": "Berekent de richtprijs met dezelfde regels als de configurator op de site en verstuurt de klantmail en de interne melding. Maximaal 10 aanvragen per IP-adres per uur. Het veld 'website' is een honeypot en moet leeg blijven. Onder 20 personen wordt de opstartkost verdeeld over 20 personen. Transport: rijafstand heen en terug vanaf Piano A, de kilometers boven 20 km aan 1,35 euro per km.",
         "requestBody": {
           "required": true,
           "content": {
@@ -81,7 +81,7 @@
           "telefoon": { "type": "string" },
           "opmerkingen": { "type": "string" },
           "taal": { "type": "string", "enum": ["nl", "en", "it"], "default": "nl", "description": "Taal van de klantmail" },
-          "afstand_km": { "type": "number", "description": "Optioneel: rijafstand in km die al gekend is. Wordt enkel gebruikt als de server de afstand zelf niet kan opzoeken." },
+          "afstand_km": { "type": "number", "description": "Optioneel: rijafstand in km (enkele rit) die al gekend is. Wordt enkel gebruikt als de server de afstand zelf niet kan opzoeken." },
           "utm_source": { "type": "string" },
           "utm_medium": { "type": "string" },
           "utm_campaign": { "type": "string" },

@@ -92,7 +92,7 @@ Standaard staat alles op denied (ad_storage, ad_user_data, ad_personalization, a
 
 ## Aannames en open punten
 
-- Transport wordt gerekend op de rijafstand in één richting, zoals de configurator op de site dat doet (20 km gratis, daarboven €1,35 per km, als totaalbedrag verdeeld over de gasten). PND rekent heen en terug. Bevestig met Piano A welke van de twee de bedoeling is; aanpassen kan in `pricing-config.json` en in het script op de drie offertepagina's.
+- Transport wordt gerekend op de rijafstand heen en terug (enkele rit maal twee): de eerste 20 km gratis, daarboven €1,35 per km, als totaalbedrag verdeeld over de gasten. Aanpassen kan in `api/pricing.php`, `pricing-config.json` en in het script op de drie offertepagina's.
 - De groepskorting geldt op alles, ook op opstart, transport en drank, zoals de configurator. De btw wordt daarna evenredig berekend (12 % eten, 21 % drank).
 - Onder 20 personen wordt de opstartkost over 20 verdeeld, maar de rest op het echte aantal; de site doet hetzelfde.
 - Afzender van de mails is `info@pianocatering.be`. Wie die mailbox leest en wie van Piano A in `NOTIFY_EMAILS` komt, is nog te beslissen.

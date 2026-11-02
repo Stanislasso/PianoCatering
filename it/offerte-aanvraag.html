@@ -315,7 +315,7 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
    "name": "Fino a dove arrivate?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Entro 20 km di strada da Piano A (Ravenstraat 38, Leuven) non c'è costo di trasporto. Oltre, contiamo €1,35 per ogni chilometro in più. La pagina del preventivo lo calcola automaticamente dal vostro indirizzo."
+    "text": "Il trasporto è calcolato sulla distanza stradale di andata e ritorno da Piano A (Ravenstraat 38, Leuven). I primi 20 km sono gratuiti, poi contiamo €1,35 al chilometro. La pagina del preventivo lo calcola automaticamente dal vostro indirizzo."
    }
   },
   {
@@ -421,7 +421,7 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
               <p class="locatie-status" id="locatie-status" aria-live="polite"></p>
             </div>
           </div>
-          <p class="block-hint" style="margin-top:14px">Trasporto gratuito entro 20 km da Leuven. Oltre, calcoliamo automaticamente €1,35 per km extra.</p>
+          <p class="block-hint" style="margin-top:14px">I primi 20 km di trasporto sono gratuiti, andata e ritorno insieme. Poi calcoliamo automaticamente €1,35 al km.</p>
         </fieldset>
       </div>
     </div>
@@ -637,7 +637,7 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
       <details class="faq-item"><summary>Qual è il numero minimo di persone?</summary><div class="faq-a"><p>Venti. Sotto i venti ospiti contiamo venti persone, perché arriviamo con la stessa squadra e lo stesso forno. Verso l'alto non c'è limite: fino a 150 ospiti lavoriamo con un forno, oltre ci organizziamo insieme.</p></div></details>
       <details class="faq-item"><summary>Cosa comprende il prezzo?</summary><div class="faq-a"><p>I piatti che scegliete, la nostra squadra sul posto, il forno a legna mobile o la cucina, montaggio e sistemazione finale. Il costo di allestimento di €200 viene ripartito sugli ospiti, così la pagina del preventivo mostra subito un prezzo onesto a persona.</p><p>Bevande, antipasti e dolci si scelgono a parte. Piatti e bicchieri li organizziamo insieme, a seconda della location.</p></div></details>
       <details class="faq-item"><summary>I prezzi sono IVA inclusa o esclusa?</summary><div class="faq-a"><p>Tutti i prezzi sul sito sono IVA esclusa. Sul cibo si applica il 12 % di IVA, sulle bevande il 21 %. Nel preventivo e nella fattura l'importo IVA inclusa è indicato chiaramente.</p></div></details>
-      <details class="faq-item"><summary>Fino a dove arrivate?</summary><div class="faq-a"><p>Entro 20 km di strada da Piano A (Ravenstraat 38, Leuven) non c'è costo di trasporto. Oltre, contiamo €1,35 per ogni chilometro in più. La pagina del preventivo lo calcola automaticamente dal vostro indirizzo.</p></div></details>
+      <details class="faq-item"><summary>Fino a dove arrivate?</summary><div class="faq-a"><p>Il trasporto è calcolato sulla distanza stradale di andata e ritorno da Piano A (Ravenstraat 38, Leuven). I primi 20 km sono gratuiti, poi contiamo €1,35 al chilometro. La pagina del preventivo lo calcola automaticamente dal vostro indirizzo.</p></div></details>
       <details class="faq-item"><summary>Come funzionano allestimento e orari?</summary><div class="faq-a"><p>Arriviamo un'ora e mezza o due prima del pasto per montare. Ci serve uno spazio piano di qualche metro per il forno, meglio all'aperto o sotto una tettoia, e una presa di corrente vicina. Il buffet di pizza dura due ore, pasta e il resto seguono il vostro programma. Alla fine sistemiamo tutto noi.</p></div></details>
       <details class="faq-item"><summary>E per allergie e vegetariani?</summary><div class="faq-a"><p>Pizze e paste vegetariane fanno sempre parte dell'offerta. Indicate allergie o diete nella richiesta e adattiamo il menu. Poiché lavoriamo con farina di grano in un unico forno, non possiamo garantire un pasto sicuro per celiaci; cerchiamo insieme una soluzione.</p></div></details>
       <details class="faq-item"><summary>Possiamo davvero assaggiare prima?</summary><div class="faq-a"><p>Certo. Piano A in Ravenstraat 38 a Leuven è semplicemente aperto, siete sempre i benvenuti. Quello che mangiate lì è esattamente quello che riceveranno i vostri ospiti.</p></div></details>
@@ -687,11 +687,11 @@ const MAIN_CAT='hoofd',DRANK_CAT='drank';
 const DRINK_WATER=5,DRINK_EXTRA_RATE=.30;
 const L={
   setup:'Setup (ripartito su ',setupEnd:' persone)',
-  transportLine:'Trasporto ({excess} km × €1,35)',
+  transportLine:'Trasporto andata e ritorno ({excess} km × €1,35)',
   disc:'Sconto di gruppo',warn:'Selezionate almeno un piatto principale.',
   distLoading:'Calcolo distanza…',distError:'Posizione non trovata. Provate comune o indirizzo completo.',
-  distOk:'{km} km da Leuven — nessun costo di trasporto',
-  distFar:'{km} km da Leuven — trasporto {cost} totale ({excess} km × €1,35)',
+  distOk:'{km} km da Leuven, nessun costo di trasporto',
+  distFar:'{km} km da Leuven, trasporto andata e ritorno {cost} totale ({excess} km × €1,35)',
   drinkExtra:' (extra, 30%)',
   sending:'Invio in corso…',
   sendError:'Qualcosa è andato storto. Riprovate o scrivete a info@pianocatering.be.',
@@ -809,9 +809,13 @@ async function drivingDistanceKm(from,to){
   return data.routes[0].distance/1000;
 }
 
+function transportExcessKm(){
+  if(distanceKm===null) return 0;
+  return Math.max(0,Math.round((distanceKm*2-FREE_KM)*10)/10);
+}
+
 function transportTotal(){
-  if(distanceKm===null||distanceKm<=FREE_KM) return 0;
-  return Math.round((distanceKm-FREE_KM)*RATE_PER_KM*100)/100;
+  return Math.round(transportExcessKm()*RATE_PER_KM*100)/100;
 }
 
 async function updateDistance(){
@@ -836,7 +840,7 @@ async function updateDistance(){
     const km=await drivingDistanceKm(base,dest);
     if(km===null){distanceKm=null;status.textContent=L.distError;status.className='locatie-status error';calculate();return}
     distanceKm=Math.round(km*10)/10;
-    const excess=Math.max(0,distanceKm-FREE_KM);
+    const excess=transportExcessKm();
     const tTotal=transportTotal();
     document.getElementById('distance-hidden').value=distanceKm;
     document.getElementById('transport-hidden').value=tTotal;
@@ -888,7 +892,7 @@ function calculate(){
   if(tTotal>0){
     const transportPP=tTotal/guests;
     food+=transportPP;
-    lines.push({label:L.transportLine.replace('{excess}',(distanceKm-FREE_KM).toFixed(1).replace('.',',')),value:transportPP});
+    lines.push({label:L.transportLine.replace('{excess}',transportExcessKm().toFixed(1).replace('.',',')),value:transportPP});
   }
 
   const disc=volumeDiscount(guests);

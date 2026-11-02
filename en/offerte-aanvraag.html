@@ -315,7 +315,7 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
    "name": "How far do you travel?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Within 20 km driving distance of Piano A (Ravenstraat 38, Leuven) there is no transport fee. Beyond that we charge €1.35 per extra kilometre. The quote page calculates it automatically from your address."
+    "text": "We charge transport on the round-trip driving distance from Piano A (Ravenstraat 38, Leuven). The first 20 km are free, after that we charge €1.35 per kilometre. The quote page calculates it automatically from your address."
    }
   },
   {
@@ -421,7 +421,7 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
               <p class="locatie-status" id="locatie-status" aria-live="polite"></p>
             </div>
           </div>
-          <p class="block-hint" style="margin-top:14px">Free transport within 20 km of Leuven. Beyond that we automatically charge €1.35 per extra kilometre (driving distance).</p>
+          <p class="block-hint" style="margin-top:14px">The first 20 km of transport are free, there and back combined. After that we automatically charge €1.35 per kilometre (driving distance).</p>
         </fieldset>
       </div>
     </div>
@@ -637,7 +637,7 @@ footer .foot-addr{font-size:.88rem;line-height:1.55;margin-top:6px;color:rgba(24
       <details class="faq-item"><summary>What is the minimum number of guests?</summary><div class="faq-a"><p>Twenty. Below twenty guests we charge for twenty, because we come with the same crew and the same oven. There is no upper limit: up to 150 guests we work with one oven, beyond that we plan it together.</p></div></details>
       <details class="faq-item"><summary>What is included in the price?</summary><div class="faq-a"><p>The dishes you choose, our team on site, the mobile wood-fired oven or kitchen, set-up and clean-up. The €200 set-up fee is spread over your guests, so the quote page shows you an honest price per person right away.</p><p>Drinks, starters and desserts are chosen separately. Plates and glasses are arranged together, depending on your venue.</p></div></details>
       <details class="faq-item"><summary>Are prices with or without VAT?</summary><div class="faq-a"><p>All prices on the site are excluding VAT. Food carries 12 % VAT, drinks 21 %. The quote and the invoice clearly state the amount including VAT.</p></div></details>
-      <details class="faq-item"><summary>How far do you travel?</summary><div class="faq-a"><p>Within 20 km driving distance of Piano A (Ravenstraat 38, Leuven) there is no transport fee. Beyond that we charge €1.35 per extra kilometre. The quote page calculates it automatically from your address.</p></div></details>
+      <details class="faq-item"><summary>How far do you travel?</summary><div class="faq-a"><p>We charge transport on the round-trip driving distance from Piano A (Ravenstraat 38, Leuven). The first 20 km are free, after that we charge €1.35 per kilometre. The quote page calculates it automatically from your address.</p></div></details>
       <details class="faq-item"><summary>How do set-up and timing work?</summary><div class="faq-a"><p>We arrive one and a half to two hours before the meal to set up. We need a flat spot of a few metres for the oven, preferably outdoors or under a roof, and a power socket nearby. The pizza buffet runs for two hours, pasta and the rest follow your programme. Afterwards we clean everything up.</p></div></details>
       <details class="faq-item"><summary>What about allergies and vegetarians?</summary><div class="faq-a"><p>Vegetarian pizzas and pastas are always part of the offer. Mention allergies or diets in your request and we adjust the menu. Because we work with wheat flour in one oven, we cannot guarantee a coeliac-safe meal; we look for a solution together.</p></div></details>
       <details class="faq-item"><summary>Can we really taste it first?</summary><div class="faq-a"><p>Of course. Piano A on Ravenstraat 38 in Leuven is simply open, you are always welcome. What you eat there is exactly what your guests get at your party.</p></div></details>
@@ -687,11 +687,11 @@ const MAIN_CAT='hoofd',DRANK_CAT='drank';
 const DRINK_WATER=5,DRINK_EXTRA_RATE=.30;
 const L={
   setup:'Setup (split across ',setupEnd:' guests)',
-  transportLine:'Transport ({excess} km × €1.35)',
+  transportLine:'Round-trip transport ({excess} km × €1.35)',
   disc:'Group discount',warn:'Select at least one main course.',
   distLoading:'Calculating distance…',distError:'Location not found. Try a town or full address.',
-  distOk:'{km} km from Leuven — no transport charge',
-  distFar:'{km} km from Leuven — transport {cost} total ({excess} km × €1.35)',
+  distOk:'{km} km from Leuven, no transport charge',
+  distFar:'{km} km from Leuven, round-trip transport {cost} total ({excess} km × €1.35)',
   drinkExtra:' (extra, 30%)',
   sending:'Sending…',
   sendError:'Something went wrong. Please try again or email info@pianocatering.be.',
@@ -809,9 +809,13 @@ async function drivingDistanceKm(from,to){
   return data.routes[0].distance/1000;
 }
 
+function transportExcessKm(){
+  if(distanceKm===null) return 0;
+  return Math.max(0,Math.round((distanceKm*2-FREE_KM)*10)/10);
+}
+
 function transportTotal(){
-  if(distanceKm===null||distanceKm<=FREE_KM) return 0;
-  return Math.round((distanceKm-FREE_KM)*RATE_PER_KM*100)/100;
+  return Math.round(transportExcessKm()*RATE_PER_KM*100)/100;
 }
 
 async function updateDistance(){
@@ -836,7 +840,7 @@ async function updateDistance(){
     const km=await drivingDistanceKm(base,dest);
     if(km===null){distanceKm=null;status.textContent=L.distError;status.className='locatie-status error';calculate();return}
     distanceKm=Math.round(km*10)/10;
-    const excess=Math.max(0,distanceKm-FREE_KM);
+    const excess=transportExcessKm();
     const tTotal=transportTotal();
     document.getElementById('distance-hidden').value=distanceKm;
     document.getElementById('transport-hidden').value=tTotal;
@@ -888,7 +892,7 @@ function calculate(){
   if(tTotal>0){
     const transportPP=tTotal/guests;
     food+=transportPP;
-    lines.push({label:L.transportLine.replace('{excess}',(distanceKm-FREE_KM).toFixed(1).replace('.',',')),value:transportPP});
+    lines.push({label:L.transportLine.replace('{excess}',transportExcessKm().toFixed(1).replace('.',',')),value:transportPP});
   }
 
   const disc=volumeDiscount(guests);

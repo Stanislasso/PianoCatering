@@ -37,7 +37,7 @@
     "vertrekpunt": "Ravenstraat 38, 3000 Leuven, Belgium",
     "gratis_km": 20,
     "prijs_per_km": 1.35,
-    "basis": "Rijafstand in één richting vanaf Piano A, afgerond op 0,1 km. Enkel de kilometers boven de gratis zone worden aangerekend, als één totaalbedrag verdeeld over de gasten."
+    "basis": "Rijafstand heen en terug vanaf Piano A (enkele rit afgerond op 0,1 km, maal twee). De eerste 20 km zijn gratis, enkel de kilometers daarboven worden aangerekend, als één totaalbedrag verdeeld over de gasten."
   },
   "btw": {
     "food": 0.12,
