@@ -20,7 +20,6 @@ const PIANOC_COLOR_CREAM = '#F4F1EC';
 const PIANOC_COLOR_CREAM_SOFT = '#EBE5DA';
 const PIANOC_COLOR_TERRACOTTA = '#C0562E';
 const PIANOC_COLOR_OLIVE = '#74764E';
-const PIANOC_PIANO_A_URL = 'https://pianoa.piano-ab.be';
 const PIANOC_MAIL = 'info@pianocatering.be';
 const PIANOC_SITE = 'https://www.pianocatering.be';
 
@@ -46,7 +45,7 @@ function emailTaalLabel(?string $lang): string
 /**
  * "5 juni 2027": dag in cijfers, maand voluit in de taal, jaartal voluit.
  */
-function emailDatumLang(string $rawDate, string $lang): string
+function emailDatumLang(string $rawDate, string $lang, bool $metJaar = true): string
 {
     $ts = strtotime($rawDate) ?: time();
     $maanden = [
@@ -55,7 +54,7 @@ function emailDatumLang(string $rawDate, string $lang): string
         'it' => ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto', 'settembre', 'ottobre', 'novembre', 'dicembre'],
     ];
     $m = $maanden[$lang][(int) date('n', $ts) - 1] ?? $maanden['nl'][(int) date('n', $ts) - 1];
-    return date('j', $ts) . ' ' . $m . ' ' . date('Y', $ts);
+    return date('j', $ts) . ' ' . $m . ($metJaar ? ' ' . date('Y', $ts) : '');
 }
 
 /**
@@ -89,12 +88,11 @@ function pianocT(string $lang): array
             'proef_titel' => 'Kies je vijf uit een 40-tal pizza\'s',
             'proef_tekst' => 'Piano C is de catering van ons restaurant Piano A in de Ravenstraat in Leuven. Je kiest je vijf pizza\'s uit een 40-tal op onze kaart, met hetzelfde deeg en dezelfde toppings als in het restaurant, vers uit de houtoven. Twijfel je? Kom ze eerst proeven in Piano A.',
             'proef_knop' => 'Bekijk onze pizza\'s',
-            'vervolg' => 'Dit is een richtprijs. We mailen je binnen één werkdag om de datum te bevestigen en de details te overlopen. Laat ook gerust weten welke vijf pizza\'s je wil. Heb je intussen een vraag of wil je je datum al vastleggen? Antwoord gewoon op deze mail.',
+            'vervolg' => 'We mailen je binnen één werkdag om de datum te bevestigen en de details te overlopen. Laat ook gerust weten welke vijf pizza\'s je wil. Heb je intussen een vraag of wil je je datum al vastleggen? Antwoord gewoon op deze mail.',
             'antwoord' => 'Antwoord op deze mail',
             'antwoord_onderwerp' => 'Mijn richtprijs (ref. %s)',
             'ref' => 'Referentie',
-            'groeten' => 'A presto,<br>Alessandro, Andrea en Mattia<br><span style="color:' . PIANOC_COLOR_OLIVE . '">Piano C Catering, de catering van Piano A</span>',
-            'footer' => 'Piano C Catering is de catering-extensie van restaurant Piano A, Ravenstraat 38, 3000 Leuven. Uitgebaat door Kumbaya BV, BE0793492662. Prijzen excl. btw.',
+            'groeten' => 'A presto,<br><span style="color:' . PIANOC_COLOR_OLIVE . '">Piano C Catering, de catering van Piano A</span>',
         ],
         'en' => [
             'titel' => 'Your quote',
@@ -121,12 +119,11 @@ function pianocT(string $lang): array
             'proef_titel' => 'Choose your five from around 40 pizzas',
             'proef_tekst' => 'Piano C is the catering of our restaurant Piano A on Ravenstraat in Leuven. You choose your five pizzas from around 40 on our menu, with the same dough and toppings as in the restaurant, fresh from the wood-fired oven. Not sure? Come and taste them first at Piano A.',
             'proef_knop' => 'See our pizzas',
-            'vervolg' => 'This is an indicative price. We will email you within one working day to confirm the date and go through the details. Feel free to tell us which five pizzas you would like. A question in the meantime, or want to secure your date? Just reply to this email.',
+            'vervolg' => 'We will email you within one working day to confirm the date and go through the details. Feel free to tell us which five pizzas you would like. A question in the meantime, or want to secure your date? Just reply to this email.',
             'antwoord' => 'Reply to this email',
             'antwoord_onderwerp' => 'My quote (ref. %s)',
             'ref' => 'Reference',
-            'groeten' => 'A presto,<br>Alessandro, Andrea and Mattia<br><span style="color:' . PIANOC_COLOR_OLIVE . '">Piano C Catering, the catering of Piano A</span>',
-            'footer' => 'Piano C Catering is the catering extension of restaurant Piano A, Ravenstraat 38, 3000 Leuven, Belgium. Operated by Kumbaya BV, BE0793492662. Prices excl. VAT.',
+            'groeten' => 'A presto,<br><span style="color:' . PIANOC_COLOR_OLIVE . '">Piano C Catering, the catering of Piano A</span>',
         ],
         'it' => [
             'titel' => 'Il vostro preventivo',
@@ -153,18 +150,17 @@ function pianocT(string $lang): array
             'proef_titel' => 'Scegliete le vostre cinque tra una quarantina di pizze',
             'proef_tekst' => 'Piano C è il catering del nostro ristorante Piano A in Ravenstraat a Leuven. Scegliete le vostre cinque pizze tra la quarantina del nostro menu, con lo stesso impasto e gli stessi condimenti del ristorante, appena sfornate dal forno a legna. Avete dubbi? Venite prima ad assaggiarle da Piano A.',
             'proef_knop' => 'Vedi le nostre pizze',
-            'vervolg' => 'Questo è un prezzo indicativo. Vi scriveremo entro un giorno lavorativo per confermare la data e rivedere i dettagli. Diteci pure quali cinque pizze desiderate. Avete una domanda o volete già fissare la data? Rispondete pure a questa e-mail.',
+            'vervolg' => 'Vi scriveremo entro un giorno lavorativo per confermare la data e rivedere i dettagli. Diteci pure quali cinque pizze desiderate. Avete una domanda o volete già fissare la data? Rispondete pure a questa e-mail.',
             'antwoord' => 'Rispondi a questa e-mail',
             'antwoord_onderwerp' => 'Il mio preventivo (rif. %s)',
             'ref' => 'Riferimento',
-            'groeten' => 'A presto,<br>Alessandro, Andrea e Mattia<br><span style="color:' . PIANOC_COLOR_OLIVE . '">Piano C Catering, il catering di Piano A</span>',
-            'footer' => 'Piano C Catering è l\'estensione catering del ristorante Piano A, Ravenstraat 38, 3000 Leuven, Belgio. Gestito da Kumbaya BV, BE0793492662. Prezzi IVA esclusa.',
+            'groeten' => 'A presto,<br><span style="color:' . PIANOC_COLOR_OLIVE . '">Piano C Catering, il catering di Piano A</span>',
         ],
     ];
     return $t[$lang] ?? $t['nl'];
 }
 
-function emailWrapper(string $title, string $bodyHtml, string $footer): string
+function emailWrapper(string $title, string $bodyHtml): string
 {
     return '<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>'
         . '<body style="margin:0;padding:0;background:' . PIANOC_COLOR_CREAM_SOFT . ';font-family:Georgia,\'Times New Roman\',serif;color:' . PIANOC_COLOR_ESPRESSO . ';">'
@@ -178,9 +174,6 @@ function emailWrapper(string $title, string $bodyHtml, string $footer): string
         . '<tr><td style="padding:28px;">'
         . '<h1 style="font-size:24px;font-weight:normal;margin:0 0 16px;color:' . PIANOC_COLOR_ESPRESSO . ';">' . emailEsc($title) . '</h1>'
         . $bodyHtml
-        . '</td></tr>'
-        . '<tr><td style="background:' . PIANOC_COLOR_ESPRESSO_DEEP . ';padding:18px 28px;text-align:center;color:rgba(244,241,236,0.7);font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.5;">'
-        . emailEsc($footer) . '<br><a href="' . PIANOC_SITE . '" style="color:' . PIANOC_COLOR_CREAM . ';">pianocatering.be</a> · <a href="mailto:info@pianocatering.be" style="color:' . PIANOC_COLOR_CREAM . ';">info@pianocatering.be</a>'
         . '</td></tr>'
         . '</table></td></tr></table></body></html>';
 }
@@ -410,7 +403,7 @@ function buildKlantEmailHtml(array $input, array $prijs, string $lang, string $r
     $html .= '<p style="text-align:center;margin:18px 0 22px;">' . emailKnop($mailUrl, $t['antwoord'], PIANOC_COLOR_OLIVE) . '</p>';
     $html .= $p($t['groeten']);
 
-    return emailWrapper($t['titel'], $html, $t['footer']);
+    return emailWrapper($t['titel'], $html);
 }
 
 // ─── Interne melding (voor Viktor, Sofie en Piano A) ──────────────────────
@@ -452,7 +445,7 @@ function buildInterneEmailHtml(array $input, array $prijs, string $referentie): 
     }
     $html .= '</table><h3 style="font-family:Arial,Helvetica,sans-serif;font-size:14px;margin:18px 0 0;">Prijsopbouw</h3>' . emailPrijsTabel($prijs, 'nl');
 
-    return emailWrapper('Nieuwe offerte-aanvraag Piano C', $html, pianocT('nl')['footer']);
+    return emailWrapper('Nieuwe offerte-aanvraag Piano C', $html);
 }
 
 // ─── Fallback: prijs kon niet berekend worden ─────────────────────────────
@@ -477,5 +470,5 @@ function buildFallbackEmailHtml(array $input, string $reden): string
         $html .= '<tr><td style="vertical-align:top;"><strong>' . emailEsc($label) . '</strong></td><td>' . emailEsc((string) $value) . '</td></tr>';
     }
     $html .= '</table>';
-    return emailWrapper('Aanvraag Piano C zonder prijsberekening', $html, pianocT('nl')['footer']);
+    return emailWrapper('Aanvraag Piano C zonder prijsberekening', $html);
 }

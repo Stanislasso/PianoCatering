@@ -215,9 +215,9 @@ function pianocVerwerk(array $input): array
             $input['email'],
             $input['naam'],
             match ($lang) {
-                'en' => 'Your Piano C quote: ' . pianocEuro($prijs['prijs_pp_excl_btw']) . ' per person',
-                'it' => 'Il vostro preventivo Piano C: ' . pianocEuro($prijs['prijs_pp_excl_btw']) . ' a persona',
-                default => 'Je richtprijs van Piano C: ' . pianocEuro($prijs['prijs_pp_excl_btw']) . ' per persoon',
+                'en' => 'Your Piano C quote for ' . emailDatumLang($input['datum'], $lang, false),
+                'it' => 'Il vostro preventivo Piano C per ' . (in_array((int) substr($input['datum'], 8, 2), [8, 11], true) ? "l'" : 'il ') . emailDatumLang($input['datum'], $lang, false),
+                default => 'Je offerte van Piano C voor ' . emailDatumLang($input['datum'], $lang, false),
             },
             buildKlantEmailHtml($input, $prijs, $lang, $referentie),
             mailFromEmail(),
